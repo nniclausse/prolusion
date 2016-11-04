@@ -25,7 +25,11 @@
 
 (setq initial-frame-alist '((width . 75) (height . 40)))
 
-(set-frame-font "Source Code Pro-13" nil t)
+(set-frame-font "Source Code Pro-9" nil t)
+
+(if (eq system-type 'darwin)
+    (set-frame-font "Source Code Pro-13" nil t)
+  (set-frame-font "Source Code Pro-10" nil t))
 
 (tooltip-mode -1)
 (menu-bar-mode -1)
@@ -40,7 +44,7 @@
 (fringe-mode '(8 . 0))
 
 (when (display-graphic-p)
-  (load-theme 'spacemacs-light t)
+  (load-theme 'spacemacs-dark t)
   (setq ns-use-srgb-colorspace nil)
   (require 'spaceline-config)
   (spaceline-define-segment persp-name

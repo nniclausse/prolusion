@@ -17,7 +17,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prolusion-require-package 'rbenv)
-(prolusion-require-package 'rainbow-mode)
+;; (prolusion-require-package 'rainbow-mode)
 (prolusion-install-package 'cmake-mode)
 (prolusion-install-package 'csharp-mode)
 (prolusion-install-package 'markdown-mode)
