@@ -25,7 +25,11 @@
 
 (setq initial-frame-alist '((width . 75) (height . 40)))
 
-(set-frame-font "Source Code Pro-13" nil t)
+(set-frame-font "Source Code Pro-9" nil t)
+
+(if (eq system-type 'darwin)
+    (set-frame-font "Source Code Pro-13" nil t)
+  (set-frame-font "Source Code Pro-10" nil t))
 
 (tooltip-mode -1)
 (menu-bar-mode -1)
