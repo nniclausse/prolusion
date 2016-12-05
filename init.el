@@ -21,6 +21,7 @@
 (defvar prolusion-save-dir     (expand-file-name "prolusion-save"     prolusion-dir) "")
 (defvar prolusion-irony-dir    (expand-file-name "prolusion-irony"    prolusion-dir) "")
 (defvar prolusion-snippets-dir (expand-file-name "prolusion-snippets" prolusion-dir) "")
+(defvar prolusion-jedi-dir     (expand-file-name "prolusion-jedi"     prolusion-dir) "")
 
 (make-directory prolusion-docs-dir  t)
 (make-directory prolusion-elpa-dir  t)

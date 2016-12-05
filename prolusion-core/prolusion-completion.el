@@ -29,8 +29,8 @@
 
 (add-hook 'python-mode-hook 'jedi:setup)
 
-(setq jedi:environment-root (expand-file-name "prolusion-environment-root" prolusion-save-dir))
-(setq python-environment-directory (expand-file-name "prolusion-environment" prolusion-save-dir))
+(setq jedi:environment-root prolusion-jedir-dir)
+(setq python-environment-directory prolusion-jedir-dir)
 (setq python-environment-default-root-name "root")
 (setq jedi:complete-on-dot t)
 
