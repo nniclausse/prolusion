@@ -100,6 +100,7 @@
 ;; Modes modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(diminish             'jade-mode)
 (diminish          'rainbow-mode)
 (diminish     'js2-refactor-mode)
 (diminish 'prettify-symbols-mode)

@@ -16,6 +16,7 @@
 ;; UI requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(prolusion-require-package 'fontawesome)
 (prolusion-require-package 'spaceline)
 (prolusion-install-package 'spacemacs-theme)
 
