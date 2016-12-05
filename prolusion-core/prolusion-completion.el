@@ -17,8 +17,22 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prolusion-require-package 'company)
+(prolusion-require-package 'company-jedi)
 (prolusion-require-package 'company-irony)
 (prolusion-require-package 'company-irony-c-headers)
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Completion configuration
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(autoload 'jedi:setup "jedi" nil t)
+
+(add-hook 'python-mode-hook 'jedi:setup)
+
+(setq jedi:environment-root (expand-file-name "prolusion-environment-root" prolusion-save-dir))
+(setq python-environment-directory (expand-file-name "prolusion-environment" prolusion-save-dir))
+(setq python-environment-default-root-name "root")
+(setq jedi:complete-on-dot t)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completion setup
@@ -32,6 +46,7 @@
 (eval-after-load 'company '(add-to-list 'company-backends 'company-irony))
 (eval-after-load 'company '(add-to-list 'company-backends 'company-irony-c-headers))
 (eval-after-load 'company '(add-to-list 'company-backends 'company-cmake))
+(eval-after-load 'company '(add-to-list 'company-backends 'company-jedi))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completion hooks
@@ -45,6 +60,7 @@
 (add-hook       'html-mode-hook 'company-mode)
 (add-hook        'qml-mode-hook 'company-mode)
 (add-hook        'js2-mode-hook 'company-mode)
+(add-hook     'python-mode-hook 'company-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completion modeline
