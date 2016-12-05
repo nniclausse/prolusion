@@ -66,9 +66,10 @@
 
 (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook 'flycheck-irony-setup))
 
-(add-hook    'c-mode-hook 'flycheck-mode)
-(add-hook  'c++-mode-hook 'flycheck-mode)
-(add-hook 'objc-mode-hook 'flycheck-mode)
+(add-hook      'c-mode-hook 'flycheck-mode)
+(add-hook    'c++-mode-hook 'flycheck-mode)
+(add-hook   'objc-mode-hook 'flycheck-mode)
+(add-hook 'python-mode-hook 'flycheck-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Checking modeline
