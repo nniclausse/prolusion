@@ -29,8 +29,8 @@
 
 (add-hook 'python-mode-hook 'jedi:setup)
 
-(setq jedi:environment-root prolusion-jedir-dir)
-(setq python-environment-directory prolusion-jedir-dir)
+(setq jedi:environment-root prolusion-jedi-dir)
+(setq python-environment-directory prolusion-jedi-dir)
 (setq python-environment-default-root-name "root")
 (setq jedi:complete-on-dot t)
 

@@ -23,6 +23,7 @@ prolusion-docs
 prolusion-elpa
 prolusion-irony
 prolusion-save
+prolusion-jedi
 
 ######################################################################
 ### .gitignore ends here
