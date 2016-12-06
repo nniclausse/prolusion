@@ -25,10 +25,6 @@
 ;; Completion configuration
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(autoload 'jedi:setup "jedi" nil t)
-
-(add-hook 'python-mode-hook 'jedi:setup)
-
 (setq jedi:environment-root prolusion-jedi-dir)
 (setq python-environment-directory prolusion-jedi-dir)
 (setq python-environment-default-root-name "root")
