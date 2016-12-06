@@ -68,7 +68,7 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | Keybinding         | Function          |
 | ------------------ |:----------------- |
 | <kbd>`C-x o`</kbd> | `other-window`    |
-| <kbd>`C-x 0`</kbd> | `other-window -1` |
+| <kbd>`C-x O`</kbd> | `other-window -1` |
 
 | Keybinding       | Function              |
 | ---------------- |:--------------------- |
