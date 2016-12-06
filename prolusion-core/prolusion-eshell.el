@@ -46,15 +46,14 @@
     (erase-buffer)
     (eshell-send-input)))
 
-(defun prolusion-eshell-no-highlight ()
-  "No highlight in shell windows"
-  (hl-line-mode -1))
-
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-hook 'eshell-mode-hook 'prolusion-eshell-no-highlight)
+
+(add-hook 'eshell-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
+(add-hook   'term-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell keybindings
