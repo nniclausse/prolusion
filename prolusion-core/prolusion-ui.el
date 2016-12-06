@@ -61,6 +61,7 @@
            name)
          'face 'bold))))
   (setq powerline-default-separator 'wave)
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
   (spaceline-spacemacs-theme)

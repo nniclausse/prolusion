@@ -16,6 +16,7 @@
 ;; Projectile requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(prolusion-install-package              'ag)
 (prolusion-install-package      'projectile)
 (prolusion-install-package 'helm-projectile)
 
