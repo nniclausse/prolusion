@@ -18,6 +18,7 @@
 
 (prolusion-require-package         'multi-eshell)
 (prolusion-require-package 'exec-path-from-shell)
+(prolusion-require-package 'eshell-prompt-extras)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell setup
@@ -34,6 +35,11 @@
 
 (setq multi-eshell-name "*eshell*")
 (setq multi-eshell-shell-function (quote (eshell)))
+
+(with-eval-after-load "esh-opt"
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-dakrone))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell functions
