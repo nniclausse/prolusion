@@ -107,6 +107,9 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c b t`</kbd> |             `string-rectangle` |
 | <kbd>`C-c b y`</kbd> |               `yank-rectangle` |
 | <kbd>`C-c b w`</kbd> | `wdired-change-to-wdired-mode` |
+| <kbd>`C-c b s`</kbd> |                 `bookmark-set` |
+| <kbd>`C-c b j`</kbd> |                `bookmark-jump` |
+| <kbd>`C-c b l`</kbd> |          `bookmark-bmenu-list` |
 
 **prolusion-eshell**
 
