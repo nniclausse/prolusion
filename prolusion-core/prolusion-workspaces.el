@@ -29,7 +29,7 @@
 (when (display-graphic-p)
   (setq persp-auto-save-fname (expand-file-name "prolusion-perspective" prolusion-save-dir))
   (setq persp-save-dir prolusion-save-dir)
-  (setq persp-nil-name "")
+  (setq persp-nil-name "")
   (custom-set-variables
    '(persp-auto-resume-time -1)
    '(persp-auto-save-opt 0)

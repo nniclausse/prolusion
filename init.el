@@ -46,6 +46,7 @@
 (require 'prolusion-projectile)
 (require 'prolusion-builtins)
 (require 'prolusion-ui)
+;; (require 'prolusion-dashboard)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
