@@ -16,6 +16,7 @@
 ;; Dashboard requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(prolusion-require-package 'f)
 (prolusion-require-package 'bookmark)
 (prolusion-require-package 'recentf)
 
@@ -56,15 +57,17 @@
   :type 'string
   :group 'prolusion/dashboard)
 
-(defconst prolusion/dashboard-banner-margin 28 "")
+(defconst prolusion/dashboard-banner-margin 29 "")
 
-(defvar prolusion/dashboard-item-generators '((recents   . prolusion/dashboard-insert-recents)
-                                              (bookmarks . prolusion/dashboard-insert-bookmarks)
-                                              (projects  . prolusion/dashboard-insert-projects)))
+(defvar prolusion/dashboard-item-generators '((recents    . prolusion/dashboard-insert-recents)
+                                              (bookmarks  . prolusion/dashboard-insert-bookmarks)
+                                              (projects   . prolusion/dashboard-insert-projects)
+                                              (workspaces . prolusion/dashboard-insert-workspaces)))
 
-(defvar prolusion/dashboard-items '((recents   . 5)
-                                    (bookmarks . 5)
-                                    (projects  . 5)) "")
+(defvar prolusion/dashboard-items '((recents    . 5)
+                                    (bookmarks  . 5)
+                                    (projects   . 5)
+                                    (workspaces . 50)) "")
 
 (defvar prolusion/dashboard-items-default-length 20 "")
 
@@ -143,8 +146,23 @@
                                 :button-prefix ""
                                 :button-suffix ""
                                 :format "%[%t%]"
-                                (format "%s - %s" el (abbreviate-file-name
-                                                      (bookmark-get-filename el)))))
+                                (format "%s - %s" el (abbreviate-file-name (bookmark-get-filename el)))))
+               list)))
+
+(defun prolusion/dashboard-insert-workspace-list (list-display-name list) ""
+       (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
+       (insert list-display-name-faced)
+       (when (car list)
+         (mapc (lambda (el)
+                 (insert "\n    ")
+                 (widget-create 'push-button
+                                :action `(lambda (&rest ignore) (persp-load-state-from-file ,el))
+                                :mouse-face 'highlight
+                                :follow-link "\C-m"
+                                :button-prefix ""
+                                :button-suffix ""
+                                :format "%[%t%]"
+                                (abbreviate-file-name el)))
                list)))
 
 (defun prolusion/dashboard-insert-page-break () ""
@@ -182,11 +200,9 @@
          (prolusion/dashboard-insert--shortcut "r" "Recent Files:")))
 
 (defun prolusion/dashboard-insert-bookmarks (list-size) ""
-       (require 'bookmark)
        (when (prolusion/dashboard-insert-bookmark-list
               "Bookmarks:"
-              (prolusion/dashboard-subseq (bookmark-all-names)
-                                0 list-size))
+              (prolusion/dashboard-subseq (bookmark-all-names) 0 list-size))
          (prolusion/dashboard-insert--shortcut "m" "Bookmarks:")))
 
 (defun prolusion/dashboard-insert-projects (list-size) ""
@@ -195,10 +211,17 @@
              (projectile-load-known-projects)
              (when (prolusion/dashboard-insert-project-list
                     "Projects:"
-                    (prolusion/dashboard-subseq (projectile-relevant-known-projects)
-                                      0 list-size))
+                    (prolusion/dashboard-subseq (projectile-relevant-known-projects) 0 list-size))
                (prolusion/dashboard-insert--shortcut "p" "Projects:")))
          (error "Projects list depends on 'projectile-mode` to be activated")))
+
+(defun prolusion/dashboard-insert-workspaces (list-size) ""
+       (if (bound-and-true-p persp-mode)
+           (progn
+             (when (prolusion/dashboard-insert-workspace-list
+                    "Workspaces:"
+                    (prolusion/dashboard-subseq (f-glob (expand-file-name "*workspace*" prolusion-save-dir)) 0 list-size))
+               (prolusion/dashboard-insert--shortcut "w" "Workspaces:")))))
 
 (defun prolusion/dashboard-insert-startupify-lists () ""
        (interactive)
@@ -214,11 +237,9 @@
                            (or (cdr-safe els)
                                prolusion/dashboard-items-default-length))
                           (item-generator
-                           (cdr-safe (assoc el prolusion/dashboard-item-generators))
-                           ))
+                           (cdr-safe (assoc el prolusion/dashboard-item-generators))))
                      (funcall item-generator list-size)
-                     (prolusion/dashboard-insert-page-break)
-                     ))
+                     (prolusion/dashboard-insert-page-break)))
                  prolusion/dashboard-items))
          (prolusion/dashboard-mode)
          (goto-char (point-min))))
