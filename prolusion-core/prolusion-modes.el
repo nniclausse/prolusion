@@ -17,18 +17,16 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prolusion-require-package 'rbenv)
-;; (prolusion-require-package 'rainbow-mode)
 (prolusion-install-package 'cmake-mode)
 (prolusion-install-package 'csharp-mode)
 (prolusion-install-package 'markdown-mode)
 (prolusion-install-package 'yaml-mode)
-(prolusion-install-package 'jade)
 (prolusion-install-package 'js2-mode)
-(prolusion-install-package 'js2-refactor)
 (prolusion-install-package 'json-mode)
 (prolusion-install-package 'json-reformat)
 (prolusion-install-package 'json-snatcher)
 (prolusion-install-package 'qml-mode)
+(prolusion-install-package 'web-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes setup
@@ -91,18 +89,14 @@
 ;; Modes hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook  'qml-mode-hook           'rainbow-mode)
-(add-hook  'js2-mode-hook      'js2-refactor-mode)
-(add-hook 'prog-mode-hook  'prettify-symbols-mode)
-(add-hook  'js2-mode-hook #'jade-interaction-mode)
+(add-hook  'css-mode-hook          'rainbow-mode)
+(add-hook  'qml-mode-hook          'rainbow-mode)
+(add-hook 'prog-mode-hook 'prettify-symbols-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(diminish             'jade-mode)
-(diminish          'rainbow-mode)
-(diminish     'js2-refactor-mode)
 (diminish 'prettify-symbols-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
