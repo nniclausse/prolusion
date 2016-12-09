@@ -95,7 +95,7 @@
 (defun prolusion/dashboard-insert-banner () ""
        (goto-char (point-max))
        (prolusion/dashboard-insert-ascii-banner-centered
-        (expand-file-name "prolusion-dashboard.txt" prolusion-core-dir)))
+        (expand-file-name "prolusion-dashboard-banner.el" prolusion-core-dir)))
 
 (defun prolusion/dashboard-insert-file-list (list-display-name list) ""
        (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
