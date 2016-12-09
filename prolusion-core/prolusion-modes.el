@@ -26,7 +26,6 @@
 (prolusion-install-package 'json-reformat)
 (prolusion-install-package 'json-snatcher)
 (prolusion-install-package 'qml-mode)
-(prolusion-install-package 'web-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes setup
