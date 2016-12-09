@@ -56,7 +56,7 @@
   :type 'string
   :group 'prolusion/dashboard)
 
-(defconst prolusion/dashboard-banner-length 75 "")
+(defconst prolusion/dashboard-banner-margin 28 "")
 
 (defvar prolusion/dashboard-item-generators '((recents   . prolusion/dashboard-insert-recents)
                                               (bookmarks . prolusion/dashboard-insert-bookmarks)
@@ -85,7 +85,7 @@
                     (setq banner-width line-length)))
               (forward-line 1))
             (goto-char 0)
-            (let ((margin (max 0 (floor (/ (- prolusion/dashboard-banner-length banner-width) 3)))))
+            (let ((margin prolusion/dashboard-banner-margin))
               (while (not (eobp))
                 (when (not (looking-at-p "$"))
                   (insert (make-string margin ?\ )))
