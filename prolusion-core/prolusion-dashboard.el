@@ -23,24 +23,24 @@
 ;; Dashboard functions, modes and variables
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defface dashboard-banner-face  '((t (:height 3.0 :foreground "#bc6ec5" :bold t))) "")
-(defface dashboard-section-face '((t (:height 1.2 :foreground "#4f97d7" :bold t))) "")
+(defface prolusion/dashboard-banner-face  '((t (:height 3.0 :foreground "#bc6ec5" :bold t))) "")
+(defface prolusion/dashboard-section-face '((t (:height 1.2 :foreground "#4f97d7" :bold t))) "")
 
-(defun dashboard-subseq (seq start end)
+(defun prolusion/dashboard-subseq (seq start end)
   (let ((len (length seq)))
     (cl-subseq seq start (and (number-or-marker-p end) (min len end)))))
 
-(defvar dashboard-mode-map
+(defvar prolusion/dashboard-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map [tab] 'widget-forward)
     (define-key map [backtab] 'widget-backward)
     (define-key map (kbd "RET") 'widget-button-press)
     (define-key map [down-mouse-1] 'widget-button-click)
-    (define-key map (kbd "g") #'dashboard-insert-startupify-lists)
+    (define-key map (kbd "g") #'prolusion/dashboard-insert-startupify-lists)
     map))
 
-(define-derived-mode dashboard-mode special-mode "Dashboard" ""
-  :group 'dashboard
+(define-derived-mode prolusion/dashboard-mode special-mode "Dashboard" ""
+  :group 'prolusion/dashboard
   :syntax-table nil
   :abbrev-table nil
   (whitespace-mode -1)
@@ -49,34 +49,34 @@
   (setq buffer-read-only t)
   (setq truncate-lines t))
 
-(defgroup dashboard nil ""
-  :group 'dashboard)
+(defgroup prolusion/dashboard nil ""
+  :group 'prolusion/dashboard)
 
-(defcustom dashboard-page-separator "\n\n" ""
+(defcustom prolusion/dashboard-page-separator "\n\n" ""
   :type 'string
-  :group 'dashboard)
+  :group 'prolusion/dashboard)
 
-(defconst dashboard-banner-length 75 "")
+(defconst prolusion/dashboard-banner-length 75 "")
 
-(defvar dashboard-item-generators '((recents   . dashboard-insert-recents)
-                                    (bookmarks . dashboard-insert-bookmarks)
-                                    (projects  . dashboard-insert-projects)))
+(defvar prolusion/dashboard-item-generators '((recents   . prolusion/dashboard-insert-recents)
+                                              (bookmarks . prolusion/dashboard-insert-bookmarks)
+                                              (projects  . prolusion/dashboard-insert-projects)))
 
-(defvar dashboard-items '((recents   . 5)
-                          (bookmarks . 5)
-                          (projects  . 5)) "")
+(defvar prolusion/dashboard-items '((recents   . 5)
+                                    (bookmarks . 5)
+                                    (projects  . 5)) "")
 
-(defvar dashboard-items-default-length 20 "")
+(defvar prolusion/dashboard-items-default-length 20 "")
 
-(defun dashboard-get-string-from-file (file) ""
+(defun prolusion/dashboard-get-string-from-file (file) ""
        (with-temp-buffer
          (insert-file-contents file)
          (buffer-string)))
 
-(defun dashboard-insert-ascii-banner-centered (file) ""
+(defun prolusion/dashboard-insert-ascii-banner-centered (file) ""
        (insert
         (with-temp-buffer
-          (setq banner (propertize (dashboard-get-string-from-file file) 'face 'dashboard-banner-face))
+          (setq banner (propertize (prolusion/dashboard-get-string-from-file file) 'face 'prolusion/dashboard-banner-face))
           (insert banner)
           (let ((banner-width 0))
             (while (not (eobp))
@@ -85,22 +85,22 @@
                     (setq banner-width line-length)))
               (forward-line 1))
             (goto-char 0)
-            (let ((margin (max 0 (floor (/ (- dashboard-banner-length banner-width) 4)))))
+            (let ((margin (max 0 (floor (/ (- prolusion/dashboard-banner-length banner-width) 4)))))
               (while (not (eobp))
                 (when (not (looking-at-p "$"))
                   (insert (make-string margin ?\ )))
                 (forward-line 1))))
           (buffer-string))))
 
-(defun dashboard-insert-banner () ""
+(defun prolusion/dashboard-insert-banner () ""
        (goto-char (point-max))
-       (dashboard-insert-ascii-banner-centered
+       (prolusion/dashboard-insert-ascii-banner-centered
         (expand-file-name "prolusion-dashboard.txt" prolusion-core-dir)))
 
-(defun dashboard-insert-file-list (list-display-name list) ""
+(defun prolusion/dashboard-insert-file-list (list-display-name list) ""
+       (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
+       (insert list-display-name-faced)
        (when (car list)
-         (setq list-display-name-faced (propertize list-display-name 'face 'dashboard-section-face))
-         (insert list-display-name-faced)
          (mapc (lambda (el)
                  (insert "\n    ")
                  (widget-create 'push-button
@@ -113,10 +113,10 @@
                                 (abbreviate-file-name el)))
                list)))
 
-(defun dashboard-insert-project-list (list-display-name list) ""
+(defun prolusion/dashboard-insert-project-list (list-display-name list) ""
+       (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
+       (insert list-display-name-faced)
        (when (car list)
-         (setq list-display-name-faced (propertize list-display-name 'face 'dashboard-section-face))
-         (insert list-display-name-faced)
          (mapc (lambda (el)
                  (insert "\n    ")
                  (widget-create 'push-button
@@ -130,8 +130,8 @@
                                 (abbreviate-file-name el)))
                list)))
 
-(defun dashboard-insert-bookmark-list (list-display-name list) ""
-       (setq list-display-name-faced (propertize list-display-name 'face 'dashboard-section-face))
+(defun prolusion/dashboard-insert-bookmark-list (list-display-name list) ""
+       (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
        (insert list-display-name-faced)
        (when (car list)
          (mapc (lambda (el)
@@ -147,17 +147,17 @@
                                                       (bookmark-get-filename el)))))
                list)))
 
-(defun dashboard-insert-page-break () ""
-       (dashboard-append dashboard-page-separator))
+(defun prolusion/dashboard-insert-page-break () ""
+       (prolusion/dashboard-append prolusion/dashboard-page-separator))
 
-(defun dashboard-append (msg &optional messagebuf) ""
+(defun prolusion/dashboard-append (msg &optional messagebuf) ""
        (with-current-buffer (get-buffer-create "*dashboard*")
          (goto-char (point-max))
          (let ((buffer-read-only nil))
            (insert msg))))
 
-(defmacro dashboard-insert--shortcut (shortcut-char search-label &optional no-next-line) ""
-          `(define-key dashboard-mode-map ,shortcut-char
+(defmacro prolusion/dashboard-insert--shortcut (shortcut-char search-label &optional no-next-line) ""
+          `(define-key prolusion/dashboard-mode-map ,shortcut-char
              (lambda ()
                (interactive)
                (unless (search-forward ,search-label (point-max) t)
@@ -166,7 +166,7 @@
                    '((forward-line 1)))
                (back-to-indentation))))
 
-(defun dashboard-goto-link-line () ""
+(defun prolusion/dashboard-goto-link-line () ""
        (interactive)
        (with-current-buffer "*dashboard*"
          (goto-char (point-min))
@@ -174,61 +174,61 @@
          (beginning-of-line)
          (widget-forward 1)))
 
-(defun dashboard-insert-recents (list-size) ""
+(defun prolusion/dashboard-insert-recents (list-size) ""
        (recentf-mode)
-       (when (dashboard-insert-file-list
+       (when (prolusion/dashboard-insert-file-list
               "Recent Files:"
-              (dashboard-subseq recentf-list 0 list-size))
-         (dashboard-insert--shortcut "r" "Recent Files:")))
+              (prolusion/dashboard-subseq recentf-list 0 list-size))
+         (prolusion/dashboard-insert--shortcut "r" "Recent Files:")))
 
-(defun dashboard-insert-bookmarks (list-size) ""
+(defun prolusion/dashboard-insert-bookmarks (list-size) ""
        (require 'bookmark)
-       (when (dashboard-insert-bookmark-list
+       (when (prolusion/dashboard-insert-bookmark-list
               "Bookmarks:"
-              (dashboard-subseq (bookmark-all-names)
+              (prolusion/dashboard-subseq (bookmark-all-names)
                                 0 list-size))
-         (dashboard-insert--shortcut "m" "Bookmarks:")))
+         (prolusion/dashboard-insert--shortcut "m" "Bookmarks:")))
 
-(defun dashboard-insert-projects (list-size) ""
+(defun prolusion/dashboard-insert-projects (list-size) ""
        (if (bound-and-true-p projectile-mode)
            (progn
              (projectile-load-known-projects)
-             (when (dashboard-insert-project-list
+             (when (prolusion/dashboard-insert-project-list
                     "Projects:"
-                    (dashboard-subseq (projectile-relevant-known-projects)
+                    (prolusion/dashboard-subseq (projectile-relevant-known-projects)
                                       0 list-size))
-               (dashboard-insert--shortcut "p" "Projects:")))
+               (prolusion/dashboard-insert--shortcut "p" "Projects:")))
          (error "Projects list depends on 'projectile-mode` to be activated")))
 
-(defun dashboard-insert-startupify-lists () ""
+(defun prolusion/dashboard-insert-startupify-lists () ""
        (interactive)
        (with-current-buffer (get-buffer-create "*dashboard*")
          (let ((buffer-read-only nil)
                (list-separator "\n\n"))
            (erase-buffer)
-           (dashboard-insert-banner)
-           (dashboard-insert-page-break)
+           (prolusion/dashboard-insert-banner)
+           (prolusion/dashboard-insert-page-break)
            (mapc (lambda (els)
                    (let* ((el (or (car-safe els) els))
                           (list-size
                            (or (cdr-safe els)
-                               dashboard-items-default-length))
+                               prolusion/dashboard-items-default-length))
                           (item-generator
-                           (cdr-safe (assoc el dashboard-item-generators))
+                           (cdr-safe (assoc el prolusion/dashboard-item-generators))
                            ))
                      (funcall item-generator list-size)
-                     (dashboard-insert-page-break)
+                     (prolusion/dashboard-insert-page-break)
                      ))
-                 dashboard-items))
-         (dashboard-mode)
+                 prolusion/dashboard-items))
+         (prolusion/dashboard-mode)
          (goto-char (point-min))))
 
 ;;;###autoload
 
-(defun dashboard-setup-startup-hook () ""
+(defun prolusion/dashboard-setup-startup-hook () ""
        (if (< (length command-line-args) 2 )
            (progn
-             (add-hook 'after-init-hook (lambda () (dashboard-insert-startupify-lists)))
+             (add-hook 'after-init-hook (lambda () (prolusion/dashboard-insert-startupify-lists)))
              (add-hook 'emacs-startup-hook
                        '(lambda ()
                           (switch-to-buffer "*dashboard*")
@@ -242,7 +242,7 @@
 ;; Dashboard setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(dashboard-setup-startup-hook)
+(prolusion/dashboard-setup-startup-hook)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

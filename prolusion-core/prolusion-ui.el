@@ -16,6 +16,7 @@
 ;; UI requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(prolusion-require-package 'rainbow-mode)
 (prolusion-require-package 'fontawesome)
 (prolusion-require-package 'spaceline)
 (prolusion-install-package 'spacemacs-theme)
@@ -43,6 +44,8 @@
 (size-indication-mode t)
 
 (fringe-mode '(8 . 0))
+
+(rainbow-mode 1)
 
 (when (display-graphic-p)
   (load-theme 'spacemacs-dark t)
