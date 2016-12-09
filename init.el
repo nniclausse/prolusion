@@ -22,7 +22,8 @@
 (defvar prolusion-irony-dir    (expand-file-name "prolusion-irony"    prolusion-dir) "")
 (defvar prolusion-snippets-dir (expand-file-name "prolusion-snippets" prolusion-dir) "")
 (defvar prolusion-jedi-dir     (expand-file-name "prolusion-jedi"     prolusion-dir) "")
-(defvar prolusion-dark-variant t)
+(defvar prolusion-dark-variant  t)
+(defvar prolusion-green-variant nil)
 
 (make-directory prolusion-docs-dir  t)
 (make-directory prolusion-elpa-dir  t)

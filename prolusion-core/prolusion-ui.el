@@ -51,10 +51,11 @@
 
   (if prolusion-dark-variant
       (progn
-        (custom-set-variables
-         '(spacemacs-theme-custom-colors
-           '((bg1 .  "#111111")
-             (act1 . "#080808"))))
+        (unless prolusion-green-variant
+          (custom-set-variables
+           '(spacemacs-theme-custom-colors
+             '((bg1 .  "#111111")
+               (act1 . "#080808")))))
         (load-theme 'spacemacs-dark t))
     (load-theme 'spacemacs-light t))
 
