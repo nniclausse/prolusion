@@ -16,18 +16,15 @@
 ;; Dashboard requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'bookmark)
-(require 'recentf)
+(prolusion-require-package 'bookmark)
+(prolusion-require-package 'recentf)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dashboard functions, modes and variables
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defconst dashboard-mode-font-lock-keywords
-  (list (cons "Recent Files:" 'font-lock-type-face)
-        (cons "Bookmarks:"    'font-lock-type-face)
-        (cons "Projects:"     'font-lock-type-face)
-        (cons ""             'markdown-header-face-1)))
+(defface dashboard-banner-face  '((t (:height 3.0 :foreground "#bc6ec5" :bold t))) "")
+(defface dashboard-section-face '((t (:height 1.2 :foreground "#4f97d7" :bold t))) "")
 
 (defun dashboard-subseq (seq start end)
   (let ((len (length seq)))
@@ -50,8 +47,7 @@
   (linum-mode -1)
   (setq inhibit-startup-screen t)
   (setq buffer-read-only t)
-  (setq truncate-lines t)
-  (set (make-local-variable 'font-lock-defaults) '(dashboard-mode-font-lock-keywords)))
+  (setq truncate-lines t))
 
 (defgroup dashboard nil ""
   :group 'dashboard)
@@ -72,10 +68,16 @@
 
 (defvar dashboard-items-default-length 20 "")
 
+(defun dashboard-get-string-from-file (file) ""
+       (with-temp-buffer
+         (insert-file-contents file)
+         (buffer-string)))
+
 (defun dashboard-insert-ascii-banner-centered (file) ""
        (insert
         (with-temp-buffer
-          (insert-file-contents file)
+          (setq banner (propertize (dashboard-get-string-from-file file) 'face 'dashboard-banner-face))
+          (insert banner)
           (let ((banner-width 0))
             (while (not (eobp))
               (let ((line-length (- (line-end-position) (line-beginning-position))))
@@ -83,7 +85,7 @@
                     (setq banner-width line-length)))
               (forward-line 1))
             (goto-char 0)
-            (let ((margin (max 0 (floor (/ (- dashboard-banner-length banner-width) 2)))))
+            (let ((margin (max 0 (floor (/ (- dashboard-banner-length banner-width) 4)))))
               (while (not (eobp))
                 (when (not (looking-at-p "$"))
                   (insert (make-string margin ?\ )))
@@ -97,7 +99,8 @@
 
 (defun dashboard-insert-file-list (list-display-name list) ""
        (when (car list)
-         (insert list-display-name)
+         (setq list-display-name-faced (propertize list-display-name 'face 'dashboard-section-face))
+         (insert list-display-name-faced)
          (mapc (lambda (el)
                  (insert "\n    ")
                  (widget-create 'push-button
@@ -112,7 +115,8 @@
 
 (defun dashboard-insert-project-list (list-display-name list) ""
        (when (car list)
-         (insert list-display-name)
+         (setq list-display-name-faced (propertize list-display-name 'face 'dashboard-section-face))
+         (insert list-display-name-faced)
          (mapc (lambda (el)
                  (insert "\n    ")
                  (widget-create 'push-button
@@ -127,8 +131,9 @@
                list)))
 
 (defun dashboard-insert-bookmark-list (list-display-name list) ""
+       (setq list-display-name-faced (propertize list-display-name 'face 'dashboard-section-face))
+       (insert list-display-name-faced)
        (when (car list)
-         (insert list-display-name)
          (mapc (lambda (el)
                  (insert "\n    ")
                  (widget-create 'push-button
