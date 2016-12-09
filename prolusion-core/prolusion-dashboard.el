@@ -23,8 +23,8 @@
 ;; Dashboard functions, modes and variables
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defface prolusion/dashboard-banner-face  '((t (:height 3.0 :foreground "#bc6ec5" :bold t))) "")
-(defface prolusion/dashboard-section-face '((t (:height 1.2 :foreground "#4f97d7" :bold t))) "")
+(defface prolusion/dashboard-banner-face  '((t (:height 1.5 :foreground "#bc6ec5" :bold t))) "")
+(defface prolusion/dashboard-section-face '((t (:height 1.1 :foreground "#4f97d7" :bold t))) "")
 
 (defun prolusion/dashboard-subseq (seq start end)
   (let ((len (length seq)))
@@ -85,7 +85,7 @@
                     (setq banner-width line-length)))
               (forward-line 1))
             (goto-char 0)
-            (let ((margin (max 0 (floor (/ (- prolusion/dashboard-banner-length banner-width) 4)))))
+            (let ((margin (max 0 (floor (/ (- prolusion/dashboard-banner-length banner-width) 3)))))
               (while (not (eobp))
                 (when (not (looking-at-p "$"))
                   (insert (make-string margin ?\ )))
