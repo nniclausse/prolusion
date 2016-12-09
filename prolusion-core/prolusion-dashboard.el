@@ -23,7 +23,7 @@
 ;; Dashboard functions, modes and variables
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defface prolusion/dashboard-banner-face  '((t (:height 1.5 :foreground "#bc6ec5" :bold t))) "")
+(defface prolusion/dashboard-banner-face  '((t (:height 1.3 :foreground "#bc6ec5" :bold t))) "")
 (defface prolusion/dashboard-section-face '((t (:height 1.1 :foreground "#4f97d7" :bold t))) "")
 
 (defun prolusion/dashboard-subseq (seq start end)
