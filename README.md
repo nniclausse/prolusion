@@ -22,10 +22,8 @@ keybindings.
 
 ## Prerequisites
 
-    $ brew install gpg
     $ brew install emacs --use-git-head --with-cocoa --HEAD
     $ brew install cmake
-    $ brew install ninja
     $ brew install llvm --with-clang
     $ brew install ack
     $ brew install the_silver_searcher
