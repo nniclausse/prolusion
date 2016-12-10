@@ -27,7 +27,6 @@ keybindings.
     $ brew install cmake
     $ brew install ninja
     $ brew install llvm --with-clang
-    $ brew install cscope
     $ brew install ack
     $ brew install the_silver_searcher
 
