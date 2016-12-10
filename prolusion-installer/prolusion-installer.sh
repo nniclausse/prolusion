@@ -106,15 +106,6 @@ then
     exit 1;
 fi
 
-prolusion_cyan "Checking to see if gpg is installed... " -n
-if hash gpg 2>&-
-then
-    prolusion_green "found."
-else
-    prolusion_red "not found. Aborting installation!"
-    exit 1
-fi;
-
 prolusion_cyan "Checking to see if git is installed... " -n
 if hash git 2>&-
 then
