@@ -151,8 +151,8 @@ else
     exit 1
 fi;
 
-prolusion_cyan "Checking to see if cscope is installed... " -n
-if hash cscope 2>&-
+prolusion_cyan "Checking to see if ack is installed... " -n
+if hash ack 2>&-
 then
     prolusion_green "found."
 else
