@@ -57,7 +57,7 @@
   :type 'string
   :group 'prolusion/dashboard)
 
-(defconst prolusion/dashboard-banner-margin 29 "")
+(defconst prolusion/dashboard-banner-margin 28 "")
 
 (defvar prolusion/dashboard-item-generators '((recents     . prolusion/dashboard-insert-recents)
                                               (bookmarks   . prolusion/dashboard-insert-bookmarks)
