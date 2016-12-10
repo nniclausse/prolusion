@@ -59,15 +59,17 @@
 
 (defconst prolusion/dashboard-banner-margin 29 "")
 
-(defvar prolusion/dashboard-item-generators '((recents    . prolusion/dashboard-insert-recents)
-                                              (bookmarks  . prolusion/dashboard-insert-bookmarks)
-                                              (projects   . prolusion/dashboard-insert-projects)
-                                              (workspaces . prolusion/dashboard-insert-workspaces)))
+(defvar prolusion/dashboard-item-generators '((recents     . prolusion/dashboard-insert-recents)
+                                              (bookmarks   . prolusion/dashboard-insert-bookmarks)
+                                              (projects    . prolusion/dashboard-insert-projects)
+                                              (workspaces  . prolusion/dashboard-insert-workspaces)
+                                              (info        . prolusion/dashboard-insert-info)))
 
-(defvar prolusion/dashboard-items '((recents    . 10)
-                                    (bookmarks  . 10)
-                                    (projects   . 10)
-                                    (workspaces . 10)) "")
+(defvar prolusion/dashboard-items '((recents     . 20)
+                                    (bookmarks   . 10)
+                                    (projects    . 10)
+                                    (workspaces  . 10)
+                                    (info        . 10)) "")
 
 (defvar prolusion/dashboard-items-default-length 20 "")
 
@@ -165,6 +167,22 @@
                                 (abbreviate-file-name el)))
                list)))
 
+(defun prolusion/dashboard-insert-info-list (list-display-name list) ""
+       (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
+       (insert list-display-name-faced)
+       (when (car list)
+         (mapc (lambda (el)
+                 (insert "\n    ")
+                 (widget-create 'push-button
+                                :action `(lambda (&rest ignore) (find-file-existing ,el))
+                                :mouse-face 'highlight
+                                :follow-link "\C-m"
+                                :button-prefix ""
+                                :button-suffix ""
+                                :format "%[%t%]"
+                                (abbreviate-file-name el)))
+               list)))
+
 (defun prolusion/dashboard-insert-page-break () ""
        (prolusion/dashboard-append prolusion/dashboard-page-separator))
 
@@ -222,6 +240,12 @@
                     "Workspaces:"
                     (prolusion/dashboard-subseq (f-glob (expand-file-name "*workspace*" prolusion-save-dir)) 0 list-size))
                (prolusion/dashboard-insert--shortcut "w" "Workspaces:")))))
+
+(defun prolusion/dashboard-insert-info (list-size) ""
+       (when (prolusion/dashboard-insert-info-list
+              "Info:"
+              (prolusion/dashboard-subseq (f-glob (expand-file-name "*" prolusion-info-dir)) 0 list-size))
+         (prolusion/dashboard-insert--shortcut "i" "Info:")))
 
 (defun prolusion/dashboard-insert-startupify-lists () ""
        (interactive)
