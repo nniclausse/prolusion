@@ -107,7 +107,7 @@
        (insert "\n")
        (insert (make-string (- prolusion/dashboard-banner-margin 8) ?\ ))
        (insert-image (create-image (expand-file-name "prolusion-badges/prolusion-emacs-badge-editor.png" prolusion-dir)))
-       (insert "\n\n"))
+       (insert "\n"))
 
 (defun prolusion/dashboard-insert-file-list (list-display-name list) ""
        (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
@@ -261,7 +261,7 @@
                (list-separator "\n\n"))
            (erase-buffer)
            (prolusion/dashboard-insert-banner)
-           (prolusion/dashboard-insert-page-break)
+           (insert "\n")
            (mapc (lambda (els)
                    (let* ((el (or (car-safe els) els))
                           (list-size
