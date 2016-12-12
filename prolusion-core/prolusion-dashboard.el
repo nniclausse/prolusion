@@ -24,7 +24,7 @@
 ;; Dashboard functions, modes and variables
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defface prolusion/dashboard-banner-face  '((t (:height 1.3 :foreground "#bc6ec5" :bold t))) "")
+(defface prolusion/dashboard-banner-face  '((t (:height 1.2 :foreground "#bc6ec5" :bold t))) "")
 (defface prolusion/dashboard-section-face '((t (:height 1.1 :foreground "#4f97d7" :bold t))) "")
 
 (defun prolusion/dashboard-subseq (seq start end)
@@ -57,19 +57,19 @@
   :type 'string
   :group 'prolusion/dashboard)
 
-(defconst prolusion/dashboard-banner-margin 28 "")
+(defconst prolusion/dashboard-banner-margin 31 "")
 
-(defvar prolusion/dashboard-item-generators '((recents     . prolusion/dashboard-insert-recents)
-                                              (bookmarks   . prolusion/dashboard-insert-bookmarks)
-                                              (projects    . prolusion/dashboard-insert-projects)
-                                              (workspaces  . prolusion/dashboard-insert-workspaces)
-                                              (info        . prolusion/dashboard-insert-info)))
+(defvar prolusion/dashboard-item-generators '((recents    . prolusion/dashboard-insert-recents)
+                                              (bookmarks  . prolusion/dashboard-insert-bookmarks)
+                                              (projects   . prolusion/dashboard-insert-projects)
+                                              (workspaces . prolusion/dashboard-insert-workspaces)
+                                              (info       . prolusion/dashboard-insert-info)))
 
-(defvar prolusion/dashboard-items '((recents     . 20)
-                                    (bookmarks   . 10)
-                                    (projects    . 10)
-                                    (workspaces  . 10)
-                                    (info        . 10)) "")
+(defvar prolusion/dashboard-items '((recents    . 20)
+                                    (bookmarks  . 10)
+                                    (projects   . 10)
+                                    (workspaces . 10)
+                                    (info       . 10)) "")
 
 (defvar prolusion/dashboard-items-default-length 20 "")
 
@@ -101,6 +101,13 @@
        (goto-char (point-max))
        (prolusion/dashboard-insert-ascii-banner-centered
         (expand-file-name "prolusion-dashboard-banner.el" prolusion-core-dir)))
+
+(defun prolusion/dashboard-insert-badge () ""
+       (goto-char (point-max))
+       (insert "\n")
+       (insert (make-string (- prolusion/dashboard-banner-margin 8) ?\ ))
+       (insert-image (create-image (expand-file-name "prolusion-badges/prolusion-emacs-badge-editor.png" prolusion-dir)))
+       (insert "\n\n"))
 
 (defun prolusion/dashboard-insert-file-list (list-display-name list) ""
        (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
@@ -265,6 +272,7 @@
                      (funcall item-generator list-size)
                      (prolusion/dashboard-insert-page-break)))
                  prolusion/dashboard-items))
+         (prolusion/dashboard-insert-badge)
          (prolusion/dashboard-mode)
          (goto-char (point-min))))
 
