@@ -105,7 +105,7 @@
 (defun prolusion/dashboard-insert-badge () ""
        (goto-char (point-max))
        (insert "\n")
-       (insert (make-string (- prolusion/dashboard-banner-margin 8) ?\ ))
+       (insert (make-string (- prolusion/dashboard-banner-margin 6) ?\ ))
        (insert-image (create-image (expand-file-name "prolusion-badges/prolusion-emacs-badge-editor.png" prolusion-dir)))
        (insert "\n"))
 

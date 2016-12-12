@@ -71,6 +71,12 @@
              (file-name-nondirectory (directory-file-name name))
            name)
          'face 'bold))))
+  (spaceline-define-segment prolusion-update-packages
+    (progn
+      (message "prout")
+      '(5)
+      'face 'bold))
+  (spaceline-toggle-prolusion-update-packages-on)
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
