@@ -48,7 +48,6 @@
 (rainbow-mode 1)
 
 (when (display-graphic-p)
-
   (if prolusion-dark-variant
       (progn
         (unless prolusion-green-variant
@@ -58,7 +57,6 @@
                (act1 . "#080808")))))
         (load-theme 'spacemacs-dark t))
     (load-theme 'spacemacs-light t))
-
   (setq ns-use-srgb-colorspace nil)
   (require 'spaceline-config)
   (spaceline-define-segment persp-name
