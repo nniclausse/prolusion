@@ -74,11 +74,17 @@
              (file-name-nondirectory (directory-file-name name))
            name)
          'face 'bold))))
+  (spaceline-define-segment narrow
+    (when (buffer-narrowed-p)
+      "Narrowed"))
+  (spaceline-define-segment prolusion-updates-count
+    (when (string= major-mode "prolusion/dashboard-mode")
+      ""))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
-  (spaceline-spacemacs-theme)
+  (spaceline-spacemacs-theme 'narrow 'prolusion-updates-count)
   (spaceline-helm-mode +1))
 
 (when (display-graphic-p)

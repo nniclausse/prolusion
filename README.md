@@ -83,15 +83,20 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-M-left`</kbd>  | `forward-sexp`  |
 | <kbd>`C-M-right`</kbd> | `backward-sexp` |
 
-| Keybinding                                  | Function                               |
-| ------------------------------------------- |:-------------------------------------- |
-| <kbd>M-x resize-window</kbd> <kbd>n</kbd>   | `resize-window--enlarge-down`          |
-| <kbd>M-x resize-window</kbd> <kbd>p</kbd>   | `resize-window--enlarge-up`            |
-| <kbd>M-x resize-window</kbd> <kbd>f</kbd>   | `resize-window--enlarge-horizontally`  |
-| <kbd>M-x resize-window</kbd> <kbd>b</kbd>   | `resize-window--shrink-horizontally`   |
-| <kbd>M-x resize-window</kbd> <kbd>r</kbd>   | `resize-window--reset-windows`         |
-| <kbd>M-x resize-window</kbd> <kbd>w</kbd>   | `resize-window--cycle-window-positive` |
-| <kbd>M-x resize-window</kbd> <kbd>W</kbd>   | `resize-window--cycle-window-negative` |
+| Keybinding           | Function           |
+| -------------------- | ------------------:|
+| <kbd>`C-x n n`</kbd> | `narrow-to-region` |
+| <kbd>`C-x n w`</kbd> | `widen`            |
+
+| Keybinding                                | Function                               |
+| ----------------------------------------- |:-------------------------------------- |
+| <kbd>M-x resize-window</kbd> <kbd>n</kbd> | `resize-window--enlarge-down`          |
+| <kbd>M-x resize-window</kbd> <kbd>p</kbd> | `resize-window--enlarge-up`            |
+| <kbd>M-x resize-window</kbd> <kbd>f</kbd> | `resize-window--enlarge-horizontally`  |
+| <kbd>M-x resize-window</kbd> <kbd>b</kbd> | `resize-window--shrink-horizontally`   |
+| <kbd>M-x resize-window</kbd> <kbd>r</kbd> | `resize-window--reset-windows`         |
+| <kbd>M-x resize-window</kbd> <kbd>w</kbd> | `resize-window--cycle-window-positive` |
+| <kbd>M-x resize-window</kbd> <kbd>W</kbd> | `resize-window--cycle-window-negative` |
 
 **prolusion-builtins**
 
