@@ -78,12 +78,12 @@
     (when (buffer-narrowed-p)
       "Narrowed"))
   (spaceline-define-segment prolusion-upgrades-count
-    (when (string= major-mode "prolusion/dashboard-mode"
+    (when (string= major-mode "prolusion/dashboard-mode")
       (save-excursion
         (package-list-packages t)
         (setq prolusion--packages-upgrade-count (package-menu--find-upgrades))
         (kill-buffer "*Packages*")
-        (format "%s"(length prolusion--packages-upgrade-count))))))
+        (format% "%s"(length psrolusion--packages-upgrade-count)))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
