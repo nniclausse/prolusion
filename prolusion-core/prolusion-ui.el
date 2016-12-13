@@ -77,14 +77,18 @@
   (spaceline-define-segment narrow
     (when (buffer-narrowed-p)
       "Narrowed"))
-  (spaceline-define-segment prolusion-updates-count
-    (when (string= major-mode "prolusion/dashboard-mode")
-      ""))
+  (spaceline-define-segment prolusion-upgrades-count
+    (when (string= major-mode "prolusion/dashboard-mode"
+      (save-excursion
+        (package-list-packages t)
+        (setq prolusion--packages-upgrade-count (package-menu--find-upgrades))
+        (kill-buffer "*Packages*")
+        (format "%s"(length prolusion--packages-upgrade-count))))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
-  (spaceline-spacemacs-theme 'narrow 'prolusion-updates-count)
+  (spaceline-spacemacs-theme 'narrow) ;; 'prolusion-upgrades-count)
   (spaceline-helm-mode +1))
 
 (when (display-graphic-p)
