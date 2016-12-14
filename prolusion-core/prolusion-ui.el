@@ -83,7 +83,7 @@
         (package-list-packages t)
         (setq prolusion--packages-upgrade-count (package-menu--find-upgrades))
         (kill-buffer "*Packages*")
-        (format% "%s"(length psrolusion--packages-upgrade-count)))))
+        (format% "%s"(length prolusion--packages-upgrade-count)))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
