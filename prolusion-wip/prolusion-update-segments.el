@@ -12,20 +12,19 @@
 ;;
 ;;; Code:
 
-(require 'async)
 (require 'package)
 
-;; (async-start
-;;  (lambda ()
-     (save-excursion
-     (package-list-packages t)
-     (setq prolusion--packages-upgrade-count (package-menu--find-upgrades))
-     (kill-buffer "*Packages*")
- ;;     prolusion--packages-upgrade-count))
+(defun prolusion-packages/list-packages ()
+  ""
+  (interactive)
+  (save-window-excursion
+    (package-list-packages)
+    (package-menu-mode)
+    (let ((prolusion--packages-upgrade-count (length (package-menu--find-upgrades)))
+      (kill-buffer (get-buffer "*Packages*")))
+      prolusion--packages-upgrade-count)))
 
- ;; (lambda (prolusion--packages-upgrade-count)
-(message (format "%s" (length prolusion--packages-upgrade-count))))
-;; ))
+(message " %s" (prolusion-packages/list-packages))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; prolusion-updates-segment.el ends here

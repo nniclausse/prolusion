@@ -26,7 +26,7 @@
 ;; UI setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq initial-frame-alist '((width . 75) (height . 40)))
+(setq initial-frame-alist '((width . 75) (height . 50)))
 
 (set-frame-font "Source Code Pro-9" nil t)
 
@@ -49,6 +49,8 @@
 (rainbow-mode 1)
 
 (global-page-break-lines-mode)
+
+(defvar prolusion-upgrade-count nil)
 
 (when (display-graphic-p)
   (if prolusion-dark-variant
@@ -79,16 +81,18 @@
       "Narrowed"))
   (spaceline-define-segment prolusion-upgrades-count
     (when (string= major-mode "prolusion/dashboard-mode")
-      (save-excursion
-        (package-list-packages t)
-        (setq prolusion--packages-upgrade-count (package-menu--find-upgrades))
-        (kill-buffer "*Packages*")
-        (format% "%s"(length prolusion--packages-upgrade-count)))))
+      (unless prolusion-upgrade-count
+        (save-window-excursion
+          (package-list-packages)
+          (package-menu-mode)
+          (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
+          (kill-buffer (get-buffer "*Packages*"))))
+      (format " %s" prolusion-upgrade-count)))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
-  (spaceline-spacemacs-theme 'narrow) ;; 'prolusion-upgrades-count)
+  (spaceline-spacemacs-theme 'narrow 'prolusion-upgrades-count)
   (spaceline-helm-mode +1))
 
 (when (display-graphic-p)

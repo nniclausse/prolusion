@@ -24,6 +24,7 @@
 ;; Dashboard functions, modes and variables
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defface prolusion/dashboard-info-face    '((t (:height 1.0 :foreground "#bc6ec5" :bold t))) "")
 (defface prolusion/dashboard-banner-face  '((t (:height 1.2 :foreground "#bc6ec5" :bold t))) "")
 (defface prolusion/dashboard-section-face '((t (:height 1.1 :foreground "#4f97d7" :bold t))) "")
 
@@ -260,6 +261,12 @@
          (let ((buffer-read-only nil)
                (list-separator "\n\n"))
            (erase-buffer)
+           (setq version-faced (propertize "Version: " 'face 'prolusion/dashboard-info-face))
+           (insert version-faced)
+           (insert (format "%s\n" (emacs-version)))
+           (setq version-faced (propertize "Init: " 'face 'prolusion/dashboard-info-face))
+           (insert version-faced)
+           (insert (format "%s\n" (emacs-init-time)))
            (prolusion/dashboard-insert-banner)
            (insert "\n")
            (mapc (lambda (els)
