@@ -18,7 +18,6 @@
 
 (prolusion-require-package 'f)
 (prolusion-require-package 's)
-(prolusion-require-package 'git)
 (prolusion-require-package 'bookmark)
 (prolusion-require-package 'recentf)
 
@@ -263,9 +262,10 @@
          (let ((buffer-read-only nil)
                (list-separator "\n\n"))
            (erase-buffer)
+           (cd prolusion-dir)
            (setq version-faced (propertize "Prolusion version: " 'face 'prolusion/dashboard-info-face))
            (insert version-faced)
-           (insert (format "%d.%d.%d - branch: (?) - hash: ?\n" prolusion-version-major prolusion-version-minor prolusion-version-patch)) ;; (git-on-branch))) ;;  (git-run "rev-parse" "HEAD")))
+           (insert (format "%d.%d.%d - branch: (%s) - hash: %s\n" prolusion-version-major prolusion-version-minor prolusion-version-patch (s-chop-prefix "* " (car (s-lines (shell-command-to-string "git branch")))) (s-chomp (shell-command-to-string "git rev-parse HEAD"))))
            (setq version-faced (propertize "    Emacs version: " 'face 'prolusion/dashboard-info-face))
            (insert version-faced)
            (insert (format "%s\n" (car (s-lines (emacs-version)))))
