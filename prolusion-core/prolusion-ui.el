@@ -87,7 +87,7 @@
           (package-menu-mode)
           (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
           (kill-buffer (get-buffer "*Packages*"))))
-      (if (> 0 prolusion-upgrade-count)
+      (if (> prolusion-upgrade-count 0)
           (format " %s" prolusion-upgrade-count))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
