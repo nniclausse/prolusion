@@ -25,9 +25,11 @@
 ;; Dashboard functions, modes and variables
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defface prolusion/dashboard-info-face    '((t (:height 1.0 :foreground "#bc6ec5" :bold t))) "")
-(defface prolusion/dashboard-banner-face  '((t (:height 1.2 :foreground "#bc6ec5" :bold t))) "")
-(defface prolusion/dashboard-section-face '((t (:height 1.1 :foreground "#4f97d7" :bold t))) "")
+(defface prolusion/dashboard-git-face     '((t (:height 1.0 :foreground "green"   :bold nil))) "")
+(defface prolusion/dashboard-hash-face    '((t (:height 1.0 :foreground "peru"   :bold nil))) "")
+(defface prolusion/dashboard-info-face    '((t (:height 1.0 :foreground "#bc6ec5" :bold t)))   "")
+(defface prolusion/dashboard-banner-face  '((t (:height 1.3 :foreground "#bc6ec5" :bold t)))   "")
+(defface prolusion/dashboard-section-face '((t (:height 1.1 :foreground "#4f97d7" :bold t)))   "")
 
 (defun prolusion/dashboard-subseq (seq start end)
   (let ((len (length seq)))
@@ -265,7 +267,7 @@
            (cd prolusion-dir)
            (setq version-faced (propertize "Prolusion version: " 'face 'prolusion/dashboard-info-face))
            (insert version-faced)
-           (insert (format "%d.%d.%d - branch: (%s) - hash: %s\n" prolusion-version-major prolusion-version-minor prolusion-version-patch (s-chop-prefix "* " (car (s-lines (shell-command-to-string "git branch")))) (s-chomp (shell-command-to-string "git rev-parse HEAD"))))
+           (insert (format "%d.%d.%d - branch:  (%s) - hash:  (%s)\n" prolusion-version-major prolusion-version-minor prolusion-version-patch (s-chop-prefix "* " (propertize (car (s-lines (shell-command-to-string "git branch"))) 'face 'prolusion/dashboard-git-face)) (propertize (s-chomp (shell-command-to-string "git rev-parse HEAD")) 'face 'prolusion/dashboard-hash-face)))
            (setq version-faced (propertize "    Emacs version: " 'face 'prolusion/dashboard-info-face))
            (insert version-faced)
            (insert (format "%s\n" (car (s-lines (emacs-version)))))
