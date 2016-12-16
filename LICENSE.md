@@ -28,7 +28,7 @@ Finally, every program is threatened constantly by software patents. States shou
 
 The precise terms and conditions for copying, distribution and modification follow.
 
-TERMS AND CONDITIONS
+`TERMS AND CONDITIONS`
 
 ## 0. Definitions.
 
@@ -203,9 +203,9 @@ IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY C
 
 If the disclaimer of warranty and limitation of liability provided above cannot be given local legal effect according to their terms, reviewing courts shall apply local law that most closely approximates an absolute waiver of all civil liability in connection with the Program, unless a warranty or assumption of liability accompanies a copy of the Program in return for a fee.
 
-END OF TERMS AND CONDITIONS
+`END OF TERMS AND CONDITIONS`
 
-How to Apply These Terms to Your New Programs
+# How to Apply These Terms to Your New Programs
 
 If you develop a new program, and you want it to be of the greatest possible use to the public, the best way to achieve this is to make it free software which everyone can redistribute and change under these terms.
 
