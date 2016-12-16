@@ -13,20 +13,19 @@
 ;;; Code:
 
 (require 'package)
+(require 'prolusion-packages)
 
 (defvar prolusion-upgrade-count nil)
 
 (defun prolusion-packages/list-packages ()
   ""
   (interactive)
-  (message "so far so good 0")
   (unless prolusion-upgrade-count
     (save-window-excursion
       (package-list-packages)
       (package-menu-mode)
       (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
       (kill-buffer (get-buffer "*Packages*"))))
-  (message "so far so good")
   (if (> prolusion-upgrade-count 0)
       (format " %s"
               (propertize prolusion-upgrade-count
@@ -36,7 +35,7 @@
                           'local-map (let ((map (make-sparse-keymap)))
                                        (define-key map
                                          [mode-line down-mouse-1]
-                                         (prolusion-upgrade-packages)))))))
+                                         'prolusion-upgrade-packages))))))
 
 (message "%s" (prolusion-packages/list-packages))
 
