@@ -16,7 +16,7 @@
 ;; Irony requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'irony)
+(prolusion/require-package 'irony)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Irony setup
@@ -29,7 +29,7 @@
 ;; Irony functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun prolusion-irony-mode-hook ()
+(defun prolusion/irony-mode-hook ()
   (define-key irony-mode-map [remap completion-at-point]
     'irony-completion-at-point-async)
   (define-key irony-mode-map [remap complete-symbol]
@@ -43,7 +43,7 @@
 (add-hook  'c++-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
-(add-hook 'irony-mode-hook 'prolusion-irony-mode-hook)
+(add-hook 'irony-mode-hook 'prolusion/irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

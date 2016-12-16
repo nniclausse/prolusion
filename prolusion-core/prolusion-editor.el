@@ -16,13 +16,13 @@
 ;; Editor requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'rainbow-delimiters)
-(prolusion-require-package 'smartparens)
-(prolusion-require-package 'whitespace)
-(prolusion-require-package 'undo-tree)
-(prolusion-require-package 'header2)
-(prolusion-require-package 'iedit)
-(prolusion-require-package 'helm)
+(prolusion/require-package 'rainbow-delimiters)
+(prolusion/require-package 'smartparens)
+(prolusion/require-package 'whitespace)
+(prolusion/require-package 'undo-tree)
+(prolusion/require-package 'header2)
+(prolusion/require-package 'iedit)
+(prolusion/require-package 'helm)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Editor setup
@@ -68,7 +68,7 @@
 ;; Editor functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun prolusion-duplicate-line ()
+(defun prolusion/duplicate-line ()
   (interactive)
   (move-beginning-of-line 1)
   (kill-line)
@@ -104,7 +104,7 @@
 (global-set-key (kbd "C-c e d") 'make-divider)
 (global-set-key (kbd "C-c e r") 'make-revision)
 (global-set-key (kbd "C-c e g") 'update-file-header)
-(global-set-key (kbd "C-c e l") 'prolusion-duplicate-line)
+(global-set-key (kbd "C-c e l") 'prolusion/duplicate-line)
 (global-set-key (kbd "C-c e e") 'iedit-mode)
 (global-set-key (kbd "C-c e f") 'helm-mini)
 

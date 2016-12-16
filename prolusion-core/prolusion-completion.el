@@ -16,11 +16,11 @@
 ;; Completion requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'company)
-(prolusion-require-package 'company-jedi)
-(prolusion-require-package 'company-irony)
-(prolusion-require-package 'company-irony-c-headers)
-(prolusion-require-package 'company-anaconda)
+(prolusion/require-package 'company)
+(prolusion/require-package 'company-jedi)
+(prolusion/require-package 'company-irony)
+(prolusion/require-package 'company-irony-c-headers)
+(prolusion/require-package 'company-anaconda)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completion configuration

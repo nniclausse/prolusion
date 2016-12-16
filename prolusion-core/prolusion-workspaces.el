@@ -16,8 +16,8 @@
 ;; Worspaces requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'persp-mode)
-(prolusion-require-package 'window-numbering)
+(prolusion/require-package 'persp-mode)
+(prolusion/require-package 'window-numbering)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Workspaces setup

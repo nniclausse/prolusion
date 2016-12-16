@@ -16,7 +16,7 @@
 ;; Snippets requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-install-package 'yasnippet)
+(prolusion/install-package 'yasnippet)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Snippets setup

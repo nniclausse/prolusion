@@ -38,20 +38,20 @@
 ;; Package functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun prolusion-install-package (package)
+(defun prolusion/install-package (package)
   ""
   (message "Loading package %s" package)
   (unless (package-installed-p package)
     (package-install package)))
 
-(defun prolusion-require-package (package)
+(defun prolusion/require-package (package)
   ""
   (message "Loading package %s" package)
   (unless (package-installed-p package)
     (package-install package))
   (require package))
 
-(defun prolusion-upgrade ()
+(defun prolusion/upgrade ()
   ""
   (interactive)
   (cd prolusion-dir)
@@ -59,7 +59,7 @@
   (shell-command "git pull")
   (message "Upgrade finished. Restart Emacs to complete the process."))
 
-(defun prolusion-upgrade-packages ()
+(defun prolusion/upgrade-packages ()
   ""
   (interactive)
   (message "Upgrading prolusion packages")
@@ -73,14 +73,14 @@
 ;; Package post-requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'use-package)
+(prolusion/require-package 'use-package)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package keybindings
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key (kbd "C-c u u") 'prolusion-upgrade)
-(global-set-key (kbd "C-c u p") 'prolusion-upgrade-packages)
+(global-set-key (kbd "C-c u u") 'prolusion/upgrade)
+(global-set-key (kbd "C-c u p") 'prolusion/upgrade-packages)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
