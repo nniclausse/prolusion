@@ -16,12 +16,12 @@
 ;; UI requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'rainbow-mode)
-(prolusion-require-package 'fontawesome)
-(prolusion-require-package 'octicons)
-(prolusion-require-package 'page-break-lines)
-(prolusion-require-package 'spaceline)
-(prolusion-install-package 'spacemacs-theme)
+(prolusion/require-package 'rainbow-mode)
+(prolusion/require-package 'fontawesome)
+(prolusion/require-package 'octicons)
+(prolusion/require-package 'page-break-lines)
+(prolusion/require-package 'spaceline)
+(prolusion/install-package 'spacemacs-theme)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup

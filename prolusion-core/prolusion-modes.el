@@ -16,16 +16,16 @@
 ;; Modes requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'rbenv)
-(prolusion-install-package 'cmake-mode)
-(prolusion-install-package 'csharp-mode)
-(prolusion-install-package 'markdown-mode)
-(prolusion-install-package 'yaml-mode)
-(prolusion-install-package 'js2-mode)
-(prolusion-install-package 'json-mode)
-(prolusion-install-package 'json-reformat)
-(prolusion-install-package 'json-snatcher)
-(prolusion-install-package 'qml-mode)
+(prolusion/require-package 'rbenv)
+(prolusion/install-package 'cmake-mode)
+(prolusion/install-package 'csharp-mode)
+(prolusion/install-package 'markdown-mode)
+(prolusion/install-package 'yaml-mode)
+(prolusion/install-package 'js2-mode)
+(prolusion/install-package 'json-mode)
+(prolusion/install-package 'json-reformat)
+(prolusion/install-package 'json-snatcher)
+(prolusion/install-package 'qml-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes setup

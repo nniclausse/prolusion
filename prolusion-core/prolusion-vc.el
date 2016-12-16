@@ -16,8 +16,8 @@
 ;; VC requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-install-package 'magit)
-(prolusion-install-package 'magit-gitflow)
+(prolusion/install-package 'magit)
+(prolusion/install-package 'magit-gitflow)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; VC setup
