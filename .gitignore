@@ -24,6 +24,7 @@ prolusion-elpa
 prolusion-irony
 prolusion-save
 prolusion-jedi
+prolusion-anaconda
 
 ######################################################################
 ### .gitignore ends here
