@@ -16,13 +16,13 @@
 ;; Behavior requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'anzu)
-(prolusion-require-package 'beacon)
-(prolusion-require-package 'recentf)
-(prolusion-require-package 'diminish)
-(prolusion-require-package 'saveplace)
-(prolusion-require-package 'which-key)
-(prolusion-require-package 'resize-window)
+(prolusion/require-package 'anzu)
+(prolusion/require-package 'beacon)
+(prolusion/require-package 'recentf)
+(prolusion/require-package 'diminish)
+(prolusion/require-package 'saveplace)
+(prolusion/require-package 'which-key)
+(prolusion/require-package 'resize-window)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior setup

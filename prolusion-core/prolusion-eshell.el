@@ -16,9 +16,9 @@
 ;; Eshell requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package         'multi-eshell)
-(prolusion-require-package 'exec-path-from-shell)
-(prolusion-require-package 'eshell-prompt-extras)
+(prolusion/require-package         'multi-eshell)
+(prolusion/require-package 'exec-path-from-shell)
+(prolusion/require-package 'eshell-prompt-extras)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell setup
@@ -45,7 +45,7 @@
 ;; Eshell functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun prolusion-eshell-clear-buffer ()
+(defun prolusion/eshell-clear-buffer ()
   "Clear eshell buffer"
   (interactive)
   (let ((inhibit-read-only t))
@@ -56,7 +56,7 @@
 ;; Eshell hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'eshell-mode-hook 'prolusion-eshell-no-highlight)
+(add-hook 'eshell-mode-hook 'prolusion/eshell-no-highlight)
 
 (add-hook 'eshell-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
 (add-hook   'term-mode-hook (lambda () (setq-local global-hl-line-mode nil)))

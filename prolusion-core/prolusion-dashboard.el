@@ -16,13 +16,13 @@
 ;; Dashboard requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion-require-package 'f)
-(prolusion-require-package 's)
-(prolusion-require-package 'bookmark)
-(prolusion-require-package 'recentf)
+(prolusion/require-package 'f)
+(prolusion/require-package 's)
+(prolusion/require-package 'bookmark)
+(prolusion/require-package 'recentf)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Dashboard functions, modes and variables
+;; Dashboard faces
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defface prolusion/dashboard-git-face     '((t (:height 1.0 :foreground "green"   :bold nil))) "")
@@ -30,6 +30,10 @@
 (defface prolusion/dashboard-info-face    '((t (:height 1.0 :foreground "#bc6ec5" :bold t)))   "")
 (defface prolusion/dashboard-banner-face  '((t (:height 1.5 :foreground "#4f97d7" :bold t)))   "")
 (defface prolusion/dashboard-section-face '((t (:height 1.1 :foreground "#4f97d7" :bold t)))   "")
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dashboard functions
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun prolusion/dashboard-subseq (seq start end)
   (let ((len (length seq)))
