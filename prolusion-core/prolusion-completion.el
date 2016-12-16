@@ -70,6 +70,17 @@
 (eval-after-load 'company '(diminish  'company-mode))
 (eval-after-load 'company '(diminish 'anaconda-mode))
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Completion keybindings
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "C-c c c") 'anaconda-mode-complete)
+(global-set-key (kbd "C-c c d") 'anaconda-mode-find-definitions)
+(global-set-key (kbd "C-c c a") 'anaconda-mode-find-assignments)
+(global-set-key (kbd "C-c c r") 'anaconda-mode-find-references)
+(global-set-key (kbd "C-c c b") 'anaconda-mode-go-back)
+(global-set-key (kbd "C-c c s") 'anaconda-mode-show-doc)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'prolusion-completion)

@@ -167,6 +167,17 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>C-c p s a</kbd> | `helm-projectile-ack`                         |
 | <kbd>C-c p s s</kbd> | `helm-projectile-ag`                          |
 
+**prolusion-completion**
+
+| Keybinding         | Function                         |
+| ------------------ |:-------------------------------- |
+| <kbd>C-c c c</kbd> | `anaconda-mode-complete`         |
+| <kbd>C-c c d</kbd> | `anaconda-mode-find-definitions` |
+| <kbd>C-c c a</kbd> | `anaconda-mode-find-assignments` |
+| <kbd>C-c c r</kbd> | `anaconda-mode-find-references`  |
+| <kbd>C-c c b</kbd> | `anaconda-mode-go-back`          |
+| <kbd>C-c c s</kbd> | `anaconda-mode-show-doc`         |
+
 **prolusion-checking**
 
 | Keybinding           | Function                  |
