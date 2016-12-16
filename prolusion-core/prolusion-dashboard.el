@@ -310,7 +310,8 @@
 ;; Dashboard setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion/dashboard-setup-startup-hook)
+(when (display-graphic-p)
+  (prolusion/dashboard-setup-startup-hook))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
