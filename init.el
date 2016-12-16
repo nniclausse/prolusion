@@ -15,7 +15,7 @@
 ;; (package-initialize)
 
 (defconst prolusion-version-major 0)
-(defconst prolusion-version-minor 8)
+(defconst prolusion-version-minor 9)
 (defconst prolusion-version-patch 7)
 
 (defvar prolusion-dir          (file-name-directory load-file-name))
