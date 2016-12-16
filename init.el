@@ -39,7 +39,9 @@
 
 (require 'prolusion-packages)
 (require 'prolusion-workspaces)
+(require 'prolusion-dashboard)
 (require 'prolusion-ui)
+(require 'prolusion-projectile)
 (require 'prolusion-behavior)
 (require 'prolusion-eshell)
 (require 'prolusion-editor)
@@ -51,9 +53,7 @@
 (require 'prolusion-compilation)
 (require 'prolusion-www)
 (require 'prolusion-vc)
-(require 'prolusion-projectile)
 (require 'prolusion-builtins)
-(require 'prolusion-dashboard)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
