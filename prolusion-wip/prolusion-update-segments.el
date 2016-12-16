@@ -17,6 +17,16 @@
 
 (defvar prolusion-upgrade-count nil)
 
+(defun prolusion-upgrade-packages ()
+  ""
+  (interactive)
+  (message "Upgrading prolusion packages")
+  (package-refresh-contents)
+  (save-window-excursion
+    (package-list-packages t)
+    (package-menu-mark-upgrades)
+    (package-menu-execute t)))
+
 (defun prolusion-packages/list-packages ()
   ""
   (interactive)
@@ -27,15 +37,16 @@
       (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
       (kill-buffer (get-buffer "*Packages*"))))
   (if (> prolusion-upgrade-count 0)
-      (format " %s"
-              (propertize prolusion-upgrade-count
-                          'mouse-face 'mode-line-highlight
-                          'help-echo (concat (prolusion-upgrade-count)
-                                             "\nmouse-1: Display minor mode menu")
-                          'local-map (let ((map (make-sparse-keymap)))
-                                       (define-key map
-                                         [mode-line down-mouse-1]
-                                         'prolusion-upgrade-packages))))))
+      (progn
+        (setq prolusion-upgrade-count-faced (format " %s" prolusion-upgrade-count))
+        (propertize prolusion-upgrade-count-faced
+                    'mouse-face 'mode-line-highlight
+                    'help-echo (concat prolusion-upgrade-count-faced "\nmouse-1: Display minor mode menu")
+                    'local-map (let ((map (make-sparse-keymap)))
+                                 (define-key map
+                                   [mode-line down-mouse-1]
+                                   'prolusion-upgrade-packages)))
+        prolusion-upgrade-count-faced)))
 
 (message "%s" (prolusion-packages/list-packages))
 
