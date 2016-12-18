@@ -136,6 +136,15 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c e e`</kbd> | `iedit-mode`               |
 | <kbd>`C-c e f`</kbd> | `helm-mini`                |
 
+**prolusion-modes**
+
+| Keybinding             | Function               |
+| ---------------------- |:---------------------- |
+| <kbd>`C-c m p a`</kbd> | `conda-env-activate`   |
+| <kbd>`C-c m p d`</kbd> | `conda-env-deactivate` |
+| <kbd>`C-c m p l`</kbd> | `conda-env-list`       |
+| <kbd>`C-c m r a`</kbd> | `global-rbenv-mode`    |
+
 **prolusion-snippets**
 
 | Keybinding           | Function                 |
