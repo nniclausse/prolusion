@@ -77,9 +77,15 @@
              (file-name-nondirectory (directory-file-name name))
            name)
          'face 'bold))))
-  (spaceline-define-segment narrow
+  (spaceline-define-segment prolusion-narrow
     (when (buffer-narrowed-p)
       "Narrowed"))
+  (spaceline-define-segment prolusion-conda-environment
+    (when (string= major-mode "python-mode")
+      (message (format "Current environment: %s" (length conda-env-current-name)))
+      (if (not (equal (length conda-env-current-name) 0))
+          (propertize (concat "conda: " conda-env-current-name) 'font-lock-face '(:foreground "IndianRed"))
+        (propertize "no conda environment" 'font-lock-face '(:foreground "IndianRed")))))
   (spaceline-define-segment prolusion-upgrades-count
     (when (string= major-mode "prolusion/dashboard-mode")
       (unless prolusion-upgrade-count
@@ -94,7 +100,7 @@
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
-  (spaceline-spacemacs-theme 'narrow 'prolusion-upgrades-count)
+  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-upgrades-count 'prolusion-conda-environment)
   (spaceline-helm-mode +1))
 
 (when (display-graphic-p)

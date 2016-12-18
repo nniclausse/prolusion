@@ -17,6 +17,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prolusion/require-package 'rbenv)
+(prolusion/require-package 'conda)
 (prolusion/install-package 'cmake-mode)
 (prolusion/install-package 'csharp-mode)
 (prolusion/install-package 'markdown-mode)
@@ -26,6 +27,7 @@
 (prolusion/install-package 'json-reformat)
 (prolusion/install-package 'json-snatcher)
 (prolusion/install-package 'qml-mode)
+(prolusion/install-package 'anaconda-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes setup
@@ -74,6 +76,12 @@
         ("\\.hpp\\'" (".tpp" ".cpp" ".cxx" ".tcc" ".cc" ".C" ".c" ".h"))
         ("\\.hxx\\'" (".tpp" ".cpp" ".cxx" ".tcc" ".cc" ".C" ".c" ".h"))))
 
+(custom-set-variables '(conda-anaconda-home "~/.conda"))
+
+(conda-env-initialize-interactive-shells)
+(conda-env-initialize-eshell)
+(conda-env-autoactivate-mode t)
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -88,15 +96,25 @@
 ;; Modes hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook  'css-mode-hook          'rainbow-mode)
-(add-hook  'qml-mode-hook          'rainbow-mode)
-(add-hook 'prog-mode-hook 'prettify-symbols-mode)
+(add-hook        'css-mode-hook          'rainbow-mode)
+(add-hook        'qml-mode-hook          'rainbow-mode)
+(add-hook       'prog-mode-hook 'prettify-symbols-mode)
+(add-hook 'emacs-lisp-mode-hook          'rainbow-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (diminish 'prettify-symbols-mode)
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Editor keybindings
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "C-c m p a") 'conda-env-activate)
+(global-set-key (kbd "C-c m p d") 'conda-env-deactivate)
+(global-set-key (kbd "C-c m p l") 'conda-env-list)
+(global-set-key (kbd "C-c m r a") 'global-rbenv-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
