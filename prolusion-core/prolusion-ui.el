@@ -22,6 +22,7 @@
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'spaceline)
 (prolusion/install-package 'spacemacs-theme)
+(prolusion/install-package 'info+)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup
@@ -101,7 +102,8 @@
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
   (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-upgrades-count 'prolusion-conda-environment)
-  (spaceline-helm-mode +1))
+  (spaceline-helm-mode +1)
+  (spaceline-info-mode +1))
 
 (when (display-graphic-p)
   (set-frame-parameter (selected-frame) 'alpha '(98 95))
