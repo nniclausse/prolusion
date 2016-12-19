@@ -83,7 +83,6 @@
       "Narrowed"))
   (spaceline-define-segment prolusion-conda-environment
     (when (string= major-mode "python-mode")
-      (message (format "Current environment: %s" (length conda-env-current-name)))
       (if (not (equal (length conda-env-current-name) 0))
           (propertize (concat "conda: " conda-env-current-name) 'font-lock-face '(:foreground "IndianRed"))
         (propertize "no conda environment" 'font-lock-face '(:foreground "IndianRed")))))
