@@ -41,11 +41,11 @@ keybindings.
 
 **Emacs prolusion**
 
-    M-x prolusion-upgrade
+    M-x prolusion/upgrade
 
 **Emacs prolusion packages**
 
-    M-x prolusion-upgrade-packages
+    M-x prolusion/upgrade-packages
 
 ## Fonts
 
