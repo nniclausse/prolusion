@@ -22,7 +22,7 @@
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'spaceline)
 (prolusion/install-package 'spacemacs-theme)
-(prolusion/install-package 'info+)
+(prolusion/require-package 'info+)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup
