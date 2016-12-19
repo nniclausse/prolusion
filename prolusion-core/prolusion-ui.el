@@ -110,8 +110,34 @@
 
 (setq inhibit-startup-message t)
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UI function
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun prolusion/octicons--propertize (glyph) ""
+       (propertize glyph 'face '(:family "Octicons" :height 1.0)))
+
+(defun prolusion/octicons--source (octicons-alist) ""
+  (helm-build-sync-source "Select Octicon Icon: "
+    :candidates (mapcar (lambda (octicon)
+                          (cons (concat (car octicon)
+                                        " -> "
+                                        (prolusion/octicons--propertize
+                                         (cdr octicon)))
+                                (cdr octicon)))
+                        octicons-alist)
+    :action (lambda (candidate)
+              (insert (prolusion/octicons--propertize candidate)))
+    :candidate-number-limit 9999))
+
+;;;###autoload
+
+(defun helm-octicons ()
+  (interactive)
+  (helm :sources (prolusion/octicons--source octicons-alist)))
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Modes modeline
+;; UI modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (diminish 'rainbow-mode)
