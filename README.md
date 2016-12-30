@@ -1,4 +1,6 @@
-![license](https://img.shields.io/badge/build with-prolusion-736868e.svg)
+![https://github.com/jwintz/prolusion/releases](https://img.shields.io/github/tag/jwintz/prolusion.svg)
+![https://github.com/jwintz/prolusion/issues](https://img.shields.io/github/issues/jwintz/prolusion.svg)
+![https://github.com/jwintz/prolusion/blob/develop/LICENSE.md](https://img.shields.io/github/license/jwintz/prolusion.svg)
 
 # Prolusion
 
