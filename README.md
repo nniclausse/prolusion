@@ -1,4 +1,4 @@
-![Prolusion](https://github.com/jwintz/prolusion/raw/master/prolusion-badges/prolusion-emacs-badge.png)
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 # Prolusion
 
