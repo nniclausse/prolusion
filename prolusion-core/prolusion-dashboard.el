@@ -307,6 +307,12 @@
                           (goto-char (point-min))
                           (redisplay))))))
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dashboard forward declarations
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(declare-function bookmark-get-filename "ext:bookmark.el")
+(declare-function bookmark-all-names "ext:bookmark.el")
 (declare-function projectile-load-known-projects "ext:projectile.el")
 (declare-function projectile-relevant-known-projects "ext:projectile.el")
 

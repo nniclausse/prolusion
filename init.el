@@ -54,6 +54,7 @@
 (require 'prolusion-www)
 (require 'prolusion-vc)
 (require 'prolusion-builtins)
+(require 'prolusion-typing)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
