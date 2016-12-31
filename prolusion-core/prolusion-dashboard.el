@@ -81,15 +81,15 @@
 
 (defvar prolusion/dashboard-items-default-length 20 "")
 
-(defun prolusion/dashboard-get-string-from-file (file) ""
-       (with-temp-buffer
-         (insert-file-contents file)
-         (buffer-string)))
+(defvar dashboard-buffer-last-width nil "")
 
-(defun prolusion/dashboard-insert-ascii-banner-centered (file) ""
+(defconst dashboard-buffer-name "*dashboard*" "")
+
+(defun prolusion/dashboard-insert-banner () ""
+       (goto-char (point-max))
        (insert
         (with-temp-buffer
-          (setq banner (propertize (prolusion/dashboard-get-string-from-file file) 'face 'prolusion/dashboard-banner-face))
+          (setq banner (propertize "" 'face 'prolusion/dashboard-banner-face))
           (insert banner)
           (let ((banner-width 0))
             (while (not (eobp))
@@ -98,24 +98,22 @@
                     (setq banner-width line-length)))
               (forward-line 1))
             (goto-char 0)
-            (let ((margin prolusion/dashboard-banner-margin))
+            (let ((margin (max 0 (floor (/ (- dashboard-banner-length banner-width) 2)))))
               (while (not (eobp))
-                (when (not (looking-at-p "$"))
-                  (insert (make-string margin ?\ )))
+                (insert (make-string margin ?\ ))
                 (forward-line 1))))
           (buffer-string))))
 
-(defun prolusion/dashboard-insert-banner () ""
-       (goto-char (point-max))
-       (prolusion/dashboard-insert-ascii-banner-centered
-        (expand-file-name "prolusion-dashboard-banner.el" prolusion-core-dir)))
-
 (defun prolusion/dashboard-insert-badge () ""
-       (goto-char (point-max))
-       (insert "\n")
-       (insert (make-string (- prolusion/dashboard-banner-margin 11) ?\ ))
-       (insert-image (create-image (expand-file-name "prolusion-badges/prolusion-emacs-badge-editor.png" prolusion-dir)))
-       (insert "\n"))
+       (let* ((spec (create-image (expand-file-name "prolusion-badges/prolusion-emacs-badge-editor.png" prolusion-dir)))
+              (size (image-size spec))
+              (width (car size))
+              (left-margin (max 0 (floor (- dashboard-banner-length width) 2))))
+         (goto-char (point-max))
+         (insert "\n")
+         (insert (make-string left-margin ?\ ))
+         (insert-image spec)
+         (insert "\n")))
 
 (defun prolusion/dashboard-insert-file-list (list-display-name list) ""
        (setq list-display-name-faced (propertize list-display-name 'face 'prolusion/dashboard-section-face))
@@ -262,57 +260,77 @@
               (prolusion/dashboard-subseq (f-glob (expand-file-name "*" prolusion-info-dir)) 0 list-size))
          (prolusion/dashboard-insert--shortcut "i" "Info:")))
 
+(defun prolusion/dashboard-resize-on-hook () ""
+       (let ((space-win (get-buffer-window dashboard-buffer-name))
+             (frame-win (frame-selected-window)))
+         (when (and space-win
+                    (not (window-minibuffer-p frame-win)))
+           (with-selected-window space-win
+             (prolusion/dashboard-insert-startupify-lists)))))
+
 (defun prolusion/dashboard-insert-startupify-lists () ""
        (interactive)
-       (with-current-buffer (get-buffer-create "*dashboard*")
-         (let ((buffer-read-only nil)
-               (list-separator "\n\n"))
-           (erase-buffer)
-           (cd prolusion-dir)
-           (setq version-faced (propertize "Prolusion version: " 'face 'prolusion/dashboard-info-face))
-           (insert version-faced)
-           (insert (format " %d.%d.%d -  (%s) - %s (%s)\n" prolusion-version-major prolusion-version-minor prolusion-version-patch (s-trim (s-chop-prefix "* " (propertize (car (s-lines (shell-command-to-string "git branch"))) 'face 'prolusion/dashboard-git-face))) (octicons "git-commit") (propertize (s-chomp (shell-command-to-string "git rev-parse HEAD")) 'face 'prolusion/dashboard-hash-face)))
-           (setq version-faced (propertize "    Emacs version: " 'face 'prolusion/dashboard-info-face))
-           (insert version-faced)
-           (insert (format "%s\n" (car (s-lines (emacs-version)))))
-           (setq version-faced (propertize "        Init time: " 'face 'prolusion/dashboard-info-face))
-           (insert version-faced)
-           (insert (format "%s\n" (emacs-init-time)))
-           (insert "\n")
-           (prolusion/dashboard-insert-banner)
-           (insert "\n")
-           (mapc (lambda (els)
-                   (let* ((el (or (car-safe els) els))
-                          (list-size
-                           (or (cdr-safe els)
-                               prolusion/dashboard-items-default-length))
-                          (item-generator
-                           (cdr-safe (assoc el prolusion/dashboard-item-generators))))
-                     (funcall item-generator list-size)
-                     (prolusion/dashboard-insert-page-break)))
-                 prolusion/dashboard-items))
-         (prolusion/dashboard-insert-badge)
-         (prolusion/dashboard-mode)
-         (goto-char (point-min))))
+       (let ((buffer-exists (buffer-live-p (get-buffer dashboard-buffer-name)))
+             (save-line nil))
+         (when (or (not (eq dashboard-buffer-last-width (window-width)))
+                   (not buffer-exists))
+           (setq dashboard-banner-length (window-width)
+                 dashboard-buffer-last-width dashboard-banner-length)
+           (with-current-buffer (get-buffer-create dashboard-buffer-name)
+             (let ((buffer-read-only nil)
+                   (list-separator "\n\n"))
+               (erase-buffer)
+               (cd prolusion-dir)
+               (setq version-faced (propertize "Prolusion version: " 'face 'prolusion/dashboard-info-face))
+               (insert version-faced)
+               (insert (format " %d.%d.%d -  (%s) - %s (%s)\n" prolusion-version-major prolusion-version-minor prolusion-version-patch (s-trim (s-chop-prefix "* " (propertize (car (s-lines (shell-command-to-string "git branch"))) 'face 'prolusion/dashboard-git-face))) (octicons "git-commit") (propertize (s-chomp (shell-command-to-string "git rev-parse HEAD")) 'face 'prolusion/dashboard-hash-face)))
+               (setq version-faced (propertize "    Emacs version: " 'face 'prolusion/dashboard-info-face))
+               (insert version-faced)
+               (insert (format "%s\n" (car (s-lines (emacs-version)))))
+               (setq version-faced (propertize "        Init time: " 'face 'prolusion/dashboard-info-face))
+               (insert version-faced)
+               (insert (format "%s\n" (emacs-init-time)))
+               (insert "\n")
+               (prolusion/dashboard-insert-banner)
+               (insert "\n")
+               (mapc (lambda (els)
+                       (let* ((el (or (car-safe els) els))
+                              (list-size
+                               (or (cdr-safe els)
+                                   prolusion/dashboard-items-default-length))
+                              (item-generator
+                               (cdr-safe (assoc el prolusion/dashboard-item-generators))))
+                         (funcall item-generator list-size)
+                         (prolusion/dashboard-insert-page-break)))
+                     prolusion/dashboard-items)
+               (prolusion/dashboard-insert-badge)
+               (prolusion/dashboard-mode)
+               (goto-char (point-min)))))))
 
 ;;;###autoload
 
 (defun prolusion/dashboard-setup-startup-hook () ""
-       (if (< (length command-line-args) 2 )
+       (if (< (length command-line-args) 2)
            (progn
-             (add-hook 'after-init-hook (lambda () (prolusion/dashboard-insert-startupify-lists)))
+             (add-hook 'after-init-hook
+                       (lambda () (prolusion/dashboard-insert-startupify-lists)))
+             (add-hook 'window-setup-hook
+                       (lambda ()
+                         (add-hook 'window-configuration-change-hook 'prolusion/dashboard-resize-on-hook)
+                         (prolusion/dashboard-resize-on-hook)))
              (add-hook 'emacs-startup-hook
                        '(lambda ()
                           (switch-to-buffer "*dashboard*")
-                          (goto-char (point-min))
-                          (redisplay))))))
+                          (redisplay)
+                          (goto-char (point-min)))))))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dashboard forward declarations
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(declare-function bookmark-get-filename "ext:bookmark.el")
 (declare-function bookmark-all-names "ext:bookmark.el")
+(declare-function bookmark-get-filename "ext:bookmark.el")
+
 (declare-function projectile-load-known-projects "ext:projectile.el")
 (declare-function projectile-relevant-known-projects "ext:projectile.el")
 
