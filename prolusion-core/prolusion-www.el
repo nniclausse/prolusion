@@ -18,6 +18,7 @@
 
 (setq url-cookie-file (expand-file-name "prolusion-www-cookies" prolusion-save-dir))
 (setq url-configuration-directory prolusion-save-dir)
+
 (setq browse-url-browser-function 'eww-browse-url)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
