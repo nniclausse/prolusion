@@ -25,6 +25,9 @@
 
 (setq flycheck-indication-mode 'left-fringe)
 
+(add-to-list 'flycheck-emacs-lisp-load-path prolusion-dir)
+(add-to-list 'flycheck-emacs-lisp-load-path prolusion-core-dir)
+
 (when (fboundp 'define-fringe-bitmap)
   (define-fringe-bitmap 'prolusion-flycheck-fringe-indicator
     (vector #b00000000

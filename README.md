@@ -193,10 +193,13 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 
 **prolusion-checking**
 
-| Keybinding           | Function                  |
-| -------------------- |:------------------------- |
-| <kbd>C-c ! n</kbd>   | `flycheck-next-error`     |
-| <kbd>C-c ! p</kbd>   | `flycheck-previous-error` |
+| Keybinding           | Function                   |
+| -------------------- |:-------------------------- |
+| <kbd>C-c ! l</kbd>   | `flycheck-list-errors`     |
+| <kbd>C-c ! n</kbd>   | `flycheck-next-error`      |
+| <kbd>C-c ! p</kbd>   | `flycheck-previous-error`  |
+| <kbd>C-c ! s</kbd>   | `flycheck-select-checker`  |
+| <kbd>C-c ! x</kbd>   | `flycheck-disable-checker` |
 
 **prolusion-workspaces**
 
