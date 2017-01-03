@@ -105,7 +105,7 @@
           (buffer-string))))
 
 (defun prolusion/dashboard-insert-badge () ""
-       (let* ((spec (create-image (expand-file-name "prolusion-badges/prolusion-emacs-badge-editor.png" prolusion-dir)))
+       (let* ((spec (create-image (expand-file-name "prolusion-badges/prolusion-emacs-badge-editor.svg" prolusion-dir)))
               (size (image-size spec))
               (width (car size))
               (left-margin (max 0 (floor (- dashboard-banner-length width) 2))))
