@@ -40,8 +40,8 @@ keybindings.
 
 **Emacs**
 
-    $ brew   install emacs --use-git-head --with-cocoa --with-imagemagick --with-librsvg # if emacs is not installed
-    $ brew reinstall emacs --use-git-head --with-cocoa --with-imagemagick --with-librsvg # if emacs is     installed
+    $ brew   install emacs --HEAD --with-cocoa --with-imagemagick --with-librsvg # if emacs is not installed
+    $ brew reinstall emacs --HEAD --with-cocoa --with-imagemagick --with-librsvg # if emacs is     installed
 
 **Emacs prolusion**
 
