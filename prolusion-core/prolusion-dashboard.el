@@ -8,7 +8,7 @@
 ;;
 ;;; Change Log:
 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
 
@@ -292,7 +292,7 @@
                (insert (format "%s\n" (emacs-init-time)))
                (insert "\n")
                (prolusion/dashboard-insert-banner)
-               (insert "\n")
+               (prolusion/dashboard-insert-page-break)
                (mapc (lambda (els)
                        (let* ((el (or (car-safe els) els))
                               (list-size
