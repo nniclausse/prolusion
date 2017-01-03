@@ -65,7 +65,7 @@
 (global-set-key (kbd "C-c l l") 'multi-eshell)
 (global-set-key (kbd "C-c l o") 'multi-eshell-switch)
 (global-set-key (kbd "C-c l O") 'multi-eshell-go-back)
-(global-set-key (kbd "C-c l c") 'prolusion-eshell-clear-buffer)
+(global-set-key (kbd "C-c l c") 'prolusion/eshell-clear-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
