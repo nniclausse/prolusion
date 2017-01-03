@@ -26,7 +26,7 @@ keybindings.
 
 ## Prerequisites
 
-    $ brew install emacs --use-git-head --with-cocoa --HEAD
+    $ brew install emacs --use-git-head --with-cocoa --with-imagemagick --with-librsvg
     $ brew install cmake
     $ brew install llvm --with-clang
     $ brew install ack
@@ -40,8 +40,8 @@ keybindings.
 
 **Emacs**
 
-    $ brew   install emacs --use-git-head --with-cocoa --HEAD # if emacs is not installed
-    $ brew reinstall emacs --use-git-head --with-cocoa --HEAD # if emacs is     installed
+    $ brew   install emacs --use-git-head --with-cocoa --with-imagemagick --with-librsvg # if emacs is not installed
+    $ brew reinstall emacs --use-git-head --with-cocoa --with-imagemagick --with-librsvg # if emacs is     installed
 
 **Emacs prolusion**
 
