@@ -70,8 +70,6 @@
 
 (defconst prolusion--dashboard-banner-margin 35 "")
 
-(defconst prolusion--dashboard-banner-length 70 "")
-
 (defvar prolusion--dashboard-item-generators '((recents    . prolusion//dashboard-insert-recents)
                                                (bookmarks  . prolusion//dashboard-insert-bookmarks)
                                                (projects   . prolusion//dashboard-insert-projects)
@@ -104,7 +102,7 @@
                (setq banner-width line-length)))
          (forward-line 1))
        (goto-char 0)
-       (let ((margin (max 0 (floor (/ (- prolusion--dashboard-banner-length banner-width) 2)))))
+       (let ((margin (max 0 (floor (/ (- dashboard-banner-length banner-width) 2)))))
          (while (not (eobp))
            (insert (make-string margin ?\ ))
            (forward-line 1))))
@@ -115,7 +113,7 @@
   (let* ((spec (create-image (expand-file-name "prolusion-badges/prolusion-emacs-badge-editor.svg" prolusion-dir)))
          (size (image-size spec))
          (width (car size))
-         (left-margin (max 0 (floor (- prolusion--dashboard-banner-length width) 2))))
+         (left-margin (max 0 (floor (- dashboard-banner-length width) 2))))
     (goto-char (point-max))
     (insert "\n")
     (insert (make-string left-margin ?\ ))
@@ -298,7 +296,7 @@
     (when (or (not (eq prolusion--dashboard-buffer-last-width (window-width)))
               (not buffer-exists))
       (setq dashboard-banner-length (window-width)
-            prolusion--dashboard-buffer-last-width prolusion--dashboard-banner-length)
+            prolusion--dashboard-buffer-last-width dashboard-banner-length)
       (with-current-buffer (get-buffer-create prolusion--dashboard-buffer-name)
         (let ((buffer-read-only nil)
               (list-separator "\n\n"))
