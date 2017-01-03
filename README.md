@@ -1,6 +1,7 @@
 ![releases](https://img.shields.io/github/tag/jwintz/prolusion.svg)
 ![issues](https://img.shields.io/github/issues/jwintz/prolusion.svg)
 ![license](https://img.shields.io/github/license/jwintz/prolusion.svg)
+![built](https://img.shields.io/badge/built%20with-Prolusion-6f62ba.svg)
 
 ***
 
