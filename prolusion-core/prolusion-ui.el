@@ -84,8 +84,8 @@
   (spaceline-define-segment prolusion-conda-environment
     (when (string= major-mode "python-mode")
       (if (not (equal (length conda-env-current-name) 0))
-          (propertize (concat "conda: " conda-env-current-name) 'font-lock-face '(:foreground "IndianRed"))
-        (propertize "no conda environment" 'font-lock-face '(:foreground "IndianRed")))))
+          (propertize (concat "conda: " conda-env-current-name) 'face '(:foreground "IndianRed"))
+        (propertize "no conda environment" 'face '(:foreground "IndianRed")))))
   (spaceline-define-segment prolusion-upgrades-count
     (when (string= major-mode "prolusion/dashboard-mode")
       (unless prolusion-upgrade-count
