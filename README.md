@@ -140,6 +140,7 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c e l`</kbd> | `prolusion-duplicate-line` |
 | <kbd>`C-c e e`</kbd> | `iedit-mode`               |
 | <kbd>`C-c e f`</kbd> | `helm-mini`                |
+| <kbd>`C-c e b`</kbd> | `helm-buffers-list`        |
 
 **prolusion-modes**
 

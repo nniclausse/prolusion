@@ -68,14 +68,15 @@
 ;; Editor functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun prolusion/duplicate-line () ""
-       (interactive)
-       (move-beginning-of-line 1)
-       (kill-line)
-       (yank)
-       (open-line 1)
-       (next-line 1)
-       (yank))
+(defun prolusion/duplicate-line ()
+  ""
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Editor hooks
@@ -107,6 +108,7 @@
 (global-set-key (kbd "C-c e l") 'prolusion/duplicate-line)
 (global-set-key (kbd "C-c e e") 'iedit-mode)
 (global-set-key (kbd "C-c e f") 'helm-mini)
+(global-set-key (kbd "C-c e b") 'helm-buffers-list)
 
 (global-set-key (kbd "C-M-f") 'sp-forward-sexp)
 (global-set-key (kbd "C-M-b") 'sp-backward-sexp)
