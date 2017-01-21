@@ -102,6 +102,8 @@
 ;; keybindings helper
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(setq which-key-idle-delay 0.2)
+
 (which-key-mode)
 
 ;; dired
