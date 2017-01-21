@@ -109,6 +109,7 @@
 (global-set-key (kbd "C-c e e") 'iedit-mode)
 (global-set-key (kbd "C-c e f") 'helm-mini)
 (global-set-key (kbd "C-c e b") 'helm-buffers-list)
+(global-set-key (kbd "C-c e k") 'helm-kill-ring)
 
 (global-set-key (kbd "C-M-f") 'sp-forward-sexp)
 (global-set-key (kbd "C-M-b") 'sp-backward-sexp)
