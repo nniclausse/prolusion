@@ -63,8 +63,8 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 
 | Keybinding         | Function                     |
 | ------------------ |:---------------------------- |
-| <kbd>`C-u u`</kbd> | `prolusion-upgrade`          |
-| <kbd>`C-u p`</kbd> | `prolusion-upgrade-packages` |
+| <kbd>`C-u u`</kbd> | `prolusion/upgrade`          |
+| <kbd>`C-u p`</kbd> | `prolusion/upgrade-packages` |
 
 **prolusion-behavior**
 
@@ -84,10 +84,10 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-x )`</kbd> | `end-kbd-macro`       |
 | <kbd>`C-x e`</kbd> | `call-last-kbd-macro` |
 
-| Keybinding             | Function        |
-| ---------------------- | ---------------:|
-| <kbd>`C-M-left`</kbd>  | `forward-sexp`  |
-| <kbd>`C-M-right`</kbd> | `backward-sexp` |
+| Keybinding         | Function        |
+| ------------------ | ---------------:|
+| <kbd>`C-M-f`</kbd> | `forward-sexp`  |
+| <kbd>`C-M-b`</kbd> | `backward-sexp` |
 
 | Keybinding           | Function           |
 | -------------------- | ------------------:|
@@ -138,7 +138,7 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c e d`</kbd> | `make-divider`             |
 | <kbd>`C-c e r`</kbd> | `make-revision`            |
 | <kbd>`C-c e g`</kbd> | `update-file-header`       |
-| <kbd>`C-c e l`</kbd> | `prolusion-duplicate-line` |
+| <kbd>`C-c e l`</kbd> | `prolusion/duplicate-line` |
 | <kbd>`C-c e e`</kbd> | `iedit-mode`               |
 | <kbd>`C-c e f`</kbd> | `helm-mini`                |
 | <kbd>`C-c e b`</kbd> | `helm-buffers-list`        |
