@@ -100,7 +100,7 @@
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
-  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-upgrades-count 'prolusion-conda-environment)
+  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment) ;; prolusion-upgrades-count)
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 
