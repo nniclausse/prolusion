@@ -45,11 +45,12 @@
 ;; Eshell functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun prolusion/eshell-clear-buffer () ""
-       (interactive)
-       (let ((inhibit-read-only t))
-         (erase-buffer)
-         (eshell-send-input)))
+(defun prolusion/eshell-clear-buffer ()
+  ""
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell hooks
