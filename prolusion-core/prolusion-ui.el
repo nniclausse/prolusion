@@ -87,7 +87,7 @@
           (propertize (concat "conda: " conda-env-current-name) 'face '(:foreground "IndianRed"))
         (propertize "no conda environment" 'face '(:foreground "IndianRed")))))
   (spaceline-define-segment prolusion-upgrades-count
-    (when (string= major-mode "prolusion/dashboard-mode")
+    (when (string= major-mode "prolusion-dashboard-mode")
       (unless prolusion-upgrade-count
         (save-window-excursion
           (package-list-packages)
@@ -95,12 +95,12 @@
           (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
           (kill-buffer (get-buffer "*Packages*"))))
       (if (> prolusion-upgrade-count 0)
-          (format " %s" prolusion-upgrade-count))))
+          (format "%s %d" (propertize "" 'face '(:family "FontAwesome")) prolusion-upgrade-count))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
-  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment) ;; prolusion-upgrades-count)
+  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count)
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 
