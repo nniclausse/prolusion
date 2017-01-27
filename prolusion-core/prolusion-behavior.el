@@ -102,7 +102,7 @@
 ;; keybindings helper
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq which-key-idle-delay 0.50)
+(setq which-key-idle-delay 0.33)
 
 (which-key-mode)
 

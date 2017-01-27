@@ -304,7 +304,7 @@
           (cd prolusion-dir)
           (setq version-faced (propertize "Prolusion version: " 'face 'prolusion--dashboard-info-face))
           (insert version-faced)
-          (insert (format " %d.%d.%d -  (%s) - %s (%s)\n" prolusion-version-major prolusion-version-minor prolusion-version-patch (s-trim (s-chop-prefix "* " (propertize (car (s-lines (shell-command-to-string "git branch"))) 'face 'prolusion--dashboard-git-face))) (octicons "git-commit") (propertize (s-chomp (shell-command-to-string "git rev-parse HEAD")) 'face 'prolusion--dashboard-hash-face)))
+          (insert (format "%s %d.%d.%d - %s (%s) - %s (%s)\n" (propertize "" 'face '(:family "FontAwesome")) prolusion-version-major prolusion-version-minor prolusion-version-patch (propertize "" 'face '(:family "FontAwesome")) (s-trim (s-chop-prefix "* " (propertize (car (s-lines (shell-command-to-string "git branch"))) 'face 'prolusion--dashboard-git-face))) (octicons "git-commit") (propertize (s-chomp (shell-command-to-string "git rev-parse HEAD")) 'face 'prolusion--dashboard-hash-face)))
           (setq version-faced (propertize "    Emacs version: " 'face 'prolusion--dashboard-info-face))
           (insert version-faced)
           (insert (format "%s\n" (car (s-lines (emacs-version)))))
