@@ -127,7 +127,8 @@
 (define-derived-mode prolusion/cheatsheet-mode fundamental-mode "CheatSheet"
   "Set major mode for viewing cheat sheets."
   (prettify-symbols-mode +1)
-  (page-break-lines-mode +1))
+  (page-break-lines-mode +1)
+  (setq truncate-lines t))
 
 (define-key prolusion/cheatsheet-mode-map (kbd "q") 'kill-buffer-and-window)
 
@@ -170,6 +171,7 @@
   (prolusion/cheatsheet-mode)
   (erase-buffer)
   (insert (prolusion/cheatsheet-format))
+  (goto-char (point-min))
   (setq buffer-read-only t))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -178,7 +180,7 @@
 
 (prolusion/cheatsheet-add-group 'Prolusion-Packages
     '(:key "C-u u" :description "prolusion/upgrade")
-    '(:key "C-u u" :description "prolusion/upgrade-packages"))
+    '(:key "C-u p" :description "prolusion/upgrade-packages"))
 
 (prolusion/cheatsheet-add-group 'Prolusion-Behavior
     '(:key "C-x o"               :description "other-window")
@@ -243,7 +245,7 @@
     '(:key "C-c y v" :description "yas-visit-snippet-file"))
 
 (prolusion/cheatsheet-add-group 'Prolusion-VC
-    '(:key "C-c v m" :description: "magit-status"))
+    '(:key "C-c v m" :description "magit-status"))
 
 (prolusion/cheatsheet-add-group 'Prolusion-Projectile
     '(:key "C-c p h"   :description "helm-projectile")
