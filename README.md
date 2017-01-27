@@ -126,7 +126,7 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c l l`</kbd> | `mutli-eshell`                  |
 | <kbd>`C-c l o`</kbd> | `mutli-eshell-switch`           |
 | <kbd>`C-c l 0`</kbd> | `mutli-eshell-go-back`          |
-| <kbd>`C-c l c`</kbd> | `prolusion-eshell-clear-buffer` |
+| <kbd>`C-c l c`</kbd> | `prolusion/eshell-clear-buffer` |
 
 **prolusion-editor**
 
