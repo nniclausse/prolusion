@@ -269,6 +269,16 @@
     '(:key "C-c c b" :description "anaconda-mode-go-back")
     '(:key "C-c c s" :description "anaconda-mode-show-doc"))
 
+(prolusion/cheatsheet-add-group 'Prolusion-Tagging
+    '(:key "C-c t h" :description "helm-gtags-display-browser")
+    '(:key "C-c t P" :description "helm-gtags-find-files")
+    '(:key "C-c t f" :description "helm-gtags-parse-file")
+    '(:key "C-c t g" :description "helm-gtags-find-pattern")
+    '(:key "C-c t s" :description "helm-gtags-find-symbol")
+    '(:key "C-c t r" :description "helm-gtags-find-rtag")
+    '(:key "C-c t t" :description "helm-gtags-find-tag")
+    '(:key "C-c t d" :description "helm-gtags-find-tag")
+
 (prolusion/cheatsheet-add-group 'Prolusion-Checking
     '(:key "C-c ! l" :description "flycheck-list-errors")
     '(:key "C-c ! n" :description "flycheck-next-error")
@@ -292,9 +302,9 @@
     '(:key "C-c w l" :description "persp-load-state-from-file"))
 
 (prolusion/cheatsheet-add-group 'Prolusion-Typing
-    '(:key "C-c t b" :description "speed-type-buffer")
-    '(:key "C-c t r" :description "speed-type-region")
-    '(:key "C-c t t" :description "speed-type-text"))
+    '(:key "C-c y b" :description "speed-type-buffer")
+    '(:key "C-c y r" :description "speed-type-region")
+    '(:key "C-c y t" :description "speed-type-text"))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
