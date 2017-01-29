@@ -27,7 +27,8 @@ keybindings.
 
 ## Prerequisites
 
-    $ brew install emacs --use-git-head --with-cocoa --with-imagemagick --with-librsvg
+    $ brew tap d12frosted/emacs-plus
+    $ brew install emacs-plus --HEAD
     $ brew install cmake
     $ brew install llvm --with-clang
     $ brew install ack
@@ -41,8 +42,8 @@ keybindings.
 
 **Emacs**
 
-    $ brew   install emacs --HEAD --with-cocoa --with-imagemagick --with-librsvg # if emacs is not installed
-    $ brew reinstall emacs --HEAD --with-cocoa --with-imagemagick --with-librsvg # if emacs is     installed
+    $ brew   install emacs-plus --HEAD # if emacs is not installed
+    $ brew reinstall emac-pluss --HEAD # if emacs is     installed
 
 **Emacs prolusion**
 
@@ -62,8 +63,8 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 
 | Keybinding         | Function                     |
 | ------------------ |:---------------------------- |
-| <kbd>`C-u u`</kbd> | `prolusion-upgrade`          |
-| <kbd>`C-u p`</kbd> | `prolusion-upgrade-packages` |
+| <kbd>`C-u u`</kbd> | `prolusion/upgrade`          |
+| <kbd>`C-u p`</kbd> | `prolusion/upgrade-packages` |
 
 **prolusion-behavior**
 
@@ -83,10 +84,10 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-x )`</kbd> | `end-kbd-macro`       |
 | <kbd>`C-x e`</kbd> | `call-last-kbd-macro` |
 
-| Keybinding             | Function        |
-| ---------------------- | ---------------:|
-| <kbd>`C-M-left`</kbd>  | `forward-sexp`  |
-| <kbd>`C-M-right`</kbd> | `backward-sexp` |
+| Keybinding         | Function        |
+| ------------------ | ---------------:|
+| <kbd>`C-M-f`</kbd> | `forward-sexp`  |
+| <kbd>`C-M-b`</kbd> | `backward-sexp` |
 
 | Keybinding           | Function           |
 | -------------------- | ------------------:|
@@ -125,7 +126,7 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c l l`</kbd> | `mutli-eshell`                  |
 | <kbd>`C-c l o`</kbd> | `mutli-eshell-switch`           |
 | <kbd>`C-c l 0`</kbd> | `mutli-eshell-go-back`          |
-| <kbd>`C-c l c`</kbd> | `prolusion-eshell-clear-buffer` |
+| <kbd>`C-c l c`</kbd> | `prolusion/eshell-clear-buffer` |
 
 **prolusion-editor**
 
@@ -137,7 +138,7 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c e d`</kbd> | `make-divider`             |
 | <kbd>`C-c e r`</kbd> | `make-revision`            |
 | <kbd>`C-c e g`</kbd> | `update-file-header`       |
-| <kbd>`C-c e l`</kbd> | `prolusion-duplicate-line` |
+| <kbd>`C-c e l`</kbd> | `prolusion/duplicate-line` |
 | <kbd>`C-c e e`</kbd> | `iedit-mode`               |
 | <kbd>`C-c e f`</kbd> | `helm-mini`                |
 | <kbd>`C-c e b`</kbd> | `helm-buffers-list`        |
@@ -194,6 +195,19 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>C-c c b</kbd> | `anaconda-mode-go-back`          |
 | <kbd>C-c c s</kbd> | `anaconda-mode-show-doc`         |
 
+**prolusion-tagging**
+
+| Keybinding         | Function                     |
+| ------------------ |:---------------------------- |
+| <kbd>C-c t h</kbd> | `helm-gtags-display-browser` |
+| <kbd>C-c t P</kbd> | `helm-gtags-find-files`      |
+| <kbd>C-c t f</kbd> | `helm-gtags-parse-file`      |
+| <kbd>C-c t g</kbd> | `helm-gtags-find-pattern`    |
+| <kbd>C-c t s</kbd> | `helm-gtags-find-symbol`     |
+| <kbd>C-c t r</kbd> | `helm-gtags-find-rtag`       |
+| <kbd>C-c t t</kbd> | `helm-gtags-find-tag`        |
+| <kbd>C-c t d</kbd> | `helm-gtags-find-tag`        |
+
 **prolusion-checking**
 
 | Keybinding           | Function                   |
@@ -226,6 +240,6 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 
 | Keybinding         | Function            |
 | ------------------ |:------------------- |
-| <kbd>C-c t b</kbd> | `speed-type-buffer` |
-| <kbd>C-c t r</kbd> | `speed-type-region` |
-| <kbd>C-c t t</kbd> | `speed-type-text`   |
+| <kbd>C-c y b</kbd> | `speed-type-buffer` |
+| <kbd>C-c y r</kbd> | `speed-type-region` |
+| <kbd>C-c y t</kbd> | `speed-type-text`   |

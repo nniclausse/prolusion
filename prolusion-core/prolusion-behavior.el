@@ -102,7 +102,7 @@
 ;; keybindings helper
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq which-key-idle-delay 0.50)
+(setq which-key-idle-delay 0.33)
 
 (which-key-mode)
 
@@ -123,6 +123,11 @@
 (global-anzu-mode +1)
 
 (setq anzu-cons-mode-line-p nil)
+
+;; reenable narrowing
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(put 'narrow-to-region 'disabled nil)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior modeline

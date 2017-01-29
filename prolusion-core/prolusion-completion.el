@@ -21,6 +21,7 @@
 (prolusion/require-package 'company-irony)
 (prolusion/require-package 'company-irony-c-headers)
 (prolusion/require-package 'company-anaconda)
+(prolusion/require-package 'company-qml)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completion configuration
@@ -49,6 +50,7 @@
 (eval-after-load 'company '(add-to-list 'company-backends 'company-cmake))
 (eval-after-load 'company '(add-to-list 'company-backends 'company-jedi))
 (eval-after-load 'company '(add-to-list 'company-backends 'company-anaconda))
+(eval-after-load 'company '(add-to-list 'company-backends 'company-qml))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completion hooks
