@@ -277,7 +277,7 @@
     '(:key "C-c t s" :description "helm-gtags-find-symbol")
     '(:key "C-c t r" :description "helm-gtags-find-rtag")
     '(:key "C-c t t" :description "helm-gtags-find-tag")
-    '(:key "C-c t d" :description "helm-gtags-find-tag")
+    '(:key "C-c t d" :description "helm-gtags-find-tag"))
 
 (prolusion/cheatsheet-add-group 'Prolusion-Checking
     '(:key "C-c ! l" :description "flycheck-list-errors")
