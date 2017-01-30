@@ -195,19 +195,6 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>C-c c b</kbd> | `anaconda-mode-go-back`          |
 | <kbd>C-c c s</kbd> | `anaconda-mode-show-doc`         |
 
-**prolusion-tagging**
-
-| Keybinding         | Function                     |
-| ------------------ |:---------------------------- |
-| <kbd>C-c t h</kbd> | `helm-gtags-display-browser` |
-| <kbd>C-c t P</kbd> | `helm-gtags-find-files`      |
-| <kbd>C-c t f</kbd> | `helm-gtags-parse-file`      |
-| <kbd>C-c t g</kbd> | `helm-gtags-find-pattern`    |
-| <kbd>C-c t s</kbd> | `helm-gtags-find-symbol`     |
-| <kbd>C-c t r</kbd> | `helm-gtags-find-rtag`       |
-| <kbd>C-c t t</kbd> | `helm-gtags-find-tag`        |
-| <kbd>C-c t d</kbd> | `helm-gtags-find-tag`        |
-
 **prolusion-checking**
 
 | Keybinding           | Function                   |

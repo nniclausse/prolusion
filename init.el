@@ -51,7 +51,6 @@
 (require 'prolusion-snippets)
 (require 'prolusion-irony)
 (require 'prolusion-completion)
-(require 'prolusion-tagging)
 (require 'prolusion-checking)
 (require 'prolusion-compilation)
 (require 'prolusion-www)
