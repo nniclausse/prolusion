@@ -16,41 +16,19 @@
 ;; Eshell requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion/require-package         'multi-eshell)
+(prolusion/require-package           'multi-term)
 (prolusion/require-package 'exec-path-from-shell)
-(prolusion/require-package 'eshell-prompt-extras)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq eshell-directory-name                                                       prolusion-save-dir)
-(setq eshell-history-file-name       (expand-file-name "prolusion-eshell-history" prolusion-save-dir))
-(setq eshell-last-dir-ring-file-name (expand-file-name "prolusion-eshell-lastdir" prolusion-save-dir))
+(setq multi-term-program "/bin/bash")
 
 (when (memq window-system '(mac ns))
   (setq exec-path-from-shell-arguments (quote ("-l")))
   (setq exec-path-from-shell-variables (quote ("PATH" "MANPATH" "CMAKE_PREFIX_PATH" "LC_ALL" "LANG" "LC_CTYPE")))
   (exec-path-from-shell-initialize))
-
-(setq multi-eshell-name "*eshell*")
-(setq multi-eshell-shell-function (quote (eshell)))
-
-(with-eval-after-load "esh-opt"
-  (autoload 'epe-theme-lambda "eshell-prompt-extras")
-  (setq eshell-highlight-prompt nil)
-  (setq eshell-prompt-function 'epe-theme-dakrone))
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Eshell functions
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun prolusion/eshell-clear-buffer ()
-  ""
-  (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer)
-    (eshell-send-input)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell hooks
@@ -63,10 +41,9 @@
 ;; Eshell keybindings
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key (kbd "C-c l l") 'multi-eshell)
-(global-set-key (kbd "C-c l o") 'multi-eshell-switch)
-(global-set-key (kbd "C-c l O") 'multi-eshell-go-back)
-(global-set-key (kbd "C-c l c") 'prolusion/eshell-clear-buffer)
+(global-set-key (kbd "C-c l l") 'multi-term)
+(global-set-key (kbd "C-c l o") 'multi-term-next)
+(global-set-key (kbd "C-c l O") 'multi-term-prev)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
