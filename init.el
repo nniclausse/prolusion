@@ -46,7 +46,7 @@
 (require 'prolusion-ui)
 (require 'prolusion-projectile)
 (require 'prolusion-behavior)
-(require 'prolusion-eshell)
+(require 'prolusion-shell)
 (require 'prolusion-editor)
 (require 'prolusion-snippets)
 (require 'prolusion-irony)
