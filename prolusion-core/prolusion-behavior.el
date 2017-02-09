@@ -120,9 +120,9 @@
 ;; show number of candidates for searches
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-anzu-mode +1)
-
 (setq anzu-cons-mode-line-p nil)
+
+(global-anzu-mode +1)
 
 ;; reenable narrowing
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
