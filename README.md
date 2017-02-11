@@ -227,6 +227,6 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 
 | Keybinding         | Function            |
 | ------------------ |:------------------- |
-| <kbd>C-c y b</kbd> | `speed-type-buffer` |
-| <kbd>C-c y r</kbd> | `speed-type-region` |
-| <kbd>C-c y t</kbd> | `speed-type-text`   |
+| <kbd>C-c t b</kbd> | `speed-type-buffer` |
+| <kbd>C-c t r</kbd> | `speed-type-region` |
+| <kbd>C-c ts t</kbd> | `speed-type-text`   |
