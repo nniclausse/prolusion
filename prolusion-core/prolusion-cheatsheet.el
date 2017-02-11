@@ -292,9 +292,9 @@
     '(:key "C-c w l" :description "persp-load-state-from-file"))
 
 (prolusion/cheatsheet-add-group 'Prolusion-Typing
-    '(:key "C-c y b" :description "speed-type-buffer")
-    '(:key "C-c y r" :description "speed-type-region")
-    '(:key "C-c y t" :description "speed-type-text"))
+    '(:key "C-c t b" :description "speed-type-buffer")
+    '(:key "C-c t r" :description "speed-type-region")
+    '(:key "C-c t t" :description "speed-type-text"))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
