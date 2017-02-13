@@ -28,9 +28,9 @@
 ;; Typing keybindings
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key (kbd "C-c y b") 'speed-type-buffer)
-(global-set-key (kbd "C-c y r") 'speed-type-region)
-(global-set-key (kbd "C-c y t") 'speed-type-text)
+(global-set-key (kbd "C-c t b") 'speed-type-buffer)
+(global-set-key (kbd "C-c t r") 'speed-type-region)
+(global-set-key (kbd "C-c t t") 'speed-type-text)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

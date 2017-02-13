@@ -13,46 +13,41 @@
 ;;; Code:
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Snippets requirements
+;; Shell requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion/install-package 'yasnippet)
+(prolusion/require-package           'multi-term)
+(prolusion/require-package 'exec-path-from-shell)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Snippets setup
+;; Shell setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package yasnippet
-  :ensure t
-  :config
-  (setq yas-snippet-dirs '(prolusion-snippets-dir))
-  (setq yas-prompt-functions '(yas-dropdown-prompt))
-  (yas-global-mode 1)
-  :diminish yas-minor-mode)
+(setq multi-term-program "/bin/bash")
+
+(when (memq window-system '(mac ns))
+  (setq exec-path-from-shell-arguments (quote ("-l")))
+  (setq exec-path-from-shell-variables (quote ("PATH" "MANPATH" "CMAKE_PREFIX_PATH" "LC_ALL" "LANG" "LC_CTYPE" "TERM")))
+  (exec-path-from-shell-initialize))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Snippets hooks
+;; Shell hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'term-mode-hook (lambda () (setq yas-dont-activate t)))
+(add-hook 'eshell-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
+(add-hook   'term-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Snipets keybindings
+;; Shell keybindings
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key (kbd "C-c y n") 'yas-new-snippet)
-(global-set-key (kbd "C-c y s") 'yas-insert-snippet)
-(global-set-key (kbd "C-c y v") 'yas-visit-snippet-file)
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Snippets modeline
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(diminish 'yas-minor-mode)
+(global-set-key (kbd "C-c l l") 'multi-term)
+(global-set-key (kbd "C-c l o") 'multi-term-next)
+(global-set-key (kbd "C-c l O") 'multi-term-prev)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(provide 'prolusion-snippets)
+(provide 'prolusion-shell)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; prolusion-snippets.el ends here
+;;; prolusion-shell.el ends here
