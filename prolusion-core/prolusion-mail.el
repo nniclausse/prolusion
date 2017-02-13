@@ -45,11 +45,15 @@
   (setq mu4e-compose-dont-reply-to-self t)
   (setq mu4e-change-filenames-when-moving t)
   (setq mu4e-view-show-images t)
-  (when (fboundp 'imagemagick-register-types) (imagemagick-register-types))
+  (setq mu4e-index-cleanup nil)
+  (setq mu4e-index-lazy-check t)
   (setq mu4e-maildir-shortcuts
         '(("/Inria/Inbox" .  ?i)
           ("/Gmail/Inbox" .  ?g)
           ("/iCloud/Inbox" . ?c)))
+
+  (when (fboundp 'imagemagick-register-types)
+    (imagemagick-register-types))
 
   (defalias 'mail 'mu4e))
 
