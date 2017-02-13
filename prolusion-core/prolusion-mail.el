@@ -35,7 +35,7 @@
   (setq mu4e-trash-folder  "/Trash")
   (setq mu4e-attachment-dir "~/Downloads")
   (setq mu4e-sent-messages-behavior 'delete)
-  (setq mu4e-get-mail-command "mbsync -a" mu4e-update-interval 120 mu4e-hide-index-messages t)
+  (setq mu4e-get-mail-command "mbsync -a" mu4e-update-interval 300 mu4e-hide-index-messages t)
   (setq message-kill-buffer-on-exit t)
   (setq message-send-mail-function 'message-send-mail-with-sendmail)
   (setq sendmail-program "msmtp")
