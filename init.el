@@ -15,8 +15,8 @@
 ;; (package-initialize)
 
 (defconst prolusion-version-major 1)
-(defconst prolusion-version-minor 6)
-(defconst prolusion-version-patch 6)
+(defconst prolusion-version-minor 8)
+(defconst prolusion-version-patch 0)
 
 (defvar prolusion-dir          (file-name-directory load-file-name))
 (defvar prolusion-core-dir     (expand-file-name "prolusion-core"     prolusion-dir))
@@ -46,7 +46,7 @@
 (require 'prolusion-ui)
 (require 'prolusion-projectile)
 (require 'prolusion-behavior)
-(require 'prolusion-eshell)
+(require 'prolusion-shell)
 (require 'prolusion-editor)
 (require 'prolusion-snippets)
 (require 'prolusion-irony)
@@ -58,6 +58,7 @@
 (require 'prolusion-builtins)
 (require 'prolusion-typing)
 (require 'prolusion-cheatsheet)
+(require 'prolusion-mail)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
