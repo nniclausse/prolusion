@@ -58,9 +58,7 @@
 (require 'prolusion-builtins)
 (require 'prolusion-typing)
 (require 'prolusion-cheatsheet)
-
-(if (file-exists-p (expand-file-name "prolusion-mail.el" prolusion-core-dir))
-    (require 'prolusion-mail))
+(require 'prolusion-mail)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here

@@ -1,0 +1,155 @@
+## Version: $Id$
+##
+######################################################################
+##
+### Commentary:
+##
+######################################################################
+##
+### Change Log:
+##
+######################################################################
+##
+### Code:
+
+## ###################################################################
+## iCloud
+## ###################################################################
+
+IMAPAccount iCloud
+Host imap.mail.me.com
+User julien.wintz
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1
+PassCmd "security find-generic-password -s mbsync-icloud-password -w"
+
+IMAPStore icloud-remote
+Account iCloud
+
+MaildirStore icloud-local
+Path ~/Mail/iCloud/
+Inbox ~/Mail/iCloud/Inbox
+Trash ~/Mail/iCloud/Trash
+
+Channel icloud-folders
+Master :icloud-remote:
+Slave :icloud-local:
+Patterns "INBOX" "Lists" "Archive" "Tickets"
+Create Both
+Expunge Both
+SyncState *
+
+Channel icloud-trash
+Master :icloud-remote:"Deleted Messages"
+Slave :icloud-local:trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel icloud-drafts
+Master :icloud-remote:"Drafts"
+Slave :icloud-local:drafts
+Create Both
+Expunge Both
+SyncState *
+
+Channel icloud-spam
+Master :icloud-remote:"Junk"
+Slave :icloud-local:spam
+Create Both
+Expunge Both
+SyncState *
+
+Channel icloud-sent
+Master :icloud-remote:"Sent Messages"
+Slave :icloud-local:sent
+Create Both
+Expunge Both
+SyncState *
+
+Group iCloud
+Channel icloud-folders
+Channel icloud-sent
+Channel icloud-trash
+Channel icloud-drafts
+Channel icloud-spam
+
+## ###################################################################
+## Gmail
+## ###################################################################
+
+IMAPAccount Gmail
+Host imap.gmail.com
+User jwintz@gmail.com
+PassCmd "security find-generic-password -s mbsync-gmail-password -w"
+AuthMechs PLAIN
+SSLType IMAPS
+
+IMAPStore gmail-remote
+Account Gmail
+
+MaildirStore gmail-local
+Path ~/Mail/Gmail/
+Inbox ~/Mail/Gmail/Inbox
+
+Channel gmail-inbox
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX" "Arch*"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Trash"
+Slave :gmail-local:trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:sent
+Create Both
+Expunge Both
+SyncState *
+
+Group Gmail
+Channel gmail-inbox
+Channel gmail-sent
+Channel gmail-trash
+
+## ###################################################################
+## Inria
+## ###################################################################
+
+IMAPAccount Inria
+Host zimbra.inria.fr
+User julien.wintz@inria.fr
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1
+PassCmd "security find-generic-password -s mbsync-inria-password -w"
+
+IMAPStore inria-remote
+Account Inria
+
+MaildirStore inria-local
+Path ~/Mail/Inria/
+Inbox ~/Mail/Inria/Inbox
+Trash ~/Mail/Inria/Trash
+
+Channel inria-folders
+Master :inria-remote:
+Slave :inria-local:
+Patterns "INBOX" "Drafts" "Arch*" "Sent*" "Trash" "Junk" "Deleted*"
+Create Both
+Expunge Both
+SyncState *
+
+Group Inria
+Channel inria-folders
+
+######################################################################
+### .mbsyncrc ends here

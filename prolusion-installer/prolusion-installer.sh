@@ -59,6 +59,10 @@ prolusion_install () {
     prolusion_yellow "Setting up links ..."
 
     /usr/bin/env ln -s $PROLUSION_INSTALL_DIR $HOME/.emacs.d
+    /usr/bin/env ln -s $PROLUSION_INSTALL_DIR/prolusion-mail/msmtprc $HOME/.msmtprc
+    /usr/bin/env ln -s $PROLUSION_INSTALL_DIR/prolusion-mail/mbsyncrc $HOME/.mbsyncrc
+    /usr/bin/env ln -s $PROLUSION_INSTALL_DIR/prolusion-shell/bashrc $HOME/.bashrc
+    /usr/bin/env ln -s $PROLUSION_INSTALL_DIR/prolusion-shell/bash_profile $HOME/.bash_profile
 
     if ! [ $? -eq 0 ]
     then

@@ -1,0 +1,26 @@
+# Version: $Id$
+#
+#
+
+# Commentary:
+#
+#
+
+# Change Log:
+#
+#
+
+# Code:
+
+[[ $- != *i* ]] && return
+
+## #################################################################
+## Get the aliases and functions
+## #################################################################
+
+if [ -f ~/.bash_profile ]; then
+      . ~/.bash_profile
+fi
+
+#
+# .bashrc ends here
