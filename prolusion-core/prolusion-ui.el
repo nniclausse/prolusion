@@ -54,6 +54,11 @@
 
 (defvar prolusion-upgrade-count nil)
 
+(custom-set-faces
+ '(mu4e-unread-face ((t (:foreground "dark green" :background nil :inherit nil))))
+ '(mu4e-trashed-face ((t (:foreground "dark red" :background nil :inherit nil))))
+ '(mu4e-header-highlight-face ((t (:underline nil :background nil :inherit hl-line)))))
+
 (when (display-graphic-p)
   (if prolusion-dark-variant
       (progn
@@ -95,7 +100,7 @@
           (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
           (kill-buffer (get-buffer "*Packages*"))))
       (if (> prolusion-upgrade-count 0)
-          (propertize (format "%s %d" (propertize "" 'face '((t (:family "FontAwesome")))) prolusion-upgrade-count) 'face '((t (:foreground "light green")))))))
+          (propertize (format "%s %d" (propertize "" 'face '((t (:family "FontAwesome")))) prolusion-upgrade-count) 'face '((t (:foreground "dark green")))))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)

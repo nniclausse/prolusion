@@ -59,6 +59,28 @@
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package mu4e-alert
+  :ensure t
+  :config
+  (mu4e-alert-enable-notifications)
+  (mu4e-alert-set-default-style 'notifier)
+  (setq mu4e-alert-interesting-mail-query
+        (concat "(maildir:<fu> AND date:today..now"
+                " OR maildir:<bar> AND date:today..now"
+                " AND flag:unread"))
+
+  (alert-add-rule
+   :category "mu4e-alert"
+   :predicate (lambda (_) (string-match-p "^mu4e-" (symbol-name major-mode)))
+   :continue t)
+
+  (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display))
+
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (provide 'prolusion-mail)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
