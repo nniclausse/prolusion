@@ -63,7 +63,7 @@
   :ensure t
   :config
   (mu4e-alert-enable-notifications)
-  (mu4e-alert-set-default-style 'notifier)
+  (mu4e-alert-set-default-style 'osx-notifier)
   (setq mu4e-alert-interesting-mail-query
         (concat "(maildir:<fu> AND date:today..now"
                 " OR maildir:<bar> AND date:today..now"
