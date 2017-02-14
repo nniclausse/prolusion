@@ -53,6 +53,9 @@
 (add-to-list 'auto-mode-alist '("\\.qmltypes\\'"    . json-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs\\'"         . html-mode))
 (add-to-list 'auto-mode-alist '(".mbsyncrc\\'"      . conf-mode))
+(add-to-list 'auto-mode-alist '(".msmtprc\\'"       . conf-mode))
+(add-to-list 'auto-mode-alist '("mbsyncrc\\'"       . conf-mode))
+(add-to-list 'auto-mode-alist '("msmtprc\\'"        . conf-mode))
 
 (use-package      cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
 (use-package javascript-mode :mode "\\.qs\\'")

@@ -55,8 +55,8 @@
 (defvar prolusion-upgrade-count nil)
 
 (custom-set-faces
- '(mu4e-unread-face ((t (:foreground "dark green" :background nil :inherit nil))))
- '(mu4e-trashed-face ((t (:foreground "dark red" :background nil :inherit nil))))
+ '(mu4e-unread-face ((t (:foreground "green" :background nil :inherit nil))))
+ '(mu4e-trashed-face ((t (:foreground "red" :background nil :inherit nil))))
  '(mu4e-header-highlight-face ((t (:underline nil :background nil :inherit hl-line)))))
 
 (when (display-graphic-p)

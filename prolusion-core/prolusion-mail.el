@@ -26,11 +26,10 @@
 ;; Mail setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  (setq user-mail-address-list '(
+  (setq mu4e-user-mail-address-list '(
     "julien.wintz@me.com"
     "julien.wintz@inria.fr"
     "jwintz@gmail.com"))
-  (setq user-full-name "Julien Wintz")
   (setq mu4e-maildir (expand-file-name "~/Mail"))
   (setq mu4e-drafts-folder "/Drafts")
   (setq mu4e-sent-folder "/Sent")
