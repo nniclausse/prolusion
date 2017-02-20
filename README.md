@@ -36,6 +36,7 @@ keybindings.
     $ brew install mu --with-emacs --HEAD # OPTIONAL
     $ brew install isync # OPTIONAL
     $ brew install msmtp # OPTIONAL
+    $ npm install tern # OPTIONAL
 
 ## Installation
 

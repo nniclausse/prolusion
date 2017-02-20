@@ -23,9 +23,11 @@
 (prolusion/install-package 'markdown-mode)
 (prolusion/install-package 'yaml-mode)
 (prolusion/install-package 'js2-mode)
+(prolusion/install-package 'js3-mode)
 (prolusion/install-package 'json-mode)
 (prolusion/install-package 'json-reformat)
 (prolusion/install-package 'json-snatcher)
+(prolusion/install-package 'tern)
 (prolusion/install-package 'qml-mode)
 (prolusion/install-package 'anaconda-mode)
 
@@ -100,6 +102,7 @@
 ;; Modes hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-hook         'js-mode-hook             'tern-mode)
 (add-hook        'css-mode-hook          'rainbow-mode)
 (add-hook        'qml-mode-hook          'rainbow-mode)
 (add-hook       'prog-mode-hook 'prettify-symbols-mode)
@@ -109,6 +112,7 @@
 ;; Modes modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(diminish 'tern-mode)
 (diminish 'prettify-symbols-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
