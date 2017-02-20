@@ -23,9 +23,11 @@
 (prolusion/install-package 'markdown-mode)
 (prolusion/install-package 'yaml-mode)
 (prolusion/install-package 'js2-mode)
+(prolusion/install-package 'js3-mode)
 (prolusion/install-package 'json-mode)
 (prolusion/install-package 'json-reformat)
 (prolusion/install-package 'json-snatcher)
+(prolusion/install-package 'tern)
 (prolusion/install-package 'qml-mode)
 (prolusion/install-package 'anaconda-mode)
 
@@ -53,6 +55,9 @@
 (add-to-list 'auto-mode-alist '("\\.qmltypes\\'"    . json-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs\\'"         . html-mode))
 (add-to-list 'auto-mode-alist '(".mbsyncrc\\'"      . conf-mode))
+(add-to-list 'auto-mode-alist '(".msmtprc\\'"       . conf-mode))
+(add-to-list 'auto-mode-alist '("mbsyncrc\\'"       . conf-mode))
+(add-to-list 'auto-mode-alist '("msmtprc\\'"        . conf-mode))
 
 (use-package      cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
 (use-package javascript-mode :mode "\\.qs\\'")
@@ -97,6 +102,7 @@
 ;; Modes hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-hook         'js-mode-hook             'tern-mode)
 (add-hook        'css-mode-hook          'rainbow-mode)
 (add-hook        'qml-mode-hook          'rainbow-mode)
 (add-hook       'prog-mode-hook 'prettify-symbols-mode)
@@ -106,6 +112,7 @@
 ;; Modes modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(diminish 'tern-mode)
 (diminish 'prettify-symbols-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
