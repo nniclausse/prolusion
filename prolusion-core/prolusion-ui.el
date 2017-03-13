@@ -66,7 +66,8 @@
           (custom-set-variables
            '(spacemacs-theme-custom-colors
              '((bg1  . "#111111")
-               (act1 . "#080808")))))
+               (act1 . "#080808")
+               (vertical-border . "#100a14")))))
         (load-theme 'spacemacs-dark t))
     (load-theme 'spacemacs-light t))
   (setq ns-use-srgb-colorspace nil)
@@ -100,7 +101,7 @@
           (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
           (kill-buffer (get-buffer "*Packages*"))))
       (if (> prolusion-upgrade-count 0)
-          (propertize (format "%s %d" (propertize "" 'face '((t (:family "FontAwesome")))) prolusion-upgrade-count) 'face '((t (:foreground "green")))))))
+          (propertize (format "%s %d" (propertize "" 'face '((t (:family "FontAwesome")))) prolusion-upgrade-count) 'face '((t (:foreground "green")))))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)

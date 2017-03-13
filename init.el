@@ -58,7 +58,7 @@
 (require 'prolusion-builtins)
 (require 'prolusion-typing)
 (require 'prolusion-cheatsheet)
-(require 'prolusion-mail)
+;; (require 'prolusion-mail)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
