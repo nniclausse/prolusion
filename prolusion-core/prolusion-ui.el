@@ -23,6 +23,7 @@
 (prolusion/require-package 'spaceline)
 (prolusion/install-package 'spacemacs-theme)
 (prolusion/require-package 'info+)
+;; (prolusion/require-package 'major-mode-icons)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup
@@ -49,6 +50,8 @@
 (fringe-mode '(8 . 0))
 
 (rainbow-mode 1)
+
+;; (major-mode-icons-mode 1)
 
 (global-page-break-lines-mode)
 
@@ -106,7 +109,7 @@
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
-  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count)
+  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count) ;; 'powerline-major-mode-icons)
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 
