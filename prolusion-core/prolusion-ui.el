@@ -101,7 +101,7 @@
           (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
           (kill-buffer (get-buffer "*Packages*"))))
       (if (> prolusion-upgrade-count 0)
-          (propertize (format "%s %d" (propertize "" 'face '((t (:family "FontAwesome")))) prolusion-upgrade-count) 'face '((t (:foreground "green")))))))
+          (propertize (format "%s %d" (propertize "" 'face '((t (:family "FontAwesome")))) prolusion-upgrade-count) 'face '((t (:foreground "MediumSeaGreen")))))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
