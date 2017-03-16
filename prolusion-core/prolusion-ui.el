@@ -16,14 +16,17 @@
 ;; UI requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+
 (prolusion/require-package 'rainbow-mode)
 (prolusion/require-package 'fontawesome)
 (prolusion/require-package 'octicons)
+(prolusion/require-package 'all-the-icons)
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'spaceline)
 (prolusion/install-package 'spacemacs-theme)
 (prolusion/require-package 'info+)
-;; (prolusion/require-package 'major-mode-icons)
+(prolusion/install-package 'major-mode-icons)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup
@@ -50,8 +53,6 @@
 (fringe-mode '(8 . 0))
 
 (rainbow-mode 1)
-
-;; (major-mode-icons-mode 1)
 
 (global-page-break-lines-mode)
 
@@ -109,7 +110,12 @@
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
-  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count) ;; 'powerline-major-mode-icons)
+  (setq all-the-icons-scale-factor 1.0)
+  (setq major-mode-icons-icons-style 'all-the-icons)
+  (require 'major-mode-icons)
+  (major-mode-icons-mode 1)
+  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count 'powerline-major-mode-icons)
+  (spaceline-toggle-major-mode-off)
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 
