@@ -16,8 +16,6 @@
 ;; UI requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
 (prolusion/require-package 'rainbow-mode)
 (prolusion/require-package 'fontawesome)
 (prolusion/require-package 'octicons)
@@ -26,7 +24,6 @@
 (prolusion/require-package 'spaceline)
 (prolusion/install-package 'spacemacs-theme)
 (prolusion/require-package 'info+)
-(prolusion/install-package 'major-mode-icons)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup
@@ -111,10 +108,7 @@
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
   (setq all-the-icons-scale-factor 1.0)
-  (setq major-mode-icons-icons-style 'all-the-icons)
-  (require 'major-mode-icons)
-  (major-mode-icons-mode 1)
-  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count 'powerline-major-mode-icons)
+  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count)
   (spaceline-toggle-major-mode-off)
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
