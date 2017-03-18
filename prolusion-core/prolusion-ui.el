@@ -111,7 +111,7 @@
     (let ((num (or prolusion--upgrades (prolusion//count-upgrades))))
       (propertize
        (concat
-        (propertize (format "%s" (all-the-icons-octicon "package" :v-adjust 0))
+        (propertize (format "%s" (all-the-icons-octicon "package" :v-adjust 0.1))
                     'face `((t (:family ,(all-the-icons-octicon-family) :height 1.0 :inherit))))
         (propertize (format " %d" num) 'face `(:height 0.9 :inherit)))
        'help-echo "Open Packages Menu"
