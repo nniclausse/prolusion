@@ -17,8 +17,6 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prolusion/require-package 'rainbow-mode)
-(prolusion/require-package 'fontawesome)
-(prolusion/require-package 'octicons)
 (prolusion/require-package 'all-the-icons)
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'spaceline)
@@ -30,8 +28,6 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq initial-frame-alist '((width . 75) (height . 50)))
-
-(set-frame-font "Source Code Pro-9" nil t)
 
 (if (eq system-type 'darwin)
     (set-frame-font "Source Code Pro-13" nil t)
@@ -102,14 +98,13 @@
           (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
           (kill-buffer (get-buffer "*Packages*"))))
       (if (> prolusion-upgrade-count 0)
-          (propertize (format "%s %d" (propertize "" 'face '((t (:family "FontAwesome")))) prolusion-upgrade-count) 'face '((t (:foreground "MediumSeaGreen")))))))
+          (format "%s %d" (propertize (all-the-icons-faicon "upload" :v-adjust 0) 'face `((t (:family ,(all-the-icons-faicon-family) :height 0.9)))) prolusion-upgrade-count))))
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
   (setq all-the-icons-scale-factor 1.0)
   (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count)
-  (spaceline-toggle-major-mode-off)
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 
@@ -118,34 +113,6 @@
   (add-to-list 'default-frame-alist    '(alpha   98 95)))
 
 (setq inhibit-startup-message t)
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; UI function
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun prolusion/octicons--propertize (glyph)
-  ""
-  (propertize glyph 'face '(:family "Octicons" :height 1.0)))
-
-(defun prolusion/octicons--source (octicons-alist)
-  ""
-  (helm-build-sync-source "Select Octicon Icon: "
-    :candidates (mapcar (lambda (octicon)
-                          (cons (concat (car octicon)
-                                        " -> "
-                                        (prolusion/octicons--propertize
-                                         (cdr octicon)))
-                                (cdr octicon)))
-                        octicons-alist)
-    :action (lambda (candidate)
-              (insert (prolusion/octicons--propertize candidate)))
-    :candidate-number-limit 999))
-
-;;;###autoload
-
-(defun helm-octicons ()
-  (interactive)
-  (helm :sources (prolusion/octicons--source octicons-alist)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI modeline
