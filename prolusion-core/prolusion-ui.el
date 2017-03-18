@@ -49,7 +49,17 @@
 
 (global-page-break-lines-mode)
 
-(defvar prolusion-upgrade-count nil)
+(defvar prolusion--upgrades nil)
+
+(defun prolusion//count-upgrades ()
+  ""
+  (let ((buf (current-buffer)))
+    (package-list-packages-no-fetch)
+    (with-current-buffer "*Packages*"
+      (setq prolusion--upgrades (length (package-menu--find-upgrades))))
+    (switch-to-buffer buf)))
+
+(advice-add 'package-menu-execute :after 'prolusion//count-upgrades)
 
 (custom-set-faces
  '(mu4e-unread-face ((t (:foreground "green" :background nil :inherit nil))))
@@ -81,6 +91,13 @@
              (file-name-nondirectory (directory-file-name name))
            name)
          'face 'bold))))
+  (spaceline-define-segment prolusion-mode-icon
+    (let ((icon (all-the-icons-icon-for-buffer)))
+      (unless (symbolp icon)
+        (propertize icon
+                    'help-echo (format "Major-mode: `%s`" major-mode)
+                    'display '(raise 0.0)
+                    'face `((t (:height 0.9 :family ,(all-the-icons-icon-family-for-buffer) :inherit)))))))
   (spaceline-define-segment prolusion-narrow
     (when (buffer-narrowed-p)
       "Narrowed"))
@@ -89,22 +106,25 @@
       (if (not (equal (length conda-env-current-name) 0))
           (propertize (concat "conda: " conda-env-current-name) 'face '((t (:foreground "IndianRed"))))
         (propertize "no conda environment" 'face '((t (:foreground "IndianRed")))))))
+
   (spaceline-define-segment prolusion-upgrades-count
-    (when (string= major-mode "prolusion-dashboard-mode")
-      (unless prolusion-upgrade-count
-        (save-window-excursion
-          (package-list-packages)
-          (package-menu-mode)
-          (setq prolusion-upgrade-count (length (package-menu--find-upgrades)))
-          (kill-buffer (get-buffer "*Packages*"))))
-      (if (> prolusion-upgrade-count 0)
-          (format "%s %d" (propertize (all-the-icons-faicon "upload" :v-adjust 0) 'face `((t (:family ,(all-the-icons-faicon-family) :height 0.9)))) prolusion-upgrade-count))))
+    (let ((num (or prolusion--upgrades (prolusion//count-upgrades))))
+      (propertize
+       (concat
+        (propertize (format "%s" (all-the-icons-octicon "package" :v-adjust 0))
+                    'face `((t (:family ,(all-the-icons-octicon-family) :height 1.0 :inherit))))
+        (propertize (format " %d" num) 'face `(:height 0.9 :inherit)))
+       'help-echo "Open Packages Menu"
+       'local-map (make-mode-line-mouse-map
+                   'mouse-1 (lambda () (interactive) (package-list-packages)))))
+    :when (and active (> (or prolusion--upgrades (prolusion//count-upgrades)) 0)))
+
   (setq powerline-default-separator 'wave)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
   (setq all-the-icons-scale-factor 1.0)
-  (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count)
+  (spaceline-spacemacs-theme 'prolusion-mode-icon 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count)
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 

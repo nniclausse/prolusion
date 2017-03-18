@@ -304,7 +304,7 @@
           (cd prolusion-dir)
           (setq version-faced (propertize "Prolusion version: " 'face 'prolusion--dashboard-info-face))
           (insert version-faced)
-          (insert (format "%s %d.%d.%d - %s (%s) - %s (%s)\n" (all-the-icons-octicon "question" :v-adjust 0) prolusion-version-major prolusion-version-minor prolusion-version-patch (all-the-icons-octicon "git-branch" :v-adjust 0) (s-trim (s-chop-prefix "* " (propertize (car (s-lines (shell-command-to-string "git branch"))) 'face 'prolusion--dashboard-git-face))) (all-the-icons-octicon "git-commit" :v-adjust 0) (propertize (s-chomp (shell-command-to-string "git rev-parse HEAD")) 'face 'prolusion--dashboard-hash-face)))
+          (insert (format "%s %d.%d.%d - %s (%s) - %s (%s)\n" (all-the-icons-faicon "tag" :v-adjust 0) prolusion-version-major prolusion-version-minor prolusion-version-patch (all-the-icons-octicon "git-branch" :v-adjust 0) (s-trim (s-chop-prefix "* " (propertize (car (s-lines (shell-command-to-string "git branch"))) 'face 'prolusion--dashboard-git-face))) (all-the-icons-octicon "git-commit" :v-adjust 0) (propertize (s-chomp (shell-command-to-string "git rev-parse HEAD")) 'face 'prolusion--dashboard-hash-face)))
           (setq version-faced (propertize "    Emacs version: " 'face 'prolusion--dashboard-info-face))
           (insert version-faced)
           (insert (format "%s\n" (car (s-lines (emacs-version)))))
