@@ -19,6 +19,7 @@
 (prolusion/require-package 'rainbow-mode)
 (prolusion/require-package 'fontawesome)
 (prolusion/require-package 'octicons)
+(prolusion/require-package 'all-the-icons)
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'spaceline)
 (prolusion/install-package 'spacemacs-theme)
@@ -106,7 +107,9 @@
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
+  (setq all-the-icons-scale-factor 1.0)
   (spaceline-spacemacs-theme 'prolusion-narrow 'prolusion-conda-environment 'prolusion-upgrades-count)
+  (spaceline-toggle-major-mode-off)
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 

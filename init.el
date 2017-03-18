@@ -16,7 +16,7 @@
 
 (defconst prolusion-version-major 1)
 (defconst prolusion-version-minor 8)
-(defconst prolusion-version-patch 5)
+(defconst prolusion-version-patch 6)
 
 (defvar prolusion-dir          (file-name-directory load-file-name))
 (defvar prolusion-core-dir     (expand-file-name "prolusion-core"     prolusion-dir))
@@ -46,7 +46,7 @@
 (require 'prolusion-ui)
 (require 'prolusion-projectile)
 (require 'prolusion-behavior)
-(require 'prolusion-shell)
+(require 'prolusion-eshell)
 (require 'prolusion-editor)
 (require 'prolusion-snippets)
 (require 'prolusion-irony)
