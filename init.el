@@ -14,9 +14,13 @@
 ;;
 ;; (package-initialize)
 
+(setq gc-cons-threshold-default gc-cons-threshold)
+(setq gc-cons-threshold (* 100 1024 1024))
+(run-with-idle-timer 10 nil (lambda () (setq gc-cons-threshold gc-cons-threshold-default) (message nil)))
+
 (defconst prolusion-version-major 1)
 (defconst prolusion-version-minor 8)
-(defconst prolusion-version-patch 9)
+(defconst prolusion-version-patch 10)
 
 (defvar prolusion-dir          (file-name-directory load-file-name))
 (defvar prolusion-core-dir     (expand-file-name "prolusion-core"     prolusion-dir))
@@ -55,7 +59,6 @@
 (require 'prolusion-vc)
 (require 'prolusion-builtins)
 (require 'prolusion-cheatsheet)
-;; (require 'prolusion-mail)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
