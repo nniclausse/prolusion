@@ -57,6 +57,7 @@
     (package-list-packages-no-fetch)
     (with-current-buffer "*Packages*"
       (setq prolusion--upgrades (length (package-menu--find-upgrades))))
+    (kill-buffer "*Packages*")
     (switch-to-buffer buf)))
 
 (advice-add 'package-menu-execute :after 'prolusion//count-upgrades)
