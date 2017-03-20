@@ -60,7 +60,7 @@
     (let ((git-output (shell-command-to-string (concat "cd " pwd " && git branch | grep '\\*' | sed -e 's/^\\* //'"))))
       (if (> (length git-output) 0)
           (concat
-           (all-the-icons-octicon "git-branch" :v-adjust 0.1)
+           (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.1) 'face `(:family ,(all-the-icons-octicon-family)))
            " ("
            (substring git-output 0 -1)
            ")")
@@ -83,7 +83,7 @@
               (concat
                (propertize (getenv "USER") 'face `(:foreground "#ccccff"))
                (propertize "@" 'face `(:foreground "#ccccff"))
-               (propertize (getenv "HOSTNAME") 'face `(:foreground "#ccccff"))
+               (propertize (car (split-string (getenv "HOSTNAME") "\\.")) 'face `(:foreground "#ccccff"))
                " "
                (propertize parent 'face `(:foreground "#8888ff"))
                (propertize name   'face `(:foreground "#8888ff" :weight bold))
@@ -95,7 +95,7 @@
             (concat
              (propertize (getenv "USER") 'face `(:foreground "#222222"))
              (propertize "@" 'face `(:foreground "#222222"))
-             (propertize (getenv "HOSTNAME") 'face `(:foreground "#222222"))
+             (propertize (car (split-string (getenv "HOSTNAME") "\\.")) 'face `(:foreground "#222222"))
              " "
              (propertize parent 'face `(:foreground "blue"))
              (propertize name   'face `(:foreground "blue" :weight bold))

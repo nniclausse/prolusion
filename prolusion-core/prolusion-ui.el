@@ -97,22 +97,22 @@
         (propertize icon
                     'help-echo (format "Major-mode: `%s`" major-mode)
                     'display '(raise 0.0)
-                    'face `((t (:height 0.9 :family ,(all-the-icons-icon-family-for-buffer) :inherit)))))))
+                    'face `(:height 0.9 :family ,(all-the-icons-icon-family-for-buffer) :inherit)))))
   (spaceline-define-segment prolusion-narrow
     (when (buffer-narrowed-p)
       "Narrowed"))
   (spaceline-define-segment prolusion-conda-environment
     (when (string= major-mode "python-mode")
       (if (not (equal (length conda-env-current-name) 0))
-          (propertize (concat "conda: " conda-env-current-name) 'face '((t (:foreground "IndianRed"))))
-        (propertize "no conda environment" 'face '((t (:foreground "IndianRed")))))))
+          (propertize (concat "conda: " conda-env-current-name) 'face '(:foreground "IndianRed" :inherit))
+        (propertize "no conda environment" 'face '(:foreground "IndianRed" :inherit)))))
 
   (spaceline-define-segment prolusion-upgrades-count
     (let ((num (or prolusion--upgrades (prolusion//count-upgrades))))
       (propertize
        (concat
-        (propertize (format "%s" (all-the-icons-octicon "package" :v-adjust 0.1))
-                    'face `((t (:family ,(all-the-icons-octicon-family) :height 1.0 :inherit))))
+        (propertize (all-the-icons-octicon "package" :v-adjust 0.1)
+                    'face `(:family ,(all-the-icons-octicon-family) :height 1.0 :inherit))
         (propertize (format " %d" num) 'face `(:height 0.9 :inherit)))
        'help-echo "Open Packages Menu"
        'local-map (make-mode-line-mouse-map
@@ -120,7 +120,6 @@
     :when (and active (> (or prolusion--upgrades (prolusion//count-upgrades)) 0)))
 
   (setq powerline-default-separator 'wave)
-  (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)
   (setq all-the-icons-scale-factor 1.0)
