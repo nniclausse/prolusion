@@ -226,11 +226,3 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>C-c w K</kbd> | `persp-kill-buffer`                |
 | <kbd>C-c w w</kbd> | `persp-save-state-to-file`         |
 | <kbd>C-c w l</kbd> | `persp-load-state-from-file`       |
-
-**prolusion-typing**
-
-| Keybinding         | Function            |
-| ------------------ |:------------------- |
-| <kbd>C-c t b</kbd> | `speed-type-buffer` |
-| <kbd>C-c t r</kbd> | `speed-type-region` |
-| <kbd>C-c ts t</kbd> | `speed-type-text`   |
