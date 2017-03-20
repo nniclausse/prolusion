@@ -34,7 +34,6 @@
 (make-directory prolusion-elpa-dir   t)
 (make-directory prolusion-save-dir   t)
 (make-directory prolusion-irony-dir  t)
-(make-directory prolusion-typing-dir t)
 
 (add-to-list 'load-path prolusion-core-dir)
 
