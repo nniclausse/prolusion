@@ -27,7 +27,6 @@
 (defvar prolusion-irony-dir    (expand-file-name "prolusion-irony"    prolusion-dir))
 (defvar prolusion-snippets-dir (expand-file-name "prolusion-snippets" prolusion-dir))
 (defvar prolusion-jedi-dir     (expand-file-name "prolusion-jedi"     prolusion-dir))
-(defvar prolusion-typing-dir   (expand-file-name "prolusion-typing"   prolusion-dir))
 (defvar prolusion-dark-variant  t)
 (defvar prolusion-green-variant nil)
 
@@ -56,7 +55,6 @@
 (require 'prolusion-www)
 (require 'prolusion-vc)
 (require 'prolusion-builtins)
-(require 'prolusion-typing)
 (require 'prolusion-cheatsheet)
 ;; (require 'prolusion-mail)
 
