@@ -15,8 +15,8 @@
 ;; (package-initialize)
 
 (defconst prolusion-version-major 1)
-(defconst prolusion-version-minor 7)
-(defconst prolusion-version-patch 0)
+(defconst prolusion-version-minor 8)
+(defconst prolusion-version-patch 9)
 
 (defvar prolusion-dir          (file-name-directory load-file-name))
 (defvar prolusion-core-dir     (expand-file-name "prolusion-core"     prolusion-dir))
@@ -27,7 +27,6 @@
 (defvar prolusion-irony-dir    (expand-file-name "prolusion-irony"    prolusion-dir))
 (defvar prolusion-snippets-dir (expand-file-name "prolusion-snippets" prolusion-dir))
 (defvar prolusion-jedi-dir     (expand-file-name "prolusion-jedi"     prolusion-dir))
-(defvar prolusion-typing-dir   (expand-file-name "prolusion-typing"   prolusion-dir))
 (defvar prolusion-dark-variant  t)
 (defvar prolusion-green-variant nil)
 
@@ -35,7 +34,6 @@
 (make-directory prolusion-elpa-dir   t)
 (make-directory prolusion-save-dir   t)
 (make-directory prolusion-irony-dir  t)
-(make-directory prolusion-typing-dir t)
 
 (add-to-list 'load-path prolusion-core-dir)
 
@@ -46,7 +44,7 @@
 (require 'prolusion-ui)
 (require 'prolusion-projectile)
 (require 'prolusion-behavior)
-(require 'prolusion-shell)
+(require 'prolusion-eshell)
 (require 'prolusion-editor)
 (require 'prolusion-snippets)
 (require 'prolusion-irony)
@@ -56,11 +54,8 @@
 (require 'prolusion-www)
 (require 'prolusion-vc)
 (require 'prolusion-builtins)
-(require 'prolusion-typing)
 (require 'prolusion-cheatsheet)
-
-(if (file-exists-p (expand-file-name "prolusion-mail.el" prolusion-core-dir))
-    (require 'prolusion-mail))
+;; (require 'prolusion-mail)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here

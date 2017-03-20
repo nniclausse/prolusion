@@ -33,6 +33,10 @@ keybindings.
     $ brew install llvm --with-clang
     $ brew install ack
     $ brew install the_silver_searcher
+    $ brew install mu --with-emacs --HEAD # OPTIONAL
+    $ brew install isync # OPTIONAL
+    $ brew install msmtp # OPTIONAL
+    $ npm install -g tern # OPTIONAL
 
 ## Installation
 

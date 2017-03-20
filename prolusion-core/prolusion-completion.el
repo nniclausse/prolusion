@@ -17,6 +17,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prolusion/require-package 'company)
+(prolusion/require-package 'company-tern)
 (prolusion/require-package 'company-jedi)
 (prolusion/require-package 'company-irony)
 (prolusion/require-package 'company-irony-c-headers)
@@ -51,6 +52,7 @@
 (eval-after-load 'company '(add-to-list 'company-backends 'company-jedi))
 (eval-after-load 'company '(add-to-list 'company-backends 'company-anaconda))
 (eval-after-load 'company '(add-to-list 'company-backends 'company-qml))
+(eval-after-load 'company '(add-to-list 'company-backends 'company-tern))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completion hooks
