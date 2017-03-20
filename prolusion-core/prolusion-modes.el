@@ -86,7 +86,7 @@
 
 (conda-env-initialize-interactive-shells)
 (conda-env-initialize-eshell)
-(conda-env-autoactivate-mode t)
+(conda-env-autoactivate-mode nil)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes functions
