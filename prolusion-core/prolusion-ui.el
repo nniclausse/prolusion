@@ -54,7 +54,7 @@
 (defun prolusion//count-upgrades ()
   ""
   (let ((buf (current-buffer)))
-    (package-list-packages-no-fetch)
+    (package-list-packages)
     (with-current-buffer "*Packages*"
       (setq prolusion--upgrades (length (package-menu--find-upgrades))))
     (kill-buffer "*Packages*")

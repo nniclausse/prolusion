@@ -184,6 +184,8 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>C-c p p</kbd>   | `helm-projectile-switch-project`              |
 | <kbd>C-c p e</kbd>   | `helm-projectile-recentf`                     |
 | <kbd>C-c p b</kbd>   | `helm-projectile-switch-to-buffer`            |
+| <kbd>C-c p R</kbd>   | `projectile-regenerate-tags`                  |
+| <kbd>C-c p j</kbd>   | `projectile-projectile-find-tag`              |
 | <kbd>C-c p s g</kbd> | `helm-projectile-grep`                        |
 | <kbd>C-c p s a</kbd> | `helm-projectile-ack`                         |
 | <kbd>C-c p s s</kbd> | `helm-projectile-ag`                          |
