@@ -18,6 +18,7 @@
 
 (prolusion/require-package 'persp-mode)
 (prolusion/require-package 'window-numbering)
+(prolusion/require-package 'all-the-icons)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Workspaces setup
@@ -29,7 +30,7 @@
 (when (display-graphic-p)
   (setq persp-auto-save-fname (expand-file-name "prolusion-perspective" prolusion-save-dir))
   (setq persp-save-dir prolusion-save-dir)
-  (setq persp-nil-name (octicons "dash"))
+  (setq persp-nil-name (all-the-icons-octicon "dash" :v-adjust 0))
   (custom-set-variables
    '(persp-auto-resume-time -1)
    '(persp-auto-save-opt 0)
