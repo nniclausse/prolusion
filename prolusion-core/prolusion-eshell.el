@@ -41,6 +41,12 @@
 (setq eshell-hist-ignoredups t)
 (setq eshell-save-history-on-exit t)
 
+(eval-after-load 'esh-opt
+  '(progn
+     (require 'em-term)
+     (add-to-list 'eshell-visual-commands "ccmake")
+     (add-to-list 'eshell-visual-subcommands '("git" '("log" "st" "status")))))
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
