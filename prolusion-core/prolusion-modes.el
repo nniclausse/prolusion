@@ -61,6 +61,9 @@
 (add-to-list 'auto-mode-alist '("doxyfile\\'"       . conf-mode))
 (add-to-list 'auto-mode-alist '("doxyfile.in\\'"    . conf-mode))
 (add-to-list 'auto-mode-alist '("Doxyfile\\'"       . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'"          . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'"    . markdown-mode))
+(add-to-list 'auto-mode-alist '("README\\.md\\'"    . gfm-mode))
 
 (use-package      cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
 (use-package javascript-mode :mode "\\.qs\\'")

@@ -29,6 +29,7 @@ keybindings.
 
     $ brew tap d12frosted/emacs-plus
     $ brew install emacs-plus --HEAD
+    $ brew install global --with-pygments --with-ctags
     $ brew install cmake
     $ brew install llvm --with-clang
     $ brew install ack
