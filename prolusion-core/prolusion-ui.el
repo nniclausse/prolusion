@@ -17,6 +17,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prolusion/require-package 'rainbow-mode)
+(prolusion/require-package 'font-lock+)
 (prolusion/require-package 'all-the-icons)
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'spaceline)
