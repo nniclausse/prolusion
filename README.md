@@ -48,7 +48,7 @@ keybindings.
 **Emacs**
 
     $ brew   install emacs-plus --HEAD # if emacs is not installed
-    $ brew reinstall emac-pluss --HEAD # if emacs is     installed
+    $ brew reinstall emacs-plus --HEAD # if emacs is     installed
 
 **Emacs prolusion**
 
