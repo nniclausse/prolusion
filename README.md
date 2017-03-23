@@ -29,6 +29,7 @@ keybindings.
 
     $ brew tap d12frosted/emacs-plus
     $ brew install emacs-plus --HEAD
+    $ brew install global --with-pygments --with-ctags
     $ brew install cmake
     $ brew install llvm --with-clang
     $ brew install ack
@@ -47,7 +48,7 @@ keybindings.
 **Emacs**
 
     $ brew   install emacs-plus --HEAD # if emacs is not installed
-    $ brew reinstall emac-pluss --HEAD # if emacs is     installed
+    $ brew reinstall emacs-plus --HEAD # if emacs is     installed
 
 **Emacs prolusion**
 
@@ -122,6 +123,10 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c b s`</kbd> |                 `bookmark-set` |
 | <kbd>`C-c b j`</kbd> |                `bookmark-jump` |
 | <kbd>`C-c b l`</kbd> |          `bookmark-bmenu-list` |
+| <kbd>`C-h k`</kbd>   |                 `describe-key` |
+| <kbd>`C-h f`</kbd>   |            `describe-function` |
+| <kbd>`C-h v`</kbd>   |            `describe-variable` |
+| <kbd>`C-h b`</kbd>   |            `describe-bindings` |
 
 **prolusion-eshell**
 
