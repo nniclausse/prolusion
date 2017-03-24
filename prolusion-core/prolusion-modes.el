@@ -58,6 +58,12 @@
 (add-to-list 'auto-mode-alist '(".msmtprc\\'"       . conf-mode))
 (add-to-list 'auto-mode-alist '("mbsyncrc\\'"       . conf-mode))
 (add-to-list 'auto-mode-alist '("msmtprc\\'"        . conf-mode))
+(add-to-list 'auto-mode-alist '("doxyfile\\'"       . conf-mode))
+(add-to-list 'auto-mode-alist '("doxyfile.in\\'"    . conf-mode))
+(add-to-list 'auto-mode-alist '("Doxyfile\\'"       . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'"          . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'"    . markdown-mode))
+(add-to-list 'auto-mode-alist '("README\\.md\\'"    . gfm-mode))
 
 (use-package      cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
 (use-package javascript-mode :mode "\\.qs\\'")
@@ -65,6 +71,16 @@
 (use-package        js2-mode :mode "\\.js\\'")
 (use-package       json-mode :mode "\\.json\\'")
 (use-package        qml-mode :mode "\\.qml\\'")
+
+(setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
+
+(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
+
+(custom-set-variables '(conda-anaconda-home "~/.conda"))
+
+(conda-env-initialize-interactive-shells)
+(conda-env-initialize-eshell)
+(conda-env-autoactivate-mode nil)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Toogle between source and header
@@ -81,12 +97,6 @@
         ("\\.h\\'"   (".tpp" ".cpp" ".cxx" ".tcc" ".cc" ".C" ".c" ".hxx" ".hpp"))
         ("\\.hpp\\'" (".tpp" ".cpp" ".cxx" ".tcc" ".cc" ".C" ".c" ".h"))
         ("\\.hxx\\'" (".tpp" ".cpp" ".cxx" ".tcc" ".cc" ".C" ".c" ".h"))))
-
-(custom-set-variables '(conda-anaconda-home "~/.conda"))
-
-(conda-env-initialize-interactive-shells)
-(conda-env-initialize-eshell)
-(conda-env-autoactivate-mode t)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes functions

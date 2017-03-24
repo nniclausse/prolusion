@@ -29,6 +29,7 @@ keybindings.
 
     $ brew tap d12frosted/emacs-plus
     $ brew install emacs-plus --HEAD
+    $ brew install global --with-pygments --with-ctags
     $ brew install cmake
     $ brew install llvm --with-clang
     $ brew install ack
@@ -47,7 +48,7 @@ keybindings.
 **Emacs**
 
     $ brew   install emacs-plus --HEAD # if emacs is not installed
-    $ brew reinstall emac-pluss --HEAD # if emacs is     installed
+    $ brew reinstall emacs-plus --HEAD # if emacs is     installed
 
 **Emacs prolusion**
 
@@ -122,6 +123,10 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>`C-c b s`</kbd> |                 `bookmark-set` |
 | <kbd>`C-c b j`</kbd> |                `bookmark-jump` |
 | <kbd>`C-c b l`</kbd> |          `bookmark-bmenu-list` |
+| <kbd>`C-h k`</kbd>   |                 `describe-key` |
+| <kbd>`C-h f`</kbd>   |            `describe-function` |
+| <kbd>`C-h v`</kbd>   |            `describe-variable` |
+| <kbd>`C-h b`</kbd>   |            `describe-bindings` |
 
 **prolusion-eshell**
 
@@ -184,6 +189,8 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>C-c p p</kbd>   | `helm-projectile-switch-project`              |
 | <kbd>C-c p e</kbd>   | `helm-projectile-recentf`                     |
 | <kbd>C-c p b</kbd>   | `helm-projectile-switch-to-buffer`            |
+| <kbd>C-c p R</kbd>   | `projectile-regenerate-tags`                  |
+| <kbd>C-c p j</kbd>   | `projectile-projectile-find-tag`              |
 | <kbd>C-c p s g</kbd> | `helm-projectile-grep`                        |
 | <kbd>C-c p s a</kbd> | `helm-projectile-ack`                         |
 | <kbd>C-c p s s</kbd> | `helm-projectile-ag`                          |
@@ -226,11 +233,3 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 | <kbd>C-c w K</kbd> | `persp-kill-buffer`                |
 | <kbd>C-c w w</kbd> | `persp-save-state-to-file`         |
 | <kbd>C-c w l</kbd> | `persp-load-state-from-file`       |
-
-**prolusion-typing**
-
-| Keybinding         | Function            |
-| ------------------ |:------------------- |
-| <kbd>C-c t b</kbd> | `speed-type-buffer` |
-| <kbd>C-c t r</kbd> | `speed-type-region` |
-| <kbd>C-c ts t</kbd> | `speed-type-text`   |

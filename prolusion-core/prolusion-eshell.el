@@ -41,6 +41,12 @@
 (setq eshell-hist-ignoredups t)
 (setq eshell-save-history-on-exit t)
 
+(eval-after-load 'esh-opt
+  '(progn
+     (require 'em-term)
+     (add-to-list 'eshell-visual-commands "ccmake")
+     (add-to-list 'eshell-visual-subcommands '("git" '("log" "st" "status")))))
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -73,7 +79,7 @@
 
 (setq eshell-prompt-function
       (lambda ()
-        (let* ((directory (prolusion//split-directory-prompt (eshell/pwd)))
+        (let* ((directory (prolusion//split-directory-prompt (replace-regexp-in-string (getenv "HOME") "~" (eshell/pwd))))
                (parent (car directory))
                (name (cadr directory))
                (branch (or (prolusion//current-directory-git-branch-string (eshell/pwd)) ""))

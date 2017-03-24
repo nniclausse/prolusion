@@ -17,6 +17,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prolusion/require-package 'rainbow-mode)
+(prolusion/require-package 'font-lock+)
 (prolusion/require-package 'all-the-icons)
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'spaceline)
@@ -54,9 +55,10 @@
 (defun prolusion//count-upgrades ()
   ""
   (let ((buf (current-buffer)))
-    (package-list-packages-no-fetch)
+    (package-list-packages)
     (with-current-buffer "*Packages*"
       (setq prolusion--upgrades (length (package-menu--find-upgrades))))
+    (kill-buffer "*Packages*")
     (switch-to-buffer buf)))
 
 (advice-add 'package-menu-execute :after 'prolusion//count-upgrades)
