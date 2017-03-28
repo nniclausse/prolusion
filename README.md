@@ -28,7 +28,7 @@ keybindings.
 ## Prerequisites
 
     $ brew tap d12frosted/emacs-plus
-    $ brew install emacs-plus --HEAD
+    $ brew install emacs-plus --HEAD --with-natural-title-bar
     $ brew install global --with-pygments --with-ctags
     $ brew install cmake
     $ brew install llvm --with-clang
@@ -47,8 +47,8 @@ keybindings.
 
 **Emacs**
 
-    $ brew   install emacs-plus --HEAD # if emacs is not installed
-    $ brew reinstall emacs-plus --HEAD # if emacs is     installed
+    $ brew   install emacs-plus --HEAD --with-natural-title-bar # if emacs is not installed
+    $ brew reinstall emacs-plus --HEAD --with-natural-title-bar # if emacs is     installed
 
 **Emacs prolusion**
 
