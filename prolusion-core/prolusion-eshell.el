@@ -67,7 +67,6 @@
     (let ((git-output (shell-command-to-string (concat "cd " pwd " && git branch | grep '\\*' | sed -e 's/^\\* //'"))))
       (if (> (length git-output) 0)
           (concat
-           (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.1) 'face `(:family ,(all-the-icons-octicon-family) :inherit))
            " ("
            (substring git-output 0 -1)
            ")")
@@ -85,7 +84,8 @@
                (parent (car directory))
                (name (cadr directory))
                (branch (or (prolusion//current-directory-git-branch-string (eshell/pwd)) ""))
-               (separator (or (if (prolusion//current-directory-git-branch-string (eshell/pwd)) " " ""))))
+               (separator (if (prolusion//current-directory-git-branch-string (eshell/pwd)) " " ""))
+               (icon (if (prolusion//current-directory-git-branch-string (eshell/pwd)) (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.1) 'face `(:family ,(all-the-icons-octicon-family) :foreground "green")) "")))
 
           (if prolusion-dark-variant
               (concat
@@ -96,6 +96,7 @@
                (propertize parent 'face `(:foreground "#8888ff"))
                (propertize name   'face `(:foreground "#8888ff" :weight bold))
                separator
+               icon
                (propertize branch 'face `(:foreground "green"))
                (propertize " $"   'face `(:weight ultra-bold))
                (propertize " "    'face `(:weight bold)))
@@ -108,6 +109,7 @@
              (propertize parent 'face `(:foreground "blue"))
              (propertize name   'face `(:foreground "blue" :weight bold))
              separator
+             icon
              (propertize branch 'face `(:foreground "dark green"))
              (propertize " $"   'face `(:weight ultra-bold))
              (propertize " "    'face `(:weight bold)))))))

@@ -32,7 +32,7 @@
 (when (display-graphic-p)
   (defadvice vc-mode-line (after strip-backend () activate)
     (when (stringp vc-mode)
-      (let ((gitlogo (replace-regexp-in-string "^ Git." (format "%s · %s " (propertize (all-the-icons-alltheicon "git" :v-adjust 0.1) 'face `((t (:family ,(all-the-icons-alltheicon-family) :height 0.9)))) (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.08) 'face `((t (:family ,(all-the-icons-octicon-family) :height 0.9))))) vc-mode)))
+      (let ((gitlogo (replace-regexp-in-string "^ Git." (format "%s · %s " (propertize (all-the-icons-alltheicon "git" :v-adjust 0.1) 'face `(:family ,(all-the-icons-alltheicon-family) :height 0.9 :inherit)) (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.08) 'face `(:family ,(all-the-icons-octicon-family) :height 0.9 :inherit))) vc-mode)))
         (setq vc-mode gitlogo)))))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
