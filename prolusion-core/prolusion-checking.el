@@ -18,7 +18,6 @@
 
 (prolusion/require-package 'flycheck)
 (prolusion/require-package 'flycheck-irony)
-(prolusion/require-package 'flycheck-pyflakes)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Checking setup
