@@ -28,8 +28,6 @@
 ;; UI setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq initial-frame-alist '((width . 75) (height . 50)))
-
 (if (eq system-type 'darwin)
     (set-frame-font "Source Code Pro-13" nil t)
   (set-frame-font "Source Code Pro-10" nil t))
@@ -108,7 +106,6 @@
       (if (not (equal (length conda-env-current-name) 0))
           (propertize (concat "conda: " conda-env-current-name) 'face '(:foreground "IndianRed" :inherit))
         (propertize "no conda environment" 'face '(:foreground "IndianRed" :inherit)))))
-
   (spaceline-define-segment prolusion-upgrades-count
     (let ((num (or prolusion--upgrades (prolusion//count-upgrades))))
       (propertize
@@ -120,7 +117,6 @@
        'local-map (make-mode-line-mouse-map
                    'mouse-1 (lambda () (interactive) (package-list-packages)))))
     :when (and active (> (or prolusion--upgrades (prolusion//count-upgrades)) 0)))
-
   (setq powerline-default-separator 'wave)
   (setq spaceline-display-default-perspective t)
   (setq spaceline-toggle-window-number-on-p t)

@@ -19,6 +19,7 @@
 (prolusion/require-package 'anzu)
 (prolusion/require-package 'beacon)
 (prolusion/require-package 'recentf)
+(prolusion/require-package 'neotree)
 (prolusion/require-package 'diminish)
 (prolusion/require-package 'saveplace)
 (prolusion/require-package 'which-key)
@@ -28,10 +29,11 @@
 ;; Behavior setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Encoding system
+;; encoding system
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prefer-coding-system 'utf-8)
+
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
 
@@ -134,6 +136,24 @@
 
 (setq debug-on-error t)
 
+;; neotree
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq neo-mode-line-type 'none)
+(setq neo-window-fixed-size nil)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+;; desktop save mode
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq desktop-path (list prolusion-save-dir))
+(setq desktop-dirname prolusion-save-dir)
+(setq desktop-base-file-name "prolusion-behavior-desktop")
+(setq desktop-base-lock-name "prolusion-behavior-desktop-lock")
+(setq desktop-load-locked-desktop nil)
+
+(desktop-save-mode 1)
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -156,6 +176,7 @@
    (lambda ()
      (interactive)
      (other-window -1)))
+(global-set-key [f8] 'neotree-toggle)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

@@ -67,7 +67,7 @@
     (let ((git-output (shell-command-to-string (concat "cd " pwd " && git branch | grep '\\*' | sed -e 's/^\\* //'"))))
       (if (> (length git-output) 0)
           (concat
-           (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.1) 'face `(:family ,(all-the-icons-octicon-family)) 'display '(raise 0.1))
+           (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.1) 'face `(:family ,(all-the-icons-octicon-family) :inherit))
            " ("
            (substring git-output 0 -1)
            ")")
