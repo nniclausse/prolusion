@@ -66,10 +66,10 @@ Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 
 **prolusion-packages**
 
-| Keybinding         | Function                     |
-| ------------------ |:---------------------------- |
-| <kbd>`C-u u`</kbd> | `prolusion/upgrade`          |
-| <kbd>`C-u p`</kbd> | `prolusion/upgrade-packages` |
+| Keybinding           | Function                     |
+| -------------------- |:---------------------------- |
+| <kbd>`C-c u u`</kbd> | `prolusion/upgrade`          |
+| <kbd>`C-c u p`</kbd> | `prolusion/upgrade-packages` |
 
 **prolusion-behavior**
 
