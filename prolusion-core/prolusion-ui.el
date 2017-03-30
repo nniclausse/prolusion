@@ -75,9 +75,9 @@
           (custom-set-variables
            '(spacemacs-theme-custom-colors
              '((bg1  . "#111111")
-               (act1 . "#080808")
-               (vertical-border . "#100a14")))))
-        (load-theme 'spacemacs-dark t))
+               (act1 . "#080808"))))
+          (load-theme 'spacemacs-dark t)
+          (custom-theme-set-faces 'spacemacs-dark `(vertical-border ((t (:foreground "#000000")))))))
     (load-theme 'spacemacs-light t))
   (setq ns-use-srgb-colorspace nil)
   (require 'spaceline-config)
