@@ -12,24 +12,23 @@
 ;;
 ;;; Code:
 
-(prolusion/require-package 'ansi-color)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Compilation requirements
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(prolusion/require-package 'xterm-color)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Compilation setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq compilation-environment '("TERM=xterm-256color"))
 
 (ansi-color-for-comint-mode-on)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Compilation functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun prolusion/colorize-compilation-buffer ()
-  ""
-  (interactive)
-  (when (eq major-mode 'compilation-mode)
-    (let ((inhibit-read-only t))
-      (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (defun prolusion/after-compilation-hook (buffer message)
   ""
@@ -39,8 +38,16 @@
 ;; Compilation hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'compilation-filter-hook 'prolusion/colorize-compilation-buffer)
 (add-hook 'compilation-finish-functions 'prolusion/after-compilation-hook)
+
+(add-hook 'compilation-start-hook
+  (lambda (proc)
+    (when (eq (process-filter proc) 'compilation-filter)
+      (set-process-filter
+       proc
+       (lambda (proc string)
+         (funcall 'compilation-filter proc
+                  (xterm-color-filter string)))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
