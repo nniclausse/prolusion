@@ -143,17 +143,6 @@
 (setq neo-window-fixed-size nil)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-;; desktop save mode
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq desktop-path (list prolusion-save-dir))
-(setq desktop-dirname prolusion-save-dir)
-(setq desktop-base-file-name "prolusion-behavior-desktop")
-(setq desktop-base-lock-name "prolusion-behavior-desktop-lock")
-(setq desktop-load-locked-desktop nil)
-
-(desktop-save-mode 1)
-
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
