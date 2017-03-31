@@ -19,6 +19,7 @@
 (prolusion/require-package 'anzu)
 (prolusion/require-package 'beacon)
 (prolusion/require-package 'recentf)
+(prolusion/require-package 'neotree)
 (prolusion/require-package 'diminish)
 (prolusion/require-package 'saveplace)
 (prolusion/require-package 'which-key)
@@ -28,10 +29,11 @@
 ;; Behavior setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Encoding system
+;; encoding system
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (prefer-coding-system 'utf-8)
+
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
 
@@ -134,6 +136,13 @@
 
 (setq debug-on-error t)
 
+;; neotree
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq neo-mode-line-type 'none)
+(setq neo-window-fixed-size nil)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -156,6 +165,7 @@
    (lambda ()
      (interactive)
      (other-window -1)))
+(global-set-key [f8] 'neotree-toggle)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
