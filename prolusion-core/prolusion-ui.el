@@ -125,9 +125,9 @@
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 
-(when (display-graphic-p)
-  (set-frame-parameter (selected-frame) 'alpha '(98 95))
-  (add-to-list 'default-frame-alist    '(alpha   98 95)))
+;; (when (display-graphic-p)
+;;   (set-frame-parameter (selected-frame) 'alpha '(98 95))
+;;   (add-to-list 'default-frame-alist    '(alpha   98 95)))
 
 (setq inhibit-startup-message t)
 

@@ -14,8 +14,8 @@
 ;;
 ;; (package-initialize)
 
-(setq gc-cons-threshold-default gc-cons-threshold)
 (setq gc-cons-threshold (* 100 1024 1024))
+(setq gc-cons-threshold-default gc-cons-threshold)
 
 (run-with-idle-timer 10 nil (lambda () (setq gc-cons-threshold gc-cons-threshold-default) (message nil)))
 
@@ -36,10 +36,10 @@
 (defvar prolusion-dark-variant  t)
 (defvar prolusion-green-variant nil)
 
-(make-directory prolusion-docs-dir   t)
-(make-directory prolusion-elpa-dir   t)
-(make-directory prolusion-save-dir   t)
-(make-directory prolusion-irony-dir  t)
+(make-directory prolusion-docs-dir  t)
+(make-directory prolusion-elpa-dir  t)
+(make-directory prolusion-save-dir  t)
+(make-directory prolusion-irony-dir t)
 
 (add-to-list 'load-path prolusion-core-dir)
 
