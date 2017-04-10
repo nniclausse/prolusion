@@ -30,7 +30,11 @@
 
 (define-fringe-bitmap 'git-gutter-fr:added [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224] nil nil 'center)
 (define-fringe-bitmap 'git-gutter-fr:modified [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224] nil nil 'center)
-(define-fringe-bitmap 'git-gutter-fr:deleted [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248] nil nil 'center)
+(define-fringe-bitmap 'git-gutter-fr:deleted [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224] nil nil 'center)
+
+(set-face-foreground 'git-gutter-fr:modified "DarkGoldenrod3")
+(set-face-foreground 'git-gutter-fr:added "DarkOliveGreen3")
+(set-face-foreground 'git-gutter-fr:deleted "OrangeRed3")
 
 (global-git-gutter-mode)
 
@@ -55,6 +59,12 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (global-set-key (kbd "C-c v m") 'magit-status)
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; VC modeline
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(diminish 'git-gutter-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
