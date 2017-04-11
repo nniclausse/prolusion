@@ -33,11 +33,9 @@
 ;; Cheatsheet faces
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defface prolusion//cheatsheet-group-face '((t :foreground "#4f97d7" :bold t)) "Group name font face.")
-
-(defface prolusion//cheatsheet-key-face '((t :foreground "#bc6ec5" :bold t)) "Cheat key font face.")
-
-(defface prolusion//cheatsheet-separator-face '((t :foreground "#3fa589")) "Cheat separator font face.")
+(defface prolusion//cheatsheet-group-face '((t :foreground "#4f97d7" :bold t)) "" :group 'prolusion-cheatsheet)
+(defface prolusion//cheatsheet-key-face '((t :foreground "#bc6ec5" :bold t)) "" :group 'prolusion-cheatheet)
+(defface prolusion//cheatsheet-separator-face '((t :foreground "#3fa589")) "" :group 'prolusion-cheatheet)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Cheatsheet variables
