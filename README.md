@@ -62,6 +62,10 @@ keybindings.
 
 Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 
+Should you be on Linux, use:
+
+    $ install -m 0644 -D ~/.emacs.d/prolusion-fonts/*.ttf -t ~/.local/share/fonts/
+
 ## Keybindings
 
 **prolusion-packages**
