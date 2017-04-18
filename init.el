@@ -45,11 +45,11 @@
 
 (require 'prolusion-packages)
 (require 'prolusion-workspaces)
+(require 'prolusion-ui)
 (require 'prolusion-dashboard)
 (require 'prolusion-modes)
-(require 'prolusion-ui)
-(require 'prolusion-projectile)
 (require 'prolusion-behavior)
+(require 'prolusion-projectile)
 (require 'prolusion-eshell)
 (require 'prolusion-editor)
 (require 'prolusion-snippets)

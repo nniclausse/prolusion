@@ -53,10 +53,12 @@
   (setq doom-enable-italic t)
   (setq doom-one-brighter-modeline nil)
   (setq doom-one-brighter-comments t)
+  (setq doom-neotree-file-icons t)
   (setq ns-use-srgb-colorspace t)
 
   (load-theme 'doom-one t)
 
+  (require 'doom-neotree)
   (require 'doom-nlinum)
 
   (add-hook 'find-file-hook 'doom-buffer-mode-maybe)
@@ -79,7 +81,14 @@
   (spaceline-all-the-icons--setup-package-updates)
   (spaceline-all-the-icons--setup-paradox)
   (spaceline-all-the-icons--setup-neotree)
-  (setq spaceline-all-the-icons-flycheck-alternate nil)
+  (spaceline-toggle-all-the-icons-fullscreen-on)
+  (spaceline-toggle-all-the-icons-flycheck-status-on)
+  (spaceline-toggle-all-the-icons-git-status-on)
+  (spaceline-toggle-all-the-icons-mode-icon-on)
+  (spaceline-toggle-all-the-icons-package-updates-on)
+  (spaceline-toggle-workspace-number-on)
+  (spaceline-toggle-all-the-icons-region-info-on)
+  (setq spaceline-all-the-icons-flycheck-alternate t)
   (setq spaceline-all-the-icons-highlight-file-name t)
   (setq spaceline-all-the-icons-separator-type (quote none)))
 

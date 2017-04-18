@@ -123,7 +123,7 @@
 ;; show number of candidates for searches
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq anzu-cons-mode-line-p nil)
+(setq anzu-cons-mode-line-p t)
 
 (global-anzu-mode +1)
 
