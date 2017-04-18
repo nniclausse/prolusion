@@ -80,7 +80,7 @@
   (spaceline-all-the-icons--setup-package-updates)
   (spaceline-all-the-icons--setup-paradox)
   (spaceline-all-the-icons--setup-neotree)
-  (setq spaceline-all-the-icons-flycheck-alternate t)
+  (setq spaceline-all-the-icons-flycheck-alternate nil)
   (setq spaceline-all-the-icons-highlight-file-name t)
   (setq spaceline-all-the-icons-separator-type (quote none)))
 

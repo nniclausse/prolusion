@@ -82,6 +82,7 @@
 (setq load-prefer-newer t)
 
 (prolusion/require-package 'auto-compile)
+(prolusion/require-package 'paradox)
 
 (auto-compile-on-load-mode)
 (auto-compile-on-save-mode)
