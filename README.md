@@ -28,7 +28,7 @@ keybindings.
 ## Prerequisites
 
     $ brew tap d12frosted/emacs-plus
-    $ brew install emacs-plus --HEAD
+    $ brew install emacs-plus --HEAD --with-natural-title-bar
     $ brew install global --with-pygments --with-ctags
     $ brew install cmake
     $ brew install llvm --with-clang
@@ -47,8 +47,8 @@ keybindings.
 
 **Emacs**
 
-    $ brew   install emacs-plus --HEAD # if emacs is not installed
-    $ brew reinstall emacs-plus --HEAD # if emacs is     installed
+    $ brew   install emacs-plus --HEAD --with-natural-title-bar # if emacs is not installed
+    $ brew reinstall emacs-plus --HEAD --with-natural-title-bar # if emacs is     installed
 
 **Emacs prolusion**
 
@@ -62,14 +62,18 @@ keybindings.
 
 Take care to install all the fonts provided in `.prolusion/prolusion-fonts`.
 
+Should you be on Linux, use:
+
+    $ install -m 0644 -D ~/.emacs.d/prolusion-fonts/*.ttf -t ~/.local/share/fonts/
+
 ## Keybindings
 
 **prolusion-packages**
 
-| Keybinding         | Function                     |
-| ------------------ |:---------------------------- |
-| <kbd>`C-u u`</kbd> | `prolusion/upgrade`          |
-| <kbd>`C-u p`</kbd> | `prolusion/upgrade-packages` |
+| Keybinding           | Function                     |
+| -------------------- |:---------------------------- |
+| <kbd>`C-c u u`</kbd> | `prolusion/upgrade`          |
+| <kbd>`C-c u p`</kbd> | `prolusion/upgrade-packages` |
 
 **prolusion-behavior**
 

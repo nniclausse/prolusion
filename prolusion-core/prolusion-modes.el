@@ -46,6 +46,7 @@
 (add-to-list 'auto-mode-alist '("\\.hpp$"           . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hxx$"           . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.qdoc$"          . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.m$"             . objc-mode))
 (add-to-list 'auto-mode-alist '(".gitignore\\'"     . makefile-mode))
 (add-to-list 'auto-mode-alist '(".gitattributes\\'" . makefile-mode))
 (add-to-list 'auto-mode-alist '("qmldir\\'"         . makefile-mode))
@@ -65,12 +66,12 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'"    . markdown-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'"    . gfm-mode))
 
-(use-package      cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
-(use-package javascript-mode :mode "\\.qs\\'")
-(use-package       yaml-mode :mode "\\.yml\\'")
-(use-package        js2-mode :mode "\\.js\\'")
-(use-package       json-mode :mode "\\.json\\'")
-(use-package        qml-mode :mode "\\.qml\\'")
+(use-package cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
+(use-package   js2-mode :mode "\\.qs\\'")
+(use-package  yaml-mode :mode "\\.yml\\'")
+(use-package   js2-mode :mode "\\.js\\'")
+(use-package  json-mode :mode "\\.json\\'")
+(use-package   qml-mode :mode "\\.qml\\'")
 
 (setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
 

@@ -27,6 +27,7 @@
 (setq eshell-directory-name                                                       prolusion-save-dir)
 (setq eshell-history-file-name       (expand-file-name "prolusion-eshell-history" prolusion-save-dir))
 (setq eshell-last-dir-ring-file-name (expand-file-name "prolusion-eshell-lastdir" prolusion-save-dir))
+(setq eshell-rc-script               (expand-file-name "eshellrc"                prolusion-shell-dir))
 
 (when (memq window-system '(mac ns))
   (setq exec-path-from-shell-arguments (quote ("-l")))
@@ -66,7 +67,6 @@
     (let ((git-output (shell-command-to-string (concat "cd " pwd " && git branch | grep '\\*' | sed -e 's/^\\* //'"))))
       (if (> (length git-output) 0)
           (concat
-           (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.1) 'face `(:family ,(all-the-icons-octicon-family)) 'display '(raise 0.1))
            " ("
            (substring git-output 0 -1)
            ")")
@@ -79,21 +79,24 @@
 
 (setq eshell-prompt-function
       (lambda ()
-        (let* ((directory (prolusion//split-directory-prompt (replace-regexp-in-string (getenv "HOME") "~" (eshell/pwd))))
+        (let* ((hostname (or (getenv "HOSTNAME") "localhost" (getenv "HOSTNAME")))
+               (directory (prolusion//split-directory-prompt (replace-regexp-in-string (getenv "HOME") "~" (eshell/pwd))))
                (parent (car directory))
                (name (cadr directory))
                (branch (or (prolusion//current-directory-git-branch-string (eshell/pwd)) ""))
-               (separator (or (if (prolusion//current-directory-git-branch-string (eshell/pwd)) " " ""))))
+               (separator (if (prolusion//current-directory-git-branch-string (eshell/pwd)) " " ""))
+               (icon (if (prolusion//current-directory-git-branch-string (eshell/pwd)) (propertize (all-the-icons-octicon "git-branch" :v-adjust 0.1) 'face `(:family ,(all-the-icons-octicon-family) :foreground "green")) "")))
 
           (if prolusion-dark-variant
               (concat
                (propertize (getenv "USER") 'face `(:foreground "#ccccff"))
                (propertize "@" 'face `(:foreground "#ccccff"))
-               (propertize (car (split-string (getenv "HOSTNAME") "\\.")) 'face `(:foreground "#ccccff"))
+               (propertize (car (split-string hostname "\\.")) 'face `(:foreground "#ccccff"))
                " "
                (propertize parent 'face `(:foreground "#8888ff"))
                (propertize name   'face `(:foreground "#8888ff" :weight bold))
                separator
+               icon
                (propertize branch 'face `(:foreground "green"))
                (propertize " $"   'face `(:weight ultra-bold))
                (propertize " "    'face `(:weight bold)))
@@ -101,16 +104,15 @@
             (concat
              (propertize (getenv "USER") 'face `(:foreground "#222222"))
              (propertize "@" 'face `(:foreground "#222222"))
-             (propertize (car (split-string (getenv "HOSTNAME") "\\.")) 'face `(:foreground "#222222"))
+             (propertize (car (split-string hostname "\\.")) 'face `(:foreground "#222222"))
              " "
              (propertize parent 'face `(:foreground "blue"))
              (propertize name   'face `(:foreground "blue" :weight bold))
              separator
+             icon
              (propertize branch 'face `(:foreground "dark green"))
              (propertize " $"   'face `(:weight ultra-bold))
              (propertize " "    'face `(:weight bold)))))))
-
-(setq eshell-highlight-prompt nil)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Eshell hooks
