@@ -57,7 +57,6 @@
 
   (load-theme 'doom-one t)
 
-  (require 'doom-neotree)
   (require 'doom-nlinum)
 
   (add-hook 'find-file-hook 'doom-buffer-mode-maybe)
