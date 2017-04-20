@@ -19,6 +19,7 @@
 (prolusion/require-package 'rainbow-mode)
 (prolusion/require-package 'font-lock+)
 (prolusion/require-package 'all-the-icons)
+(prolusion/require-package 'all-the-icons-dired)
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'nlinum)
 (prolusion/require-package 'spaceline)
@@ -98,6 +99,12 @@
   (spaceline-toggle-all-the-icons-package-updates-on)
   ;; (spaceline-toggle-all-the-icons-text-scale-on)
   (spaceline-toggle-all-the-icons-region-info-on))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UI hooks
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI keybindings
