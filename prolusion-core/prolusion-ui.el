@@ -61,6 +61,8 @@
   (require 'doom-neotree)
   (require 'doom-nlinum)
 
+  (setq nlinum-format "%d ")
+
   (add-hook 'find-file-hook 'doom-buffer-mode-maybe)
   (add-hook 'after-revert-hook 'doom-buffer-mode-maybe)
   (add-hook 'ediff-prepare-buffer-hook 'doom-buffer-mode)
@@ -91,6 +93,12 @@
   (setq spaceline-all-the-icons-flycheck-alternate t)
   (setq spaceline-all-the-icons-highlight-file-name t)
   (setq spaceline-all-the-icons-separator-type (quote none)))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UI keybindings
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key [f7] 'nlinum-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI modeline
