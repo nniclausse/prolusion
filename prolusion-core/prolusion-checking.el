@@ -76,6 +76,8 @@
 (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
 (add-hook 'javascript-mode-hook 'flycheck-mode)
 
+(setq-default flycheck-emacs-lisp-load-path load-path)
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Checking modeline
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

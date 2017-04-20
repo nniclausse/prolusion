@@ -24,6 +24,7 @@
 (prolusion/require-package 'saveplace)
 (prolusion/require-package 'which-key)
 (prolusion/require-package 'resize-window)
+(prolusion/require-package 'restart-emacs)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior setup
@@ -122,7 +123,7 @@
 ;; show number of candidates for searches
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq anzu-cons-mode-line-p nil)
+(setq anzu-cons-mode-line-p t)
 
 (global-anzu-mode +1)
 
@@ -142,6 +143,7 @@
 (setq neo-mode-line-type 'none)
 (setq neo-window-fixed-size nil)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(setq neo-window-width 35)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior modeline
