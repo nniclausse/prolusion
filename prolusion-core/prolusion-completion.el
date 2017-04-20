@@ -92,4 +92,4 @@
 (provide 'prolusion-completion)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; prolusion-syntactic.el ends here
+;;; prolusion-completion.el ends here

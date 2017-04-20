@@ -113,6 +113,12 @@ Should you be on Linux, use:
 | <kbd>M-x resize-window</kbd> <kbd>w</kbd> | `resize-window--cycle-window-positive` |
 | <kbd>M-x resize-window</kbd> <kbd>W</kbd> | `resize-window--cycle-window-negative` |
 
+| Keybinding      | Function         |
+| --------------- |:---------------- |
+| <kbd>`F7`</kbd> | `neotree-toggle` |
+| <kbd>`F8`</kbd> | `nlinum-mode`    |
+
+
 **prolusion-builtins**
 
 | Keybinding           | Function                       |
@@ -176,9 +182,9 @@ Should you be on Linux, use:
 
 **prolusion-vc**
 
-| Keybinding           | Function                    |
-| -------------------- |:--------------------------- |
-| <kbd>`C-c v m`</kbd> | `magit-status`              |
+| Keybinding           | Function       |
+| -------------------- |:-------------- |
+| <kbd>`C-c v m`</kbd> | `magit-status` |
 
 **prolusion-projectile**
 
