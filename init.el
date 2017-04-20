@@ -60,7 +60,6 @@
 (require 'prolusion-www)
 (require 'prolusion-vc)
 (require 'prolusion-builtins)
-(require 'prolusion-tree)
 (require 'prolusion-cheatsheet)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
