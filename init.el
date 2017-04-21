@@ -14,8 +14,8 @@
 ;;
 ;; (package-initialize)
 
-(setq gc-cons-threshold (* 100 1024 1024))
 (setq gc-cons-threshold-default gc-cons-threshold)
+(setq gc-cons-threshold (* 100 1024 1024))
 
 (run-with-idle-timer 10 nil (lambda () (setq gc-cons-threshold gc-cons-threshold-default) (message nil)))
 
