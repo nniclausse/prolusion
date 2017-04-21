@@ -98,7 +98,7 @@
   (spaceline-toggle-all-the-icons-vc-icon-on)
   (spaceline-toggle-all-the-icons-mode-icon-on)
   (spaceline-toggle-all-the-icons-package-updates-on)
-  ;; (spaceline-toggle-all-the-icons-text-scale-on)
+  (spaceline-toggle-all-the-icons-text-scale-on)
   (spaceline-toggle-all-the-icons-region-info-on))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
