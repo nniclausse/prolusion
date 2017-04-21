@@ -19,6 +19,7 @@
 (prolusion/require-package 'rainbow-mode)
 (prolusion/require-package 'font-lock+)
 (prolusion/require-package 'all-the-icons)
+(prolusion/require-package 'all-the-icons-dired)
 (prolusion/require-package 'page-break-lines)
 (prolusion/require-package 'nlinum)
 (prolusion/require-package 'spaceline)
@@ -78,21 +79,33 @@
 (use-package spaceline-all-the-icons
   :after spaceline
   :config
+  (setq spaceline-all-the-icons-icon-set-flycheck-slim (quote dots))
+  (setq spaceline-all-the-icons-icon-set-git-ahead (quote commit))
+  ;; (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
+  (setq spaceline-all-the-icons-flycheck-alternate t)
+  (setq spaceline-all-the-icons-highlight-file-name t)
+  (setq spaceline-all-the-icons-separator-type (quote none))
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons--setup-package-updates)
   (spaceline-all-the-icons--setup-paradox)
   (spaceline-all-the-icons--setup-neotree)
+  (spaceline-toggle-all-the-icons-buffer-path-off)
   (spaceline-toggle-all-the-icons-fullscreen-on)
   (spaceline-toggle-all-the-icons-flycheck-status-on)
+  (spaceline-toggle-all-the-icons-vc-status-on)
   (spaceline-toggle-all-the-icons-git-status-on)
+  (spaceline-toggle-all-the-icons-vc-icon-on)
   (spaceline-toggle-all-the-icons-mode-icon-on)
   (spaceline-toggle-all-the-icons-package-updates-on)
-  (spaceline-toggle-workspace-number-on)
-  (spaceline-toggle-all-the-icons-region-info-on)
-  (setq spaceline-all-the-icons-flycheck-alternate t)
-  (setq spaceline-all-the-icons-highlight-file-name t)
-  (setq spaceline-all-the-icons-separator-type (quote none)))
+  ;; (spaceline-toggle-all-the-icons-text-scale-on)
+  (spaceline-toggle-all-the-icons-region-info-on))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UI hooks
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI keybindings
