@@ -30,6 +30,7 @@
 (prolusion/install-package 'tern)
 (prolusion/install-package 'qml-mode)
 (prolusion/install-package 'anaconda-mode)
+(prolusion/install-package 'gitignore-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes setup
@@ -124,6 +125,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (diminish 'tern-mode)
+(diminish 'gitignore-mode)
 (diminish 'prettify-symbols-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

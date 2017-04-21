@@ -90,6 +90,7 @@
   (spaceline-all-the-icons--setup-package-updates)
   (spaceline-all-the-icons--setup-paradox)
   (spaceline-all-the-icons--setup-neotree)
+  (spaceline-toggle-all-the-icons-buffer-path-off)
   (spaceline-toggle-all-the-icons-fullscreen-on)
   (spaceline-toggle-all-the-icons-flycheck-status-on)
   (spaceline-toggle-all-the-icons-vc-status-on)
