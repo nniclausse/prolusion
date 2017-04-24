@@ -63,6 +63,8 @@
   :fringe-bitmap 'prolusion-flycheck-fringe-indicator
   :fringe-face 'flycheck-fringe-info)
 
+(setq flycheck-emacs-lisp-load-path 'inherit)
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Checking hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
