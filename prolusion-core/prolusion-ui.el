@@ -26,6 +26,7 @@
 (prolusion/require-package 'spaceline-all-the-icons)
 (prolusion/require-package 'doom-themes)
 (prolusion/require-package 'info+)
+(prolusion/require-package 'highlight-indentation)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup
@@ -81,10 +82,11 @@
   :config
   (setq spaceline-all-the-icons-icon-set-flycheck-slim (quote dots))
   (setq spaceline-all-the-icons-icon-set-git-ahead (quote commit))
-  ;; (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
-  (setq spaceline-all-the-icons-flycheck-alternate t)
+  (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
+  (setq spaceline-all-the-icons-flycheck-alternate nil)
   (setq spaceline-all-the-icons-highlight-file-name t)
   (setq spaceline-all-the-icons-separator-type (quote none))
+  (setq spaceline-all-the-icons-clock-always-visible nil)
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons--setup-package-updates)
@@ -100,6 +102,55 @@
   (spaceline-toggle-all-the-icons-package-updates-on)
   (spaceline-toggle-all-the-icons-text-scale-on)
   (spaceline-toggle-all-the-icons-region-info-on))
+
+(use-package highlight-indentation
+  :commands (highlight-indentation-mode highlight-indentation-current-column-mode)
+  :config
+  (defun doom|inject-trailing-whitespace (&optional start end)
+    (interactive (progn (barf-if-buffer-read-only)
+                        (if (use-region-p)
+                            (list (region-beginning) (region-end))
+                          (list nil nil))))
+    (unless indent-tabs-mode
+      (save-match-data
+        (save-excursion
+          (let ((end-marker (copy-marker (or end (point-max))))
+                (start (or start (point-min))))
+            (goto-char start)
+            (while (and (re-search-forward "^$" end-marker t) (< (point) end-marker))
+              (let (line-start line-end next-start next-end)
+                (save-excursion
+                  ;; Check previous line indent
+                  (forward-line -1)
+                  (setq line-start (point)
+                        line-end (save-excursion (back-to-indentation) (point)))
+                  ;; Check next line indent
+                  (forward-line 2)
+                  (setq next-start (point)
+                        next-end (save-excursion (back-to-indentation) (point)))
+                  ;; Back to origin
+                  (forward-line -1)
+                  ;; Adjust indent
+                  (let* ((line-indent (- line-end line-start))
+                         (next-indent (- next-end next-start))
+                         (indent (min line-indent next-indent)))
+                    (insert (make-string (if (zerop indent) 0 (1+ indent)) ? )))))
+              (forward-line 1)))))
+      (set-buffer-modified-p nil))
+    nil)
+
+  (defun highlight-indentation-handle-whitespace ()
+    (if (or highlight-indentation-mode highlight-indentation-current-column-mode)
+        (progn
+          (doom|inject-trailing-whitespace)
+          (add-hook 'before-save-hook #'delete-trailing-whitespace nil t)
+          (add-hook 'after-save-hook #'doom|inject-trailing-whitespace nil t))
+      (remove-hook 'before-save-hook #'delete-trailing-whitespace t)
+      (remove-hook 'after-save-hook #'doom|inject-trailing-whitespace t)
+      (delete-trailing-whitespace)))
+
+  (add-hook 'highlight-indentation-mode-hook 'highlight-indentation-handle-whitespace)
+  (add-hook 'highlight-indentation-current-column-mode-hook 'highlight-indentation-handle-whitespace))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI hooks
