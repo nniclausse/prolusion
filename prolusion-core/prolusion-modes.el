@@ -82,7 +82,7 @@
 
 (conda-env-initialize-interactive-shells)
 (conda-env-initialize-eshell)
-(conda-env-autoactivate-mode nil)
+(conda-env-autoactivate-mode -1)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Toogle between source and header

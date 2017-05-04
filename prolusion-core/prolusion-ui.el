@@ -80,10 +80,9 @@
 (use-package spaceline-all-the-icons
   :after spaceline
   :config
-  (setq spaceline-all-the-icons-icon-set-flycheck-slim (quote dots))
+  (setq spaceline-all-the-icons-slim-render nil)
   (setq spaceline-all-the-icons-icon-set-git-ahead (quote commit))
   (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
-  (setq spaceline-all-the-icons-flycheck-alternate nil)
   (setq spaceline-all-the-icons-highlight-file-name t)
   (setq spaceline-all-the-icons-separator-type (quote none))
   (setq spaceline-all-the-icons-clock-always-visible nil)
@@ -93,6 +92,8 @@
   (spaceline-all-the-icons--setup-paradox)
   (spaceline-all-the-icons--setup-neotree)
   (spaceline-toggle-all-the-icons-buffer-path-off)
+  (spaceline-toggle-all-the-icons-buffer-position-on)
+  (spaceline-toggle-all-the-icons-hud-on)
   (spaceline-toggle-all-the-icons-fullscreen-on)
   (spaceline-toggle-all-the-icons-flycheck-status-on)
   (spaceline-toggle-all-the-icons-vc-status-on)
@@ -101,7 +102,8 @@
   (spaceline-toggle-all-the-icons-mode-icon-on)
   (spaceline-toggle-all-the-icons-package-updates-on)
   (spaceline-toggle-all-the-icons-text-scale-on)
-  (spaceline-toggle-all-the-icons-region-info-on))
+  (spaceline-toggle-all-the-icons-region-info-on)
+  :when (display-graphic-p))
 
 (use-package highlight-indentation
   :commands (highlight-indentation-mode highlight-indentation-current-column-mode)
@@ -150,7 +152,9 @@
       (delete-trailing-whitespace)))
 
   (add-hook 'highlight-indentation-mode-hook 'highlight-indentation-handle-whitespace)
-  (add-hook 'highlight-indentation-current-column-mode-hook 'highlight-indentation-handle-whitespace))
+  (add-hook 'highlight-indentation-current-column-mode-hook 'highlight-indentation-handle-whitespace)
+
+  :when (display-graphic-p))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI hooks
