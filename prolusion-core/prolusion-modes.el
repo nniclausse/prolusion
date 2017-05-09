@@ -68,9 +68,8 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'"    . gfm-mode))
 
 (use-package cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
-(use-package   js2-mode :mode "\\.qs\\'")
+(use-package   js2-mode :mode "\\.qs\\'" "\\.js\\'")
 (use-package  yaml-mode :mode "\\.yml\\'")
-(use-package   js2-mode :mode "\\.js\\'")
 (use-package  json-mode :mode "\\.json\\'")
 (use-package   qml-mode :mode "\\.qml\\'")
 
