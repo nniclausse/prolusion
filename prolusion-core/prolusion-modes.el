@@ -31,6 +31,7 @@
 (prolusion/install-package 'qml-mode)
 (prolusion/install-package 'anaconda-mode)
 (prolusion/install-package 'gitignore-mode)
+(prolusion/install-package 'indium)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes setup
@@ -113,11 +114,12 @@
 ;; Modes hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook         'js-mode-hook             'tern-mode)
-(add-hook        'css-mode-hook          'rainbow-mode)
-(add-hook        'qml-mode-hook          'rainbow-mode)
-(add-hook       'prog-mode-hook 'prettify-symbols-mode)
-(add-hook 'emacs-lisp-mode-hook          'rainbow-mode)
+(add-hook        'js2-mode-hook                'tern-mode)
+(add-hook         'js-mode-hook #'indium-interaction-mode)
+(add-hook        'css-mode-hook             'rainbow-mode)
+(add-hook        'qml-mode-hook             'rainbow-mode)
+(add-hook       'prog-mode-hook    'prettify-symbols-mode)
+(add-hook 'emacs-lisp-mode-hook             'rainbow-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes modeline
@@ -126,6 +128,7 @@
 (diminish 'tern-mode)
 (diminish 'gitignore-mode)
 (diminish 'prettify-symbols-mode)
+(diminish 'indium-interaction-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Editor keybindings
