@@ -60,8 +60,8 @@
 
   (load-theme 'doom-one t)
 
-  (require 'doom-neotree)
-  (require 'doom-nlinum)
+  (doom-themes-nlinum-config)
+  (doom-themes-neotree-config)
 
   (setq nlinum-format "%d ")
 
