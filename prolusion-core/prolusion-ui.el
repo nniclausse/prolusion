@@ -75,6 +75,15 @@
   (spaceline-helm-mode +1)
   (spaceline-info-mode +1))
 
+;; (custom-set-faces
+;;   `(mode-line                ((t (:inherit nil :foreground "white"    :background nil))))
+;;   `(mode-line-inactive       ((t (:inherit nil :foreground "gray"     :background nil :box nil))))
+;;   `(powerline-active1        ((t (:inherit nil :foreground "white"    :background "SkyBlue4"))))
+;;   `(powerline-active2        ((t (:inherit nil :foreground "white"    :background nil))))
+;;   `(powerline-inactive1      ((t (:inherit nil :foreground "SkyBlue4" :background nil))))
+;;   `(powerline-inactive2      ((t (:inherit nil :foreground "SkyBlue4" :background nil))))
+;;   `(spaceline-highlight-face ((t (:inherit nil :foreground "SkyBlue1" :background "SkyBlue4")))))
+
 (setq inhibit-startup-message t)
 
 (use-package spaceline-all-the-icons
