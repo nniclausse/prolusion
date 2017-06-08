@@ -70,10 +70,10 @@
   (add-hook 'ediff-prepare-buffer-hook 'doom-buffer-mode)
   (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
 
-  (require 'spaceline-config)
+  (require 'spaceline-config))
 
-  (spaceline-helm-mode +1)
-  (spaceline-info-mode +1))
+  ;; (spaceline-helm-mode +1)
+  ;; (spaceline-info-mode +1))
 
 ;; (custom-set-faces
 ;;   `(mode-line                ((t (:inherit nil :foreground "white"    :background nil))))
