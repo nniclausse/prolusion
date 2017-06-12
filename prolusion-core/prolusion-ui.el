@@ -16,6 +16,7 @@
 ;; UI requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(prolusion/require-package 'solaire-mode)
 (prolusion/require-package 'rainbow-mode)
 (prolusion/require-package 'font-lock+)
 (prolusion/require-package 'all-the-icons)
@@ -65,24 +66,12 @@
 
   (setq nlinum-format "%d ")
 
-  (add-hook 'find-file-hook 'doom-buffer-mode-maybe)
-  (add-hook 'after-revert-hook 'doom-buffer-mode-maybe)
-  (add-hook 'ediff-prepare-buffer-hook 'doom-buffer-mode)
-  (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
+  (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
+  (add-hook 'after-revert-hook #'turn-on-solaire-mode)
+  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
+  (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
 
   (require 'spaceline-config))
-
-  ;; (spaceline-helm-mode +1)
-  ;; (spaceline-info-mode +1))
-
-;; (custom-set-faces
-;;   `(mode-line                ((t (:inherit nil :foreground "white"    :background nil))))
-;;   `(mode-line-inactive       ((t (:inherit nil :foreground "gray"     :background nil :box nil))))
-;;   `(powerline-active1        ((t (:inherit nil :foreground "white"    :background "SkyBlue4"))))
-;;   `(powerline-active2        ((t (:inherit nil :foreground "white"    :background nil))))
-;;   `(powerline-inactive1      ((t (:inherit nil :foreground "SkyBlue4" :background nil))))
-;;   `(powerline-inactive2      ((t (:inherit nil :foreground "SkyBlue4" :background nil))))
-;;   `(spaceline-highlight-face ((t (:inherit nil :foreground "SkyBlue1" :background "SkyBlue4")))))
 
 (setq inhibit-startup-message t)
 
@@ -182,6 +171,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (diminish 'rainbow-mode)
+(diminish 'solaire-mode)
 (diminish 'page-break-lines-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
