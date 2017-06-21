@@ -14,14 +14,14 @@
 ;;
 ;; (package-initialize)
 
-(setq gc-cons-threshold (* 100 1024 1024))
 (setq gc-cons-threshold-default gc-cons-threshold)
+(setq gc-cons-threshold (* 100 1024 1024))
 
 (run-with-idle-timer 10 nil (lambda () (setq gc-cons-threshold gc-cons-threshold-default) (message nil)))
 
 (defconst prolusion-version-major 1)
 (defconst prolusion-version-minor 8)
-(defconst prolusion-version-patch 23)
+(defconst prolusion-version-patch 24)
 
 (defvar prolusion-dir          (file-name-directory load-file-name))
 (defvar prolusion-core-dir     (expand-file-name "prolusion-core"     prolusion-dir))
@@ -33,8 +33,6 @@
 (defvar prolusion-irony-dir    (expand-file-name "prolusion-irony"    prolusion-dir))
 (defvar prolusion-snippets-dir (expand-file-name "prolusion-snippets" prolusion-dir))
 (defvar prolusion-jedi-dir     (expand-file-name "prolusion-jedi"     prolusion-dir))
-(defvar prolusion-dark-variant  t)
-(defvar prolusion-green-variant nil)
 
 (make-directory prolusion-docs-dir  t)
 (make-directory prolusion-elpa-dir  t)

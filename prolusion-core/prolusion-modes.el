@@ -68,9 +68,8 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'"    . gfm-mode))
 
 (use-package cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
-(use-package   js2-mode :mode "\\.qs\\'")
+(use-package   js2-mode :mode "\\.qs\\'" "\\.js\\'")
 (use-package  yaml-mode :mode "\\.yml\\'")
-(use-package   js2-mode :mode "\\.js\\'")
 (use-package  json-mode :mode "\\.json\\'")
 (use-package   qml-mode :mode "\\.qml\\'")
 
@@ -82,10 +81,10 @@
 
 (conda-env-initialize-interactive-shells)
 (conda-env-initialize-eshell)
-(conda-env-autoactivate-mode nil)
+(conda-env-autoactivate-mode -1)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Toogle between source and header
+;; Toggle between source and header
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq cc-other-file-alist
@@ -114,7 +113,7 @@
 ;; Modes hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook         'js-mode-hook             'tern-mode)
+(add-hook        'js2-mode-hook             'tern-mode)
 (add-hook        'css-mode-hook          'rainbow-mode)
 (add-hook        'qml-mode-hook          'rainbow-mode)
 (add-hook       'prog-mode-hook 'prettify-symbols-mode)
@@ -129,7 +128,7 @@
 (diminish 'prettify-symbols-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Editor keybindings
+;; Modes keybindings
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (global-set-key (kbd "C-c m p a") 'conda-env-activate)

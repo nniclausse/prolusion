@@ -63,6 +63,8 @@
   :fringe-bitmap 'prolusion-flycheck-fringe-indicator
   :fringe-face 'flycheck-fringe-info)
 
+(setq flycheck-emacs-lisp-load-path 'inherit)
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Checking hooks
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -74,7 +76,7 @@
 (add-hook       'objc-mode-hook 'flycheck-mode)
 (add-hook     'python-mode-hook 'flycheck-mode)
 (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
-(add-hook 'javascript-mode-hook 'flycheck-mode)
+(add-hook        'js2-mode-hook 'flycheck-mode)
 
 (setq-default flycheck-emacs-lisp-load-path load-path)
 
