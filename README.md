@@ -66,6 +66,10 @@ Should you be on Linux, use:
 
     $ install -m 0644 -D ~/.emacs.d/prolusion-fonts/*.ttf -t ~/.local/share/fonts/
 
+## Irony
+
+On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to the `M-x irony-install-server` command.
+
 ## Keybindings
 
 **prolusion-packages**
