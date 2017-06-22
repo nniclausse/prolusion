@@ -90,10 +90,11 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 | <kbd>`C-x o`</kbd> | `other-window`    |
 | <kbd>`C-x O`</kbd> | `other-window -1` |
 
-| Keybinding       | Function              |
-| ---------------- |:--------------------- |
-| <kbd>`C-+`</kbd> | `text-scale-increase` |
-| <kbd>`C--`</kbd> | `text-scale-decrease` |
+| Keybinding           | Function              |
+| -------------------- |:--------------------- |
+| <kbd>`C-+`</kbd>     | `text-scale-increase` |
+| <kbd>`C--`</kbd>     | `text-scale-decrease` |
+| <kbd>`C-x C-0`</kbd> | `text-scale-adjust`   |
 
 | Keybinding         | Function              |
 | ------------------ | ---------------------:|
