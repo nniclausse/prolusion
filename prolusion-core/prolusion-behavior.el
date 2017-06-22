@@ -41,11 +41,13 @@
 ;; Frame title
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq frame-title-format
-  '("Emacs - "
-    (:eval
-     (if (buffer-file-name)
-         (abbreviate-file-name (buffer-file-name)) "%b"))))
+;; (setq frame-title-format
+;;   '("Emacs - "
+;;     (:eval
+;;      (if (buffer-file-name)
+;;          (abbreviate-file-name (buffer-file-name)) "%b"))))
+
+(setq frame-title-format '(""))
 
 ;; yes or no
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -144,6 +146,7 @@
 (setq neo-window-fixed-size nil)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (setq neo-window-width 35)
+(setq neo-autorefresh t)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior modeline
