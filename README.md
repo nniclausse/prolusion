@@ -112,6 +112,10 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 | <kbd>`C-x n n`</kbd> | `narrow-to-region` |
 | <kbd>`C-x n w`</kbd> | `widen`            |
 
+| Keybinding         | Function         |
+| ------------------ | ----------------:|
+| <kbd>`M-SPC`</kbd> | `just-one-space` |
+
 | Keybinding                                | Function                               |
 | ----------------------------------------- |:-------------------------------------- |
 | <kbd>M-x resize-window</kbd> <kbd>n</kbd> | `resize-window--enlarge-down`          |
@@ -126,7 +130,6 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 | --------------- |:---------------- |
 | <kbd>`F7`</kbd> | `neotree-toggle` |
 | <kbd>`F8`</kbd> | `nlinum-mode`    |
-
 
 **prolusion-builtins**
 
@@ -252,3 +255,18 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 | <kbd>C-c w K</kbd> | `persp-kill-buffer`                |
 | <kbd>C-c w w</kbd> | `persp-save-state-to-file`         |
 | <kbd>C-c w l</kbd> | `persp-load-state-from-file`       |
+
+**prolusion-neotree**
+
+In `neotree` buffer:
+
+| Keybinding         | Function                     |
+| ------------------ |:---------------------------- |
+| <kbd>n</kbd>       | `neotree-next-line`          |
+| <kbd>p</kbd>       | `neotree-prev-line`          |
+| <kbd>g</kbd>       | `neotree-refresh`            |
+| <kbd>H</kbd>       | `neotree-hidden-file-toggle` |
+| <kbd>C-c C-n</kbd> | `neotree-create-node`        |
+| <kbd>C-c C-d</kbd> | `neotree-delete-node`        |
+| <kbd>C-c C-r</kbd> | `neotree-rename-node`        |
+| <kbd>C-c C-c</kbd> | `neotree-change-root`        |
