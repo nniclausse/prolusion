@@ -41,13 +41,13 @@
 ;; Frame title
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (setq frame-title-format
-;;   '("Emacs - "
-;;     (:eval
-;;      (if (buffer-file-name)
-;;          (abbreviate-file-name (buffer-file-name)) "%b"))))
-
-(setq frame-title-format '(""))
+(if (eq system-type 'darwin)
+    (setq frame-title-format '(""))
+  (setq frame-title-format
+        '("Emacs - "
+          (:eval
+           (if (buffer-file-name)
+               (abbreviate-file-name (buffer-file-name)) "%b")))))
 
 ;; yes or no
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

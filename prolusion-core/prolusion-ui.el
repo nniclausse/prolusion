@@ -120,17 +120,13 @@
             (while (and (re-search-forward "^$" end-marker t) (< (point) end-marker))
               (let (line-start line-end next-start next-end)
                 (save-excursion
-                  ;; Check previous line indent
                   (forward-line -1)
                   (setq line-start (point)
                         line-end (save-excursion (back-to-indentation) (point)))
-                  ;; Check next line indent
                   (forward-line 2)
                   (setq next-start (point)
                         next-end (save-excursion (back-to-indentation) (point)))
-                  ;; Back to origin
                   (forward-line -1)
-                  ;; Adjust indent
                   (let* ((line-indent (- line-end line-start))
                          (next-indent (- next-end next-start))
                          (indent (min line-indent next-indent)))
