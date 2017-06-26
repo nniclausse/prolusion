@@ -23,10 +23,9 @@
 ;; Checking setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq flycheck-indication-mode 'left-fringe)
+(setq flycheck-emacs-lisp-load-path 'inherit)
 
-(add-to-list 'flycheck-emacs-lisp-load-path prolusion-dir)
-(add-to-list 'flycheck-emacs-lisp-load-path prolusion-core-dir)
+(setq flycheck-indication-mode 'left-fringe)
 
 (when (fboundp 'define-fringe-bitmap)
   (define-fringe-bitmap 'prolusion-flycheck-fringe-indicator

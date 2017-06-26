@@ -24,7 +24,7 @@
 ;; VC setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package magit :defer t)
+(use-package magit)
 
 (setq-default fringes-outside-margins t)
 
