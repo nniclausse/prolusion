@@ -22,6 +22,8 @@ keybindings.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+- [Fonts](#fonts)
+- [Irony](#irony)
 - [Upgrade](#upgrade)
 - [Keybindings](#keybindings)
 
