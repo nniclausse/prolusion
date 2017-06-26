@@ -25,6 +25,7 @@
 (load-library "url-handlers")
 
 (setq package-user-dir prolusion-elpa-dir)
+(setq package-check-signature nil)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
