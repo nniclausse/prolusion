@@ -71,7 +71,10 @@
   (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
   (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
 
-  (require 'spaceline-config))
+  (require 'spaceline-config)
+
+  (spaceline-helm-mode)
+  (spaceline-info-mode))
 
 (setq inhibit-startup-message t)
 
@@ -84,8 +87,6 @@
   (setq spaceline-all-the-icons-highlight-file-name t)
   (setq spaceline-all-the-icons-separator-type (quote none))
   (setq spaceline-all-the-icons-clock-always-visible nil)
-  ;; (setq spaceline-all-the-icons-icon-set-flycheck-slim (quote dots))
-  ;; (setq spaceline-all-the-icons-icon-set-git-stats (quote arrows))
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons--setup-package-updates)
