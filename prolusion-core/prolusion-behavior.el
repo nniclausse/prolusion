@@ -149,6 +149,7 @@
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
 (setq neo-dont-be-alone t)
+(setq neo-force-change-root t)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior modeline
