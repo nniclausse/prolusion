@@ -34,7 +34,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (if (eq system-type 'darwin)
-    (set-frame-font "Source Code Pro-12" nil t)
+    (set-frame-font "Source Code Pro-11" nil t)
 (set-frame-font "Source Code Pro-10" nil t))
 
 (tooltip-mode -1)

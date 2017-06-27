@@ -12,21 +12,6 @@
 ;;
 ;;; Code:
 
-
-;; Version: $Id$
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Commentary:
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Change Log:
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Code:
-
 (require 'cl-lib)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -309,19 +294,6 @@
 ;; Version: 1.0
 ;; Keywords: convenience, usability
 ;;
-;; This file is not part of GNU Emacs
-;;
 ;;; Licence: Licensed under the same terms as Emacs.
 ;;
-;;; Commentary:
-;;
-;; (cheatsheet-add :group 'Common
-;;                 :key "C-x C-c"
-;;                 :description "leave Emacs.")
-;;
-;; (cheatsheet-add-group 'GroupName
-;;            '(:key "key1" :description "desc1")
-;;            '(:key "key2" :description "desc2"))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; prolusion-cheatsheet.el ends here
