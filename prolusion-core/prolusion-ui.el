@@ -34,7 +34,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (if (eq system-type 'darwin)
-    (set-frame-font "Source Code Pro-11" nil t)
+    (set-frame-font "Source Code Pro-13" nil t)
 (set-frame-font "Source Code Pro-10" nil t))
 
 (tooltip-mode -1)
@@ -84,6 +84,8 @@
   (setq spaceline-all-the-icons-highlight-file-name t)
   (setq spaceline-all-the-icons-separator-type (quote none))
   (setq spaceline-all-the-icons-clock-always-visible nil)
+  ;; (setq spaceline-all-the-icons-icon-set-flycheck-slim (quote dots))
+  ;; (setq spaceline-all-the-icons-icon-set-git-stats (quote arrows))
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons--setup-package-updates)
