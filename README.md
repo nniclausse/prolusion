@@ -36,10 +36,13 @@ keybindings.
     $ brew install llvm --with-clang
     $ brew install ack
     $ brew install the_silver_searcher
-    $ brew install mu --with-emacs --HEAD # OPTIONAL
-    $ brew install isync # OPTIONAL
-    $ brew install msmtp # OPTIONAL
-    $ npm install -g tern # OPTIONAL
+    $ brew install mu --with-emacs --HEAD
+    $ brew install isync
+    $ brew install msmtp
+    $ brew install nodejs npm
+    $ npm install -g tern tern-lint
+    $ npm install -g eslint babel-eslint eslint-plugin-react
+    $ ln -s $/.prolusion.d/prolusion/shell/eslintrc ~/.eslintrc
 
 ## Installation
 

@@ -63,6 +63,7 @@ prolusion_install () {
     /usr/bin/env ln -s $PROLUSION_INSTALL_DIR/prolusion-mail/mbsyncrc $HOME/.mbsyncrc
     /usr/bin/env ln -s $PROLUSION_INSTALL_DIR/prolusion-shell/bashrc $HOME/.bashrc
     /usr/bin/env ln -s $PROLUSION_INSTALL_DIR/prolusion-shell/bash_profile $HOME/.bash_profile
+    /usr/bin/env ln -s $PROLUSION_INSTALL_DIR/prolusion-shell/eslintrc $HOME/.eslintrc
 
     if ! [ $? -eq 0 ]
     then

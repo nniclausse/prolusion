@@ -23,8 +23,8 @@
 ;; Checking setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(setq flycheck-temp-prefix ".flycheck")
 (setq flycheck-emacs-lisp-load-path 'inherit)
-
 (setq flycheck-indication-mode 'left-fringe)
 
 (when (fboundp 'define-fringe-bitmap)
@@ -62,7 +62,15 @@
   :fringe-bitmap 'prolusion-flycheck-fringe-indicator
   :fringe-face 'flycheck-fringe-info)
 
-(setq flycheck-emacs-lisp-load-path 'inherit)
+(setq flycheck-eslintrc "~/.eslintrc")
+
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
+
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(json-jsonlist)))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Checking hooks
@@ -76,8 +84,6 @@
 (add-hook     'python-mode-hook 'flycheck-mode)
 (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
 (add-hook        'js2-mode-hook 'flycheck-mode)
-
-(setq-default flycheck-emacs-lisp-load-path load-path)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Checking modeline

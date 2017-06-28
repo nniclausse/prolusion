@@ -16,7 +16,6 @@
 ;; Eshell requirements
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prolusion/require-package        'all-the-icons)
 (prolusion/require-package         'multi-eshell)
 (prolusion/require-package 'exec-path-from-shell)
 
