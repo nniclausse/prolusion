@@ -16,7 +16,7 @@ set(\${PROJECT_NAME}_VERSION_MAJOR 0)
 set(\${PROJECT_NAME}_VERSION_MINOR 0)
 set(\${PROJECT_NAME}_VERSION_PATCH 1)
 set(\${PROJECT_NAME}_VERSION
-  \${\${PROJECT_NAME}_VERSION_MAJOR}.\${\${PROJECT_NAME}_VERSION_PATCH}.\${\${PROJECT_NAME}_VERSION_PATCH})
+  \${\${PROJECT_NAME}_VERSION_MAJOR}.\${\${PROJECT_NAME}_VERSION_MINOR}.\${\${PROJECT_NAME}_VERSION_PATCH})
 
 ## ###################################################################
 ## Output directory setup
@@ -44,17 +44,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 ## Build setup
 ## #################################################################
 
-include(CheckCXXCompilerFlag)
-check_cxx_compiler_flag("-std=c++11" COMPILER_SUPPORTS_CXX11)
-check_cxx_compiler_flag("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
-if(COMPILER_SUPPORTS_CXX11)
-  set(CMAKE_CXX_FLAGS "\${CMAKE_CXX_FLAGS} -std=c++11 -Wno-unknown-pragmas")
-elseif(COMPILER_SUPPORTS_CXX0X)
-  set(CMAKE_CXX_FLAGS "\${CMAKE_CXX_FLAGS} -std=c++0x -Wno-unknown-pragmas")
-else()
-  set(CMAKE_CXX_FLAGS "\${CMAKE_CXX_FLAGS} -Wno-unknown-pragmas")
-  message(STATUS "The compiler \${CMAKE_CXX_COMPILER} has no C++11 support.")
-endif()
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+## ###################################################################
+## Dependencies - cmake
+## ###################################################################
+
+include(GenerateExportHeader)
 
 ## #################################################################
 ## Dependencies - external

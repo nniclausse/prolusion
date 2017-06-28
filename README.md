@@ -22,6 +22,8 @@ keybindings.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+- [Fonts](#fonts)
+- [Irony](#irony)
 - [Upgrade](#upgrade)
 - [Keybindings](#keybindings)
 
@@ -34,10 +36,13 @@ keybindings.
     $ brew install llvm --with-clang
     $ brew install ack
     $ brew install the_silver_searcher
-    $ brew install mu --with-emacs --HEAD # OPTIONAL
-    $ brew install isync # OPTIONAL
-    $ brew install msmtp # OPTIONAL
-    $ npm install -g tern # OPTIONAL
+    $ brew install mu --with-emacs --HEAD
+    $ brew install isync
+    $ brew install msmtp
+    $ brew install nodejs npm
+    $ npm install -g tern tern-lint
+    $ npm install -g eslint babel-eslint eslint-plugin-react
+    $ ln -s $/.prolusion.d/prolusion/shell/eslintrc ~/.eslintrc
 
 ## Installation
 
@@ -66,9 +71,26 @@ Should you be on Linux, use:
 
     $ install -m 0644 -D ~/.emacs.d/prolusion-fonts/*.ttf -t ~/.local/share/fonts/
 
+or:
+
+    M-x all-the-icons-install-fonts
+
 ## Irony
 
 On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to the `M-x irony-install-server` command.
+
+## Tern
+
+To get javscript completion, add the following `.tern-project` taht contains at least the following minial configuration.
+
+```
+{
+    "plugins": {
+        "node": {
+        }
+    }
+}
+```
 
 ## Keybindings
 
@@ -86,10 +108,11 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 | <kbd>`C-x o`</kbd> | `other-window`    |
 | <kbd>`C-x O`</kbd> | `other-window -1` |
 
-| Keybinding       | Function              |
-| ---------------- |:--------------------- |
-| <kbd>`C-+`</kbd> | `text-scale-increase` |
-| <kbd>`C--`</kbd> | `text-scale-decrease` |
+| Keybinding           | Function              |
+| -------------------- |:--------------------- |
+| <kbd>`C-+`</kbd>     | `text-scale-increase` |
+| <kbd>`C--`</kbd>     | `text-scale-decrease` |
+| <kbd>`C-x C-0`</kbd> | `text-scale-adjust`   |
 
 | Keybinding         | Function              |
 | ------------------ | ---------------------:|
@@ -107,6 +130,10 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 | <kbd>`C-x n n`</kbd> | `narrow-to-region` |
 | <kbd>`C-x n w`</kbd> | `widen`            |
 
+| Keybinding         | Function         |
+| ------------------ | ----------------:|
+| <kbd>`M-SPC`</kbd> | `just-one-space` |
+
 | Keybinding                                | Function                               |
 | ----------------------------------------- |:-------------------------------------- |
 | <kbd>M-x resize-window</kbd> <kbd>n</kbd> | `resize-window--enlarge-down`          |
@@ -121,7 +148,6 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 | --------------- |:---------------- |
 | <kbd>`F7`</kbd> | `neotree-toggle` |
 | <kbd>`F8`</kbd> | `nlinum-mode`    |
-
 
 **prolusion-builtins**
 
@@ -247,3 +273,18 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 | <kbd>C-c w K</kbd> | `persp-kill-buffer`                |
 | <kbd>C-c w w</kbd> | `persp-save-state-to-file`         |
 | <kbd>C-c w l</kbd> | `persp-load-state-from-file`       |
+
+**prolusion-neotree**
+
+In `neotree` buffer:
+
+| Keybinding         | Function                     |
+| ------------------ |:---------------------------- |
+| <kbd>n</kbd>       | `neotree-next-line`          |
+| <kbd>p</kbd>       | `neotree-prev-line`          |
+| <kbd>g</kbd>       | `neotree-refresh`            |
+| <kbd>H</kbd>       | `neotree-hidden-file-toggle` |
+| <kbd>C-c C-n</kbd> | `neotree-create-node`        |
+| <kbd>C-c C-d</kbd> | `neotree-delete-node`        |
+| <kbd>C-c C-r</kbd> | `neotree-rename-node`        |
+| <kbd>C-c C-c</kbd> | `neotree-change-root`        |
