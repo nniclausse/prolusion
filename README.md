@@ -79,6 +79,19 @@ or:
 
 On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to the `M-x irony-install-server` command.
 
+## Tern
+
+To get javscript completion, add the following `.tern-project` taht contains at least the following minial configuration.
+
+```
+{
+    "plugins": {
+        "node": {
+        }
+    }
+}
+```
+
 ## Keybindings
 
 **prolusion-packages**
