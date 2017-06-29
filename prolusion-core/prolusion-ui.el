@@ -27,6 +27,7 @@
 (prolusion/require-package 'spaceline-all-the-icons)
 (prolusion/require-package 'doom-themes)
 (prolusion/require-package 'info+)
+
 (prolusion/require-package 'highlight-indentation)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -52,8 +53,8 @@
 (rainbow-mode 1)
 
 (when (display-graphic-p)
-  (setq doom-enable-bold t)
-  (setq doom-enable-italic t)
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t)
   (setq doom-one-brighter-modeline nil)
   (setq doom-one-brighter-comments t)
   (setq doom-neotree-file-icons t)
