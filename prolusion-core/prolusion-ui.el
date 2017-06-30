@@ -27,7 +27,6 @@
 (prolusion/require-package 'spaceline-all-the-icons)
 (prolusion/require-package 'doom-themes)
 (prolusion/require-package 'info+)
-(prolusion/require-package 'highlight-indentation)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup
@@ -61,10 +60,11 @@
 
   (load-theme 'doom-one t)
 
-  (doom-themes-nlinum-config)
+  (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)
 
   (setq nlinum-format "%d ")
+  (setq nlinum-highlight-current-line t)
 
   (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
   (add-hook 'after-revert-hook #'turn-on-solaire-mode)
@@ -153,54 +153,33 @@
 ;; UI functions
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defvar prolusion--track-mouse nil)
+(defvar prolusion--doom-themes-track-mouse nil)
 
-(defun prolusion//track-mouse-select-window (event)
+(defun prolusion//doom-themes-neotree-handle-callback (event)
   ""
   (interactive "e")
-  (prog1 (if prolusion--track-mouse
-             (let ((current-window (get-buffer-window (current-buffer)))
-                   (event-window (posn-window (event-start event))))
-               (if (and (or (not (window-minibuffer-p current-window))
-                            (not (minibuffer-window-active-p current-window)))
-                        (windowp event-window)
-                        (or (not (window-minibuffer-p event-window))
-                            (minibuffer-window-active-p event-window)))
-                   (progn
-                     (or (eq (window-buffer current-window)
-                             (window-buffer event-window))
-                         (run-hooks 'mouse-leave-buffer-hook))
-                     (if (mouse-select-window event)
-                       (select-window event-window))))))
-    (setq unread-command-events
-          (nconc unread-command-events (list event)))))
+  (let ((p_x (car (posn-x-y (event-start event)))))
+    (if (and (not (get-buffer " *NeoTree*")) (< p_x 10))
+        (message "Toggling neotree !\n\nShould display image!")))
+    (setq unread-command-events (nconc unread-command-events (list event))))
 
-(defun prolusion/toggle-mouse-tracking (&optional arg verbose)
+(defun prolusion/doom-themes-neotree-handle-config ()
   ""
-  (interactive (list current-prefix-arg t))
-  (if (or (null arg)
-          (if (> (prefix-numeric-value arg) 0)
-              (not prolusion--track-mouse)
-            prolusion--track-mouse))
-      (progn
-        (cond ((setq prolusion--track-mouse (not prolusion--track-mouse))
-               (put 'prolusion--track-mouse 'track-mouse track-mouse)
-               (setq track-mouse t)
-               (put 'prolusion--track-mouse 'mouse-movement
-                    (lookup-key special-event-map [mouse-movement]))
-               (define-key special-event-map [mouse-movement]
-                 'prolusion//track-mouse-select-window))
-              (t
-               (setq track-mouse (get 'prolusion--track-mouse 'track-mouse))
-               (define-key special-event-map [mouse-movement]
-                 (get 'prolusion--track-mouse 'mouse-movement))))
-        (if (or (interactive-p) verbose)
-            (message "Track mouse is %s"
-                     (if prolusion--track-mouse "enabled" "disabled"))))
-    (if (or (interactive-p) verbose)
-        (message "Track mouse is already %s"
-                 (if prolusion--track-mouse "enabled" "disabled"))))
-  prolusion--track-mouse)
+  (interactive)
+  (cond ((setq prolusion--doom-themes-track-mouse (not prolusion--doom-themes-track-mouse))
+         (put 'prolusion--doom-themes-track-mouse 'track-mouse track-mouse)
+         (setq track-mouse t)
+         (put 'prolusion--doom-themes-track-mouse 'mouse-movement
+              (lookup-key special-event-map [mouse-movement]))
+         (define-key special-event-map [mouse-movement]
+           'prolusion//doom-themes-neotree-handle-callback))
+        (t
+         (setq track-mouse (get 'prolusion--doom-themes-track-mouse 'track-mouse))
+         (define-key special-event-map [mouse-movement]
+           (get 'prolusion--doom-themes-track-mouse 'mouse-movement))))
+  (message "Prolusion doom themes mouse tracking is %s"
+           (if prolusion--doom-themes-track-mouse "enabled" "disabled"))
+  prolusion--doom-themes-track-mouse)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI hooks
