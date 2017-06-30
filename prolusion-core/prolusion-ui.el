@@ -27,7 +27,6 @@
 (prolusion/require-package 'spaceline-all-the-icons)
 (prolusion/require-package 'doom-themes)
 (prolusion/require-package 'info+)
-
 (prolusion/require-package 'highlight-indentation)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
