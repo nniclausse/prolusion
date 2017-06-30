@@ -109,7 +109,7 @@
 (use-package highlight-indentation
   :commands (highlight-indentation-mode highlight-indentation-current-column-mode)
   :config
-  (defun doom|inject-trailing-whitespace (&optional start end)
+  (defun prolusion//inject-trailing-whitespace (&optional start end)
     (interactive (progn (barf-if-buffer-read-only)
                         (if (use-region-p)
                             (list (region-beginning) (region-end))
@@ -138,20 +138,73 @@
       (set-buffer-modified-p nil))
     nil)
 
-  (defun highlight-indentation-handle-whitespace ()
+  (defun prolusion//highlight-indentation-handle-whitespace ()
     (if (or highlight-indentation-mode highlight-indentation-current-column-mode)
         (progn
-          (doom|inject-trailing-whitespace)
+          (prolusion//inject-trailing-whitespace)
           (add-hook 'before-save-hook #'delete-trailing-whitespace nil t)
-          (add-hook 'after-save-hook #'doom|inject-trailing-whitespace nil t))
+          (add-hook 'after-save-hook #'prolusion//inject-trailing-whitespace nil t))
       (remove-hook 'before-save-hook #'delete-trailing-whitespace t)
-      (remove-hook 'after-save-hook #'doom|inject-trailing-whitespace t)
+      (remove-hook 'after-save-hook #'prolusion//inject-trailing-whitespace t)
       (delete-trailing-whitespace)))
 
-  (add-hook 'highlight-indentation-mode-hook 'highlight-indentation-handle-whitespace)
-  (add-hook 'highlight-indentation-current-column-mode-hook 'highlight-indentation-handle-whitespace)
+  (add-hook 'highlight-indentation-mode-hook 'prolusion//highlight-indentation-handle-whitespace)
+  (add-hook 'highlight-indentation-current-column-mode-hook 'prolusion//highlight-indentation-handle-whitespace)
 
   :when (display-graphic-p))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UI functions
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defvar prolusion--track-mouse nil)
+
+(defun prolusion//track-mouse-select-window (event)
+  ""
+  (interactive "e")
+  (prog1 (if prolusion--track-mouse
+             (let ((current-window (get-buffer-window (current-buffer)))
+                   (event-window (posn-window (event-start event))))
+               (if (and (or (not (window-minibuffer-p current-window))
+                            (not (minibuffer-window-active-p current-window)))
+                        (windowp event-window)
+                        (or (not (window-minibuffer-p event-window))
+                            (minibuffer-window-active-p event-window)))
+                   (progn
+                     (or (eq (window-buffer current-window)
+                             (window-buffer event-window))
+                         (run-hooks 'mouse-leave-buffer-hook))
+                     (if (mouse-select-window event)
+                       (select-window event-window))))))
+    (setq unread-command-events
+          (nconc unread-command-events (list event)))))
+
+(defun prolusion/toggle-mouse-tracking (&optional arg verbose)
+  ""
+  (interactive (list current-prefix-arg t))
+  (if (or (null arg)
+          (if (> (prefix-numeric-value arg) 0)
+              (not prolusion--track-mouse)
+            prolusion--track-mouse))
+      (progn
+        (cond ((setq prolusion--track-mouse (not prolusion--track-mouse))
+               (put 'prolusion--track-mouse 'track-mouse track-mouse)
+               (setq track-mouse t)
+               (put 'prolusion--track-mouse 'mouse-movement
+                    (lookup-key special-event-map [mouse-movement]))
+               (define-key special-event-map [mouse-movement]
+                 'prolusion//track-mouse-select-window))
+              (t
+               (setq track-mouse (get 'prolusion--track-mouse 'track-mouse))
+               (define-key special-event-map [mouse-movement]
+                 (get 'prolusion--track-mouse 'mouse-movement))))
+        (if (or (interactive-p) verbose)
+            (message "Track mouse is %s"
+                     (if prolusion--track-mouse "enabled" "disabled"))))
+    (if (or (interactive-p) verbose)
+        (message "Track mouse is already %s"
+                 (if prolusion--track-mouse "enabled" "disabled"))))
+  prolusion--track-mouse)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI hooks

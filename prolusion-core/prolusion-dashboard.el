@@ -76,7 +76,7 @@
                                                (workspaces . prolusion//dashboard-insert-workspaces)
                                                (info       . prolusion//dashboard-insert-info)))
 
-(defvar prolusion--dashboard-items '((recents    . 20)
+(defvar prolusion--dashboard-items '((recents   . 20)
                                     (bookmarks  . 10)
                                     (projects   . 10)
                                     (workspaces . 10)
