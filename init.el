@@ -24,6 +24,7 @@
 (defconst prolusion-version-patch 25)
 
 (defvar prolusion-dir          (file-name-directory load-file-name))
+(defvar prolusion-wip-dir      (expand-file-name "prolusion-wip"      prolusion-dir))
 (defvar prolusion-core-dir     (expand-file-name "prolusion-core"     prolusion-dir))
 (defvar prolusion-docs-dir     (expand-file-name "prolusion-docs"     prolusion-dir))
 (defvar prolusion-elpa-dir     (expand-file-name "prolusion-elpa"     prolusion-dir))
@@ -39,6 +40,7 @@
 (make-directory prolusion-save-dir  t)
 (make-directory prolusion-irony-dir t)
 
+(add-to-list 'load-path prolusion-wip-dir)
 (add-to-list 'load-path prolusion-core-dir)
 
 (require 'prolusion-packages)
@@ -58,7 +60,7 @@
 (require 'prolusion-www)
 (require 'prolusion-vc)
 (require 'prolusion-builtins)
-(require 'prolusion-cheatsheet)
+;; (require 'prolusion-overlay)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
