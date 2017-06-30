@@ -45,7 +45,7 @@
     (define-key map [backtab] 'widget-backward)
     (define-key map (kbd "RET") 'widget-button-press)
     (define-key map [down-mouse-1] 'widget-button-click)
-    (define-key map (kbd "g") #'prolusion/dashboard-insert-startupify-lists)
+    (define-key map (kbd "g") #'prolusion//dashboard-insert-startupify-lists)
     map))
 
 (define-derived-mode prolusion-dashboard-mode special-mode "Dashboard"
@@ -221,7 +221,7 @@
   ""
   `(define-key prolusion-dashboard-mode-map ,shortcut-char
      (lambda ()
-       (interactive)
+       ;; (interactive)
        (unless (search-forward ,search-label (point-max) t)
          (search-backward ,search-label (point-min) t))
        ,@(unless no-next-line
@@ -230,7 +230,7 @@
 
 (defun prolusion//dashboard-goto-link-line ()
   ""
-  (interactive)
+  ;; (interactive)
   (with-current-buffer prolusion--dashboard-buffer-name
     (goto-char (point-min))
     (re-search-forward "Homepage")
@@ -279,18 +279,18 @@
          (prolusion//dashboard-subseq (f-glob (expand-file-name "*" prolusion-info-dir)) 0 list-size))
     (prolusion//dashboard-insert--shortcut "i" "Info:")))
 
-(defun prolusion/dashboard-resize-on-hook ()
+(defun prolusion//dashboard-resize-on-hook ()
   ""
   (let ((space-win (get-buffer-window prolusion--dashboard-buffer-name))
         (frame-win (frame-selected-window)))
     (when (and space-win
                (not (window-minibuffer-p frame-win)))
       (with-selected-window space-win
-        (prolusion/dashboard-insert-startupify-lists)))))
+        (prolusion//dashboard-insert-startupify-lists)))))
 
-(defun prolusion/dashboard-insert-startupify-lists ()
+(defun prolusion//dashboard-insert-startupify-lists ()
   ""
-  (interactive)
+  ;; (interactive)
   (let ((buffer-exists (buffer-live-p (get-buffer prolusion--dashboard-buffer-name)))
         (save-line nil))
     (when (or (not (eq prolusion--dashboard-buffer-last-width (window-width)))
@@ -327,16 +327,16 @@
 
 ;;;###autoload
 
-(defun prolusion/dashboard-setup-startup-hook ()
+(defun prolusion//dashboard-setup-startup-hook ()
   ""
   (if (< (length command-line-args) 2)
       (progn
         (add-hook 'after-init-hook
-                  (lambda () (prolusion/dashboard-insert-startupify-lists)))
+                  (lambda () (prolusion//dashboard-insert-startupify-lists)))
         (add-hook 'window-setup-hook
                   (lambda ()
-                    (add-hook 'window-configuration-change-hook 'prolusion/dashboard-resize-on-hook)
-                    (prolusion/dashboard-resize-on-hook)))
+                    (add-hook 'window-configuration-change-hook 'prolusion//dashboard-resize-on-hook)
+                    (prolusion//dashboard-resize-on-hook)))
         (add-hook 'emacs-startup-hook
                   '(lambda ()
                      (switch-to-buffer prolusion--dashboard-buffer-name)
@@ -358,7 +358,7 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (when (display-graphic-p)
-  (prolusion/dashboard-setup-startup-hook))
+  (prolusion//dashboard-setup-startup-hook))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
