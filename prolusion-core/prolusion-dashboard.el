@@ -221,7 +221,6 @@
   ""
   `(define-key prolusion-dashboard-mode-map ,shortcut-char
      (lambda ()
-       ;; (interactive)
        (unless (search-forward ,search-label (point-max) t)
          (search-backward ,search-label (point-min) t))
        ,@(unless no-next-line
@@ -230,7 +229,6 @@
 
 (defun prolusion//dashboard-goto-link-line ()
   ""
-  ;; (interactive)
   (with-current-buffer prolusion--dashboard-buffer-name
     (goto-char (point-min))
     (re-search-forward "Homepage")
@@ -290,7 +288,6 @@
 
 (defun prolusion//dashboard-insert-startupify-lists ()
   ""
-  ;; (interactive)
   (let ((buffer-exists (buffer-live-p (get-buffer prolusion--dashboard-buffer-name)))
         (save-line nil))
     (when (or (not (eq prolusion--dashboard-buffer-last-width (window-width)))

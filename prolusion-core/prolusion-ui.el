@@ -110,10 +110,6 @@
   :commands (highlight-indentation-mode highlight-indentation-current-column-mode)
   :config
   (defun prolusion//inject-trailing-whitespace (&optional start end)
-    (interactive (progn (barf-if-buffer-read-only)
-                        (if (use-region-p)
-                            (list (region-beginning) (region-end))
-                          (list nil nil))))
     (unless indent-tabs-mode
       (save-match-data
         (save-excursion
