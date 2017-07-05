@@ -158,10 +158,10 @@
 (defun prolusion//doom-themes-neotree-handle-callback (event)
   ""
   (interactive "e")
-  (let ((p_x (car (posn-x-y (event-start event)))))
-    (if (and (not (get-buffer " *NeoTree*")) (< p_x 10))
-        (message "Toggling neotree !\n\nShould display image!")))
-    (setq unread-command-events (nconc unread-command-events (list event))))
+  (let ((p_x_w (car (posn-x-y (event-start event)))))
+    (if (and (< p_x_w 10)) ;; (not (get-buffer " *NeoTree*")))
+        (neotree-toggle)))
+  (setq unread-command-events (nconc unread-command-events (list event))))
 
 (defun prolusion/doom-themes-neotree-handle-config ()
   ""
@@ -201,7 +201,7 @@
 (diminish 'solaire-mode)
 (diminish 'page-break-lines-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'prolusion-ui)
 
