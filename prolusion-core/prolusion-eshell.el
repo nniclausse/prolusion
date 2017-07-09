@@ -60,7 +60,6 @@
 
 (defun prolusion//current-directory-git-branch-string (pwd)
   ""
-  (interactive)
   (when (and (eshell-search-path "git")
              (locate-dominating-file pwd ".git"))
     (let ((git-output (shell-command-to-string (concat "cd " pwd " && git branch | grep '\\*' | sed -e 's/^\\* //'"))))
@@ -116,7 +115,7 @@
 (global-set-key (kbd "C-c l O") 'multi-eshell-go-back)
 (global-set-key (kbd "C-c l c") 'prolusion/eshell-clear-buffer)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'prolusion-eshell)
 
