@@ -83,7 +83,7 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 
 To get javscript completion, add the following `.tern-project` taht contains at least the following minial configuration.
 
-```
+```json
 {
     "plugins": {
         "node": {

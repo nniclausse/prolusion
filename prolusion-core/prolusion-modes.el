@@ -31,6 +31,8 @@
 (prolusion/install-package 'qml-mode)
 (prolusion/install-package 'anaconda-mode)
 (prolusion/install-package 'gitignore-mode)
+(prolusion/install-package 'erlang)
+(prolusion/install-package 'typescript-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes setup
@@ -66,6 +68,7 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'"          . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'"    . markdown-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'"    . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'"          . typescript-mode))
 
 (use-package cmake-mode :mode "\\.cmake\\'" "\\CMakeLists.txt\\'")
 (use-package   js2-mode :mode "\\.qs\\'" "\\.js\\'")

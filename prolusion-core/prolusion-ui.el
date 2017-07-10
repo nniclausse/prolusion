@@ -28,8 +28,6 @@
 (prolusion/require-package 'doom-themes)
 (prolusion/require-package 'info+)
 
-(prolusion/require-package 'highlight-indentation)
-
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI setup
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -62,10 +60,11 @@
 
   (load-theme 'doom-one t)
 
-  (doom-themes-nlinum-config)
+  (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)
 
   (setq nlinum-format "%d ")
+  (setq nlinum-highlight-current-line t)
 
   (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
   (add-hook 'after-revert-hook #'turn-on-solaire-mode)
@@ -110,11 +109,7 @@
 (use-package highlight-indentation
   :commands (highlight-indentation-mode highlight-indentation-current-column-mode)
   :config
-  (defun doom|inject-trailing-whitespace (&optional start end)
-    (interactive (progn (barf-if-buffer-read-only)
-                        (if (use-region-p)
-                            (list (region-beginning) (region-end))
-                          (list nil nil))))
+  (defun prolusion//inject-trailing-whitespace (&optional start end)
     (unless indent-tabs-mode
       (save-match-data
         (save-excursion
@@ -139,20 +134,52 @@
       (set-buffer-modified-p nil))
     nil)
 
-  (defun highlight-indentation-handle-whitespace ()
+  (defun prolusion//highlight-indentation-handle-whitespace ()
     (if (or highlight-indentation-mode highlight-indentation-current-column-mode)
         (progn
-          (doom|inject-trailing-whitespace)
+          (prolusion//inject-trailing-whitespace)
           (add-hook 'before-save-hook #'delete-trailing-whitespace nil t)
-          (add-hook 'after-save-hook #'doom|inject-trailing-whitespace nil t))
+          (add-hook 'after-save-hook #'prolusion//inject-trailing-whitespace nil t))
       (remove-hook 'before-save-hook #'delete-trailing-whitespace t)
-      (remove-hook 'after-save-hook #'doom|inject-trailing-whitespace t)
+      (remove-hook 'after-save-hook #'prolusion//inject-trailing-whitespace t)
       (delete-trailing-whitespace)))
 
-  (add-hook 'highlight-indentation-mode-hook 'highlight-indentation-handle-whitespace)
-  (add-hook 'highlight-indentation-current-column-mode-hook 'highlight-indentation-handle-whitespace)
+  (add-hook 'highlight-indentation-mode-hook 'prolusion//highlight-indentation-handle-whitespace)
+  (add-hook 'highlight-indentation-current-column-mode-hook 'prolusion//highlight-indentation-handle-whitespace)
 
   :when (display-graphic-p))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UI functions
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defvar prolusion--doom-themes-track-mouse nil)
+
+(defun prolusion//doom-themes-neotree-handle-callback (event)
+  ""
+  (interactive "e")
+  (let ((p_x_w (car (posn-x-y (event-start event)))))
+    (if (and (< p_x_w 10)) ;; (not (get-buffer " *NeoTree*")))
+        (neotree-toggle)))
+  (setq unread-command-events (nconc unread-command-events (list event))))
+
+(defun prolusion/doom-themes-neotree-handle-config ()
+  ""
+  (interactive)
+  (cond ((setq prolusion--doom-themes-track-mouse (not prolusion--doom-themes-track-mouse))
+         (put 'prolusion--doom-themes-track-mouse 'track-mouse track-mouse)
+         (setq track-mouse t)
+         (put 'prolusion--doom-themes-track-mouse 'mouse-movement
+              (lookup-key special-event-map [mouse-movement]))
+         (define-key special-event-map [mouse-movement]
+           'prolusion//doom-themes-neotree-handle-callback))
+        (t
+         (setq track-mouse (get 'prolusion--doom-themes-track-mouse 'track-mouse))
+         (define-key special-event-map [mouse-movement]
+           (get 'prolusion--doom-themes-track-mouse 'mouse-movement))))
+  (message "Prolusion doom themes mouse tracking is %s"
+           (if prolusion--doom-themes-track-mouse "enabled" "disabled"))
+  prolusion--doom-themes-track-mouse)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI hooks
@@ -174,7 +201,7 @@
 (diminish 'solaire-mode)
 (diminish 'page-break-lines-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'prolusion-ui)
 
