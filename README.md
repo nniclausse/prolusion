@@ -167,6 +167,10 @@ To get javscript completion, add the following `.tern-project` taht contains at 
 | <kbd>`C-h f`</kbd>   |            `describe-function` |
 | <kbd>`C-h v`</kbd>   |            `describe-variable` |
 | <kbd>`C-h b`</kbd>   |            `describe-bindings` |
+| <kbd>`C-h a`</kbd>   |              `apropos-command` |
+| <kbd>`M-u`</kbd>     |                  `upcase-word` |
+| <kbd>`M-l`</kbd>     |                `downcase-word` |
+| <kbd>`M-c`</kbd>     |              `capitalize-word` |
 
 **prolusion-eshell**
 
