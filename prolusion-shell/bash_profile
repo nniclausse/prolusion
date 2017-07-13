@@ -115,13 +115,13 @@ export PATH=/usr/local/bin:$PATH
 ## qt
 ## #################################################################
 
-export PATH=/Users/jwintz/Development/qt/5.9/clang_64/bin:$PATH
+export PATH=/Users/jwintz/Development/qt/5.9.1/clang_64/bin:$PATH
 
 ## #################################################################
 ## cmake
 ## #################################################################
 
-export CMAKE_PREFIX_PATH=$HOME/Development/qt/5.9/clang_64/lib/cmake/Qt5Core:$HOME/Development/qt/5.9/clang_64/lib/cmake/Qt5OpenGL:$HOME/Development/qt/5.9/clang_64/lib/cmake/Qt5Network:$HOME/Development/qt/5.9/clang_64/lib/cmake/Qt5Qml:$HOME/Development/qt/5.9/clang_64/lib/cmake/Qt5Quick:$HOME/Development/qt/5.9/clang_64/lib/cmake/Qt5Gui:$HOME/Development/qt/5.9/clang_64/lib/cmake/Qt5Xml
+export CMAKE_PREFIX_PATH=$HOME/Development/qt/5.9.1/clang_64/lib/cmake/Qt5Core:$HOME/Development/qt/5.9.1/clang_64/lib/cmake/Qt5OpenGL:$HOME/Development/qt/5.9.1/clang_64/lib/cmake/Qt5Network:$HOME/Development/qt/5.9.1/clang_64/lib/cmake/Qt5Qml:$HOME/Development/qt/5.9.1/clang_64/lib/cmake/Qt5Quick:$HOME/Development/qt/5.9.1/clang_64/lib/cmake/Qt5Gui:$HOME/Development/qt/5.9.1/clang_64/lib/cmake/Qt5Xml
 
 ## #################################################################
 ## Bash completions
