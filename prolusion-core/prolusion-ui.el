@@ -33,8 +33,8 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (if (eq system-type 'darwin)
-    (set-frame-font "Source Code Pro-13" nil t)
-(set-frame-font "Source Code Pro-10" nil t))
+    (set-frame-font "Source Code Pro-11" nil t)
+  (set-frame-font "Source Code Pro-10" nil t))
 
 (tooltip-mode -1)
 (menu-bar-mode -1)
@@ -51,6 +51,8 @@
 (rainbow-mode 1)
 
 (when (display-graphic-p)
+  (setq all-the-icons-color-icons nil)
+
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
   (setq doom-one-brighter-modeline nil)
@@ -85,8 +87,9 @@
   (setq spaceline-all-the-icons-icon-set-git-ahead (quote commit))
   (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
   (setq spaceline-all-the-icons-highlight-file-name t)
-  (setq spaceline-all-the-icons-separator-type (quote none))
-  (setq spaceline-all-the-icons-clock-always-visible nil)
+  (setq spaceline-all-the-icons-separator-type (quote wave))
+  ;; (setq spaceline-all-the-icons-clock-always-visible nil)
+  (setq spaceline-responsive nil)
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons--setup-package-updates)
@@ -104,6 +107,13 @@
   (spaceline-toggle-all-the-icons-package-updates-on)
   (spaceline-toggle-all-the-icons-text-scale-on)
   (spaceline-toggle-all-the-icons-region-info-on)
+  ;; (set-face-attribute 'mode-line             nil :foreground "" :background nil :box nil)
+  ;; (set-face-attribute 'mode-line-inactive    nil :foreground "" :background nil :box nil)
+  ;; (set-face-attribute 'powerline-active1     nil :foreground "" :background "")
+  ;; (set-face-attribute 'powerline-active2     nil :foreground "" :background "")
+  ;; (set-face-attribute 'powerline-inactive1   nil :foreground "" :background "")
+  ;; (set-face-attribute 'powerline-inactive2   nil :foreground "" :background "")
+  (set-face-attribute 'spaceline-highlight-face nil :foreground "#2e3540" :background "#e4e8ef")
   :when (display-graphic-p))
 
 (use-package highlight-indentation

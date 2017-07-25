@@ -134,6 +134,11 @@
 
 (put 'narrow-to-region 'disabled nil)
 
+;; reenable downcase region
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(put 'downcase-region 'disabled nil)
+
 ;; debug on error
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -176,7 +181,7 @@
 ;; Behavior keybindings
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq text-scale-mode-step 1.05)
+(setq text-scale-mode-step 1.1)
 
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
