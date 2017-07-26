@@ -83,12 +83,12 @@
 (use-package spaceline-all-the-icons
   :after spaceline
   :config
+  (setq powerline-text-scale-factor 0.9)
   (setq spaceline-all-the-icons-slim-render nil)
   (setq spaceline-all-the-icons-icon-set-git-ahead (quote commit))
   (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
   (setq spaceline-all-the-icons-highlight-file-name t)
-  (setq spaceline-all-the-icons-separator-type (quote wave))
-  ;; (setq spaceline-all-the-icons-clock-always-visible nil)
+  (setq spaceline-all-the-icons-separator-type (quote none))
   (setq spaceline-responsive nil)
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-anzu)
@@ -109,11 +109,11 @@
   (spaceline-toggle-all-the-icons-region-info-on)
   ;; (set-face-attribute 'mode-line             nil :foreground "" :background nil :box nil)
   ;; (set-face-attribute 'mode-line-inactive    nil :foreground "" :background nil :box nil)
-  ;; (set-face-attribute 'powerline-active1     nil :foreground "" :background "")
+  ;; (set-face-attribute 'powerline-active1     nil :foreground "#d8dee9" :background "#3b4351")
   ;; (set-face-attribute 'powerline-active2     nil :foreground "" :background "")
-  ;; (set-face-attribute 'powerline-inactive1   nil :foreground "" :background "")
+  ;; (set-face-attribute 'powerline-inactive1   nil :foreground "#d8dee9" :background "")
   ;; (set-face-attribute 'powerline-inactive2   nil :foreground "" :background "")
-  (set-face-attribute 'spaceline-highlight-face nil :foreground "#2e3540" :background "#e4e8ef")
+  ;; (set-face-attribute 'spaceline-highlight-face nil :foreground "#2e3540" :background "#e4e8ef")
   :when (display-graphic-p))
 
 (use-package highlight-indentation
