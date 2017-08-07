@@ -107,13 +107,6 @@
   (spaceline-toggle-all-the-icons-package-updates-on)
   (spaceline-toggle-all-the-icons-text-scale-on)
   (spaceline-toggle-all-the-icons-region-info-on)
-  ;; (set-face-attribute 'mode-line             nil :foreground "" :background nil :box nil)
-  ;; (set-face-attribute 'mode-line-inactive    nil :foreground "" :background nil :box nil)
-  ;; (set-face-attribute 'powerline-active1     nil :foreground "#d8dee9" :background "#3b4351")
-  ;; (set-face-attribute 'powerline-active2     nil :foreground "" :background "")
-  ;; (set-face-attribute 'powerline-inactive1   nil :foreground "#d8dee9" :background "")
-  ;; (set-face-attribute 'powerline-inactive2   nil :foreground "" :background "")
-  ;; (set-face-attribute 'spaceline-highlight-face nil :foreground "#2e3540" :background "#e4e8ef")
   :when (display-graphic-p))
 
 (use-package highlight-indentation
