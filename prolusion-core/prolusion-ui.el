@@ -80,7 +80,7 @@
 
   (advice-add #'persp-load-state-from-file :after #'solaire-mode-restore-persp-mode-buffers)
 
-  (when prolusion-dark (solaire-mode-swap-bg))
+  (solaire-mode-swap-bg)
 
   (require 'spaceline-config)
 
