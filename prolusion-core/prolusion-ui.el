@@ -61,7 +61,7 @@
 
   (setq ns-use-srgb-colorspace t)
 
-  ;; (setq solaire-mode-remap-modeline nil)
+  (setq solaire-mode-remap-modeline nil)
 
   (if prolusion-dark
       (load-theme 'doom-one t)
@@ -80,8 +80,7 @@
 
   (advice-add #'persp-load-state-from-file :after #'solaire-mode-restore-persp-mode-buffers)
 
-  (when prolusion-dark
-    (solaire-mode-swap-bg))
+  (when prolusion-dark (solaire-mode-swap-bg))
 
   (require 'spaceline-config)
 
@@ -99,8 +98,8 @@
   (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
   (setq spaceline-all-the-icons-highlight-file-name t)
   (setq spaceline-all-the-icons-primary-separator "")
-  (setq spaceline-all-the-icons-separator-type (quote cup))
-  (setq spaceline-all-the-icons-slim-render nil)
+  (setq spaceline-all-the-icons-separator-type (quote none))
+  (setq spaceline-all-the-icons-clock-always-visible nil)
   (setq spaceline-responsive nil)
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-anzu)
