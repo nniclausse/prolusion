@@ -64,14 +64,7 @@
   ;; (setq solaire-mode-remap-modeline nil)
 
   (if prolusion-dark
-      (progn
-        (load-theme 'doom-one t))
-        ;; (doom-themes-set-faces
-        ;;  'doom-one
-        ;;     (modeline-bg `(,(car base1) ,@(cdr base2)))
-        ;;     (modeline-bg-l `(,(doom-darken (car bg-alt) 0.125) ,@(cdr base0)))
-        ;;     (modeline-bg-inactive (doom-darken bg-alt 0.1))
-        ;;     (modeline-bg-inactive-l `(,(car bg-alt) ,@(cdr base1))))
+        (load-theme 'doom-one t)
     (load-theme 'doom-one-light t))
 
   (doom-themes-visual-bell-config)
