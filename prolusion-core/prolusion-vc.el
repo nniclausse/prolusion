@@ -32,9 +32,9 @@
 (define-fringe-bitmap 'git-gutter-fr:modified [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224] nil nil 'center)
 (define-fringe-bitmap 'git-gutter-fr:deleted [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224] nil nil 'center)
 
-(set-face-foreground 'git-gutter-fr:modified "DarkGoldenrod3")
-(set-face-foreground 'git-gutter-fr:added "DarkOliveGreen3")
-(set-face-foreground 'git-gutter-fr:deleted "OrangeRed3")
+(set-face-foreground 'git-gutter-fr:modified "#ffb90f")
+(set-face-foreground 'git-gutter-fr:added "#66cd00")
+(set-face-foreground 'git-gutter-fr:deleted "#ff4500")
 
 (global-git-gutter-mode)
 

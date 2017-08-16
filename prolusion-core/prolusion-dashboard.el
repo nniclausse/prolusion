@@ -25,8 +25,8 @@
 ;; Dashboard faces
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defface prolusion--dashboard-git-face     '((t (:height 1.0 :foreground "green"   :bold nil))) "")
-(defface prolusion--dashboard-hash-face    '((t (:height 1.0 :foreground "peru"    :bold nil))) "")
+(defface prolusion--dashboard-git-face     '((t (:height 1.0 :foreground "Green"   :bold nil))) "")
+(defface prolusion--dashboard-hash-face    '((t (:height 1.0 :foreground "Brown"   :bold nil))) "")
 (defface prolusion--dashboard-info-face    '((t (:height 1.0 :foreground "#bc6ec5" :bold t)))   "")
 (defface prolusion--dashboard-banner-face  '((t (:height 1.5 :foreground "#4f97d7" :bold t)))   "")
 (defface prolusion--dashboard-section-face '((t (:height 1.1 :foreground "#4f97d7" :bold t)))   "")
