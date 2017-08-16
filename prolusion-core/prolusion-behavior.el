@@ -1,7 +1,7 @@
 ;; Version: $Id$
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
+;
 ;;; Commentary:
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -159,13 +159,13 @@
 ;; desktop save mode
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq desktop-base-file-name "prolusion-behavior-desktop")
-(setq desktop-base-lock-name "prolusion-behavior-desktop-lock")
-(setq desktop-dirname prolusion-save-dir)
-(setq desktop-path (list desktop-dirname))
-(setq desktop-save t)
+;; (setq desktop-base-file-name "prolusion-behavior-desktop")
+;; (setq desktop-base-lock-name "prolusion-behavior-desktop-lock")
+;; (setq desktop-dirname prolusion-save-dir)
+;; (setq desktop-path (list desktop-dirname))
+;; (setq desktop-save t)
 
-(desktop-save-mode 1)
+;; (desktop-save-mode 1)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Behavior modeline
