@@ -19,6 +19,7 @@
 
 (run-with-idle-timer 10 nil (lambda () (setq gc-cons-threshold gc-cons-threshold-default) (message nil)))
 
+(defconst prolusion-dark t)
 (defconst prolusion-version-major 1)
 (defconst prolusion-version-minor 8)
 (defconst prolusion-version-patch 26)

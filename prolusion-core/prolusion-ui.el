@@ -56,14 +56,16 @@
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
   (setq doom-one-brighter-modeline nil)
-  (setq doom-one-brighter-comments nil)
+  (setq doom-one-brighter-comments t)
   (setq doom-neotree-file-icons t)
 
   (setq ns-use-srgb-colorspace t)
 
   ;; (setq solaire-mode-remap-modeline nil)
 
-  (load-theme 'doom-one t)
+  (if prolusion-dark
+      (load-theme 'doom-one t)
+    (load-theme 'doom-one-light t))
 
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)
@@ -78,7 +80,8 @@
 
   (advice-add #'persp-load-state-from-file :after #'solaire-mode-restore-persp-mode-buffers)
 
-  (solaire-mode-swap-bg)
+  (when prolusion-dark
+    (solaire-mode-swap-bg))
 
   (require 'spaceline-config)
 
