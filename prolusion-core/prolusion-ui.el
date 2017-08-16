@@ -56,7 +56,7 @@
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
   (setq doom-one-brighter-modeline nil)
-  (setq doom-one-brighter-comments t)
+  (setq doom-one-brighter-comments nil)
   (setq doom-neotree-file-icons t)
 
   (setq ns-use-srgb-colorspace t)
