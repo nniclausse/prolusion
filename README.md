@@ -81,7 +81,7 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 
 ## Tern
 
-To get javscript completion, add the following `.tern-project` taht contains at least the following minial configuration.
+To get javscript completion, add the following `.tern-project` that contains at least the following minimal configuration.
 
 ```json
 {
@@ -167,6 +167,10 @@ To get javscript completion, add the following `.tern-project` taht contains at 
 | <kbd>`C-h f`</kbd>   |            `describe-function` |
 | <kbd>`C-h v`</kbd>   |            `describe-variable` |
 | <kbd>`C-h b`</kbd>   |            `describe-bindings` |
+| <kbd>`C-h a`</kbd>   |              `apropos-command` |
+| <kbd>`M-u`</kbd>     |                  `upcase-word` |
+| <kbd>`M-l`</kbd>     |                `downcase-word` |
+| <kbd>`M-c`</kbd>     |              `capitalize-word` |
 
 **prolusion-eshell**
 

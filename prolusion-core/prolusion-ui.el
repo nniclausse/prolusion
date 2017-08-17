@@ -33,8 +33,8 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (if (eq system-type 'darwin)
-    (set-frame-font "Source Code Pro-13" nil t)
-(set-frame-font "Source Code Pro-10" nil t))
+    (set-frame-font "Source Code Pro-12" nil t)
+  (set-frame-font "Source Code Pro-10" nil t))
 
 (tooltip-mode -1)
 (menu-bar-mode -1)
@@ -51,14 +51,21 @@
 (rainbow-mode 1)
 
 (when (display-graphic-p)
+  (setq all-the-icons-color-icons nil)
+
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
   (setq doom-one-brighter-modeline nil)
   (setq doom-one-brighter-comments t)
   (setq doom-neotree-file-icons t)
+
   (setq ns-use-srgb-colorspace t)
 
-  (load-theme 'doom-one t)
+  ;; (setq solaire-mode-remap-modeline nil)
+
+  (if prolusion-dark
+        (load-theme 'doom-one t)
+    (load-theme 'doom-one-light t))
 
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)
@@ -71,6 +78,10 @@
   (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
   (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
 
+  (advice-add #'persp-load-state-from-file :after #'solaire-mode-restore-persp-mode-buffers)
+
+  (solaire-mode-swap-bg)
+
   (require 'spaceline-config)
 
   (spaceline-helm-mode)
@@ -81,12 +92,18 @@
 (use-package spaceline-all-the-icons
   :after spaceline
   :config
+  (setq powerline-text-scale-factor 0.9)
   (setq spaceline-all-the-icons-slim-render nil)
   (setq spaceline-all-the-icons-icon-set-git-ahead (quote commit))
   (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
   (setq spaceline-all-the-icons-highlight-file-name t)
+  (setq spaceline-all-the-icons-primary-separator "")
+  (setq spaceline-all-the-icons-secondary-separator "")
   (setq spaceline-all-the-icons-separator-type (quote none))
   (setq spaceline-all-the-icons-clock-always-visible nil)
+  (setq spaceline-all-the-icons-flycheck-alternate t)
+  (setq spaceline-all-the-icons-icon-set-flycheck-slim (quote dots))
+  (setq spaceline-responsive nil)
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons--setup-package-updates)
@@ -104,49 +121,6 @@
   (spaceline-toggle-all-the-icons-package-updates-on)
   (spaceline-toggle-all-the-icons-text-scale-on)
   (spaceline-toggle-all-the-icons-region-info-on)
-  :when (display-graphic-p))
-
-(use-package highlight-indentation
-  :commands (highlight-indentation-mode highlight-indentation-current-column-mode)
-  :config
-  (defun prolusion//inject-trailing-whitespace (&optional start end)
-    (unless indent-tabs-mode
-      (save-match-data
-        (save-excursion
-          (let ((end-marker (copy-marker (or end (point-max))))
-                (start (or start (point-min))))
-            (goto-char start)
-            (while (and (re-search-forward "^$" end-marker t) (< (point) end-marker))
-              (let (line-start line-end next-start next-end)
-                (save-excursion
-                  (forward-line -1)
-                  (setq line-start (point)
-                        line-end (save-excursion (back-to-indentation) (point)))
-                  (forward-line 2)
-                  (setq next-start (point)
-                        next-end (save-excursion (back-to-indentation) (point)))
-                  (forward-line -1)
-                  (let* ((line-indent (- line-end line-start))
-                         (next-indent (- next-end next-start))
-                         (indent (min line-indent next-indent)))
-                    (insert (make-string (if (zerop indent) 0 (1+ indent)) ? )))))
-              (forward-line 1)))))
-      (set-buffer-modified-p nil))
-    nil)
-
-  (defun prolusion//highlight-indentation-handle-whitespace ()
-    (if (or highlight-indentation-mode highlight-indentation-current-column-mode)
-        (progn
-          (prolusion//inject-trailing-whitespace)
-          (add-hook 'before-save-hook #'delete-trailing-whitespace nil t)
-          (add-hook 'after-save-hook #'prolusion//inject-trailing-whitespace nil t))
-      (remove-hook 'before-save-hook #'delete-trailing-whitespace t)
-      (remove-hook 'after-save-hook #'prolusion//inject-trailing-whitespace t)
-      (delete-trailing-whitespace)))
-
-  (add-hook 'highlight-indentation-mode-hook 'prolusion//highlight-indentation-handle-whitespace)
-  (add-hook 'highlight-indentation-current-column-mode-hook 'prolusion//highlight-indentation-handle-whitespace)
-
   :when (display-graphic-p))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
