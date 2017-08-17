@@ -21,8 +21,8 @@
 
 (defconst prolusion-dark t)
 (defconst prolusion-version-major 1)
-(defconst prolusion-version-minor 8)
-(defconst prolusion-version-patch 26)
+(defconst prolusion-version-minor 9)
+(defconst prolusion-version-patch 0)
 
 (defvar prolusion-dir          (file-name-directory load-file-name))
 (defvar prolusion-core-dir     (expand-file-name "prolusion-core"     prolusion-dir))
