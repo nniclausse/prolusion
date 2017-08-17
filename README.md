@@ -81,7 +81,7 @@ On MacOSX, it is mandatory to add `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to th
 
 ## Tern
 
-To get javscript completion, add the following `.tern-project` taht contains at least the following minial configuration.
+To get javscript completion, add the following `.tern-project` that contains at least the following minimal configuration.
 
 ```json
 {
