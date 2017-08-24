@@ -37,9 +37,9 @@
   (set-frame-font "Source Code Pro-10" nil t))
 
 (tooltip-mode -1)
-(menu-bar-mode -1)
+(menu-bar-mode t)
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
+(scroll-bar-mode t)
 (blink-cursor-mode -1)
 
 (line-number-mode t)
@@ -55,7 +55,7 @@
 
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
-  (setq doom-one-brighter-modeline nil)
+  (setq doom-one-brighter-modeline t)
   (setq doom-one-brighter-comments t)
   (setq doom-neotree-file-icons t)
 
@@ -92,7 +92,7 @@
 (use-package spaceline-all-the-icons
   :after spaceline
   :config
-  (setq powerline-text-scale-factor 0.9)
+  (setq powerline-text-scale-factor 1.1)
   (setq spaceline-all-the-icons-slim-render nil)
   (setq spaceline-all-the-icons-icon-set-git-ahead (quote commit))
   (setq spaceline-all-the-icons-icon-set-window-numbering (quote square))
