@@ -19,7 +19,7 @@
 
 (run-with-idle-timer 20 nil (lambda () (setq gc-cons-threshold gc-cons-threshold-default) (message nil)))
 
-(defconst prolusion-dark t)
+(defconst prolusion-dark nil)
 (defconst prolusion-version-major 1)
 (defconst prolusion-version-minor 9)
 (defconst prolusion-version-patch 0)
@@ -41,6 +41,8 @@
 (make-directory prolusion-irony-dir t)
 
 (add-to-list 'load-path prolusion-core-dir)
+
+(load "~/.emacs.d/nnkeys.el")
 
 (require 'prolusion-packages)
 (require 'prolusion-workspaces)
