@@ -42,7 +42,8 @@
 
 (add-to-list 'load-path prolusion-core-dir)
 
-(load "~/.emacs.d/nnkeys.el")
+
+
 
 (require 'prolusion-packages)
 (require 'prolusion-workspaces)
@@ -62,5 +63,6 @@
 (require 'prolusion-vc)
 (require 'prolusion-builtins)
 
+(load "~/.emacs.d/nnkeys.el")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here

@@ -11,14 +11,42 @@
 ;(setq-default tab-width 4)
 (setq-default visible-bell t)
 
+(require 'server)
+(server-start)
+
+(iswitchb-mode 1)
+
+(defun cleanup-org-tables ()
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward "-+-" nil t) (replace-match "-|-"))
+    ))
+
+(add-hook 'markdown-mode-hook 'orgtbl-mode)
+(add-hook 'markdown-mode-hook
+          (lambda()
+            (add-hook 'after-save-hook 'cleanup-org-tables  nil 'make-it-local)))
+
 ;; disable this !@#%& of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
+
+(global-unset-key [(control x) (control q)]) ; Trop proche de Ctrl-x Ctrl-s
+(global-unset-key [(control x) s]) ; Idem
+
+;; On indique que les lignes doivent etre coupÃ©es AVEC le CR
+(set 'kill-whole-line t)
+
+(require 'redo+)
+(global-set-key [(meta f12)] 'redo)
 
 ;; Silently add a newline at the end of a file if none is there
 (setq require-final-newline t)
 
 ;; Overwrite mode must be the worlds most infuriating tool ever
 (global-set-key '[insert] 'insert-selection)
+
+(load-file (expand-file-name "~/.emacs.d/shift_mark.el"))
+
 
 ;; Revient à l'endroit de dernière modification du buffer. Très pratique !
 (defun goto-last-change ()
@@ -33,6 +61,8 @@
      (message "Unable to figure out where the last change was"))))
 
 (global-set-key '[(control  f12)] 'goto-last-change)
+
+(global-set-key [(meta g)] 'goto-line)
 
 (global-set-key '[(control right)] 'end-of-line)
 (global-set-key '[(alt right)] 'forward-sexp)
@@ -81,6 +111,12 @@ dans la variable compile-command" (compile compile-command))
 (global-set-key '[f6] 'kmacro-start-macro-or-insert-counter)
 (global-set-key '[f7] 'kmacro-end-or-call-macro)
 
+(when (require-faible 'gourous-switch-buffer)
+      (global-set-key [(control prior)] 'gourous-tamp-prec)
+      (global-set-key [(control next)] 'gourous-tamp-suiv)
+      (global-set-key [(control pgup)] 'gourous-tamp-prec)
+      (global-set-key [(control pgdn)] 'gourous-tamp-suiv)
+      )
 
 ;; ------------------ Les commandes pour les buffers et les fenêtres
 
@@ -96,17 +132,34 @@ dans la variable compile-command" (compile compile-command))
 (global-set-key '[(meta next)] 'next-multiframe-window)
 (global-set-key '[(meta prior)] 'previous-multiframe-window)
 
+;; Switche d'un buffer Ã  l'autre
+(defun qc-rotate-buffer (&optional argp)
+  "Switch to the next buffer in the list in current window.
+With C-u or a argument switch to the previous buffer."
+  (interactive "P")
+  (if (not argp) (bury-buffer (current-buffer)))
+  (let ((buffers (if argp (reverse (buffer-list)) (buffer-list)))
+   buffer found)
+    (while (and buffers (not found))
+      (setq buffer (buffer-name (car buffers)))
+      (if (null (string-match "\\*.*\\*" buffer)) ;; on vire rien en fait
+          (setq found t)
+        (setq buffers (cdr buffers)))
+      )
+    (if found (switch-to-buffer buffer))))
+
+(global-set-key '[(control next)]   '(lambda () (interactive) (qc-rotate-buffer 1)))
+(global-set-key '[(control prior)] 'qc-rotate-buffer)
+
 (global-set-key '[(meta a)] 'backward-word)
 (global-set-key '[(meta e)] 'forward-word)
 
 ;; Pour augmenter/diminuer de 1 ligne un buffer
 (global-set-key '[(control kp_subtract)] 'shrink-window)
-;(global-set-key '[(control -)] 'shrink-window)
 (global-set-key '[(control kp_add)] 'enlarge-window)
-;(global-set-key '[(control +)] 'enlarge-window)
 
-(global-set-key (kbd "C-+") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
+;(global-set-key (kbd "C-+") 'text-scale-increase)
+;(global-set-key (kbd "C--") 'text-scale-decrease)
 
 (global-set-key (kbd "C-x C-q") 'dired-toggle-read-only)
 (global-set-key (kbd "C-c q") 'zeal-at-point)
