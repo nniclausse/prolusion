@@ -34,12 +34,12 @@
 (setq coding-system-for-write 'utf-8)
 
 (require 'smartparens-config)
-
+(setq sp-autoinsert-pair nil)
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
 (setq-default tab-width 4)
 
-(setq whitespace-line-column 80)
+(setq whitespace-line-column 800)
 (setq whitespace-style '(face tabs empty trailing lines-tail))
 
 (global-undo-tree-mode)
