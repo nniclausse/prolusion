@@ -16,16 +16,8 @@
 
 (iswitchb-mode 1)
 
-(defun cleanup-org-tables ()
-  (save-excursion
-    (goto-char (point-min))
-    (while (search-forward "-+-" nil t) (replace-match "-|-"))
-    ))
+(setq compilation-scroll-output 'first-error)
 
-(add-hook 'markdown-mode-hook 'orgtbl-mode)
-(add-hook 'markdown-mode-hook
-          (lambda()
-            (add-hook 'after-save-hook 'cleanup-org-tables  nil 'make-it-local)))
 
 ;; disable this !@#%& of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -45,8 +37,29 @@
 ;; Overwrite mode must be the worlds most infuriating tool ever
 (global-set-key '[insert] 'insert-selection)
 
+
+;; Comportement type 'PC' de la r√©gion (la zone de texte s√©lectionn√©e
+;; est visible, et est d√©truite lorsqu'on tape du texte). On ne
+;; l'active pas pour les vieux emacs en mode tty, car il ne peuvent pas
+;; marquer visuellement la r√©gion (cette feature devient alors
+;; dangereuse).
+(cond ((featurep 'xemacs)
+       (progn (require 'pending-del)
+              (custom-set-variables '(pending-delete-mode t t))
+              ))
+      ((or window-system (string-match "21" emacs-version))
+       (progn (delete-selection-mode 1) (transient-mark-mode 1)
+              ))
+      )
+
+
+
 (load-file (expand-file-name "~/.emacs.d/shift_mark.el"))
 
+(setq erlang-root-dir "/usr/lib64/erlang")
+(add-hook 'erlang-mode-hook
+          '(lambda()
+             (local-set-key  "\C-cm" 'erlang-man-function)))
 
 ;; Revient ‡ l'endroit de derniËre modification du buffer. TrËs pratique !
 (defun goto-last-change ()
@@ -110,13 +123,6 @@ dans la variable compile-command" (compile compile-command))
 ;; execute macro
 (global-set-key '[f6] 'kmacro-start-macro-or-insert-counter)
 (global-set-key '[f7] 'kmacro-end-or-call-macro)
-
-(when (require-faible 'gourous-switch-buffer)
-      (global-set-key [(control prior)] 'gourous-tamp-prec)
-      (global-set-key [(control next)] 'gourous-tamp-suiv)
-      (global-set-key [(control pgup)] 'gourous-tamp-prec)
-      (global-set-key [(control pgdn)] 'gourous-tamp-suiv)
-      )
 
 ;; ------------------ Les commandes pour les buffers et les fenÍtres
 
@@ -201,5 +207,22 @@ With C-u or a argument switch to the previous buffer."
 (global-set-key '[(control insert)] 'yank)
 (global-set-key '[(meta insert)] 'yank)
 
+
+(defun cleanup-org-tables ()
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward "-+-" nil t) (replace-match "-|-"))
+    ))
+
+(add-hook 'c-mode-common-hook
+  (lambda()
+    (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
+
+
+; 070917: no longer works ???
+; (add-hook 'markdown-mode-hook 'orgtbl-mode)
+;(add-hook 'markdown-mode-hook
+;          (lambda()
+;            (add-hook 'after-save-hook 'cleanup-org-tables  nil 'make-it-local)))
 
 ;;; keys.el ends here
