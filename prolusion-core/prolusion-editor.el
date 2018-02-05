@@ -44,8 +44,10 @@
 
 (global-undo-tree-mode)
 
-     (smartparens-global-mode t)
+(smartparens-global-mode t)
 (show-smartparens-global-mode t)
+
+(remove-hook 'nxml-mode-hook #'smartparens-mode)
 
 (setq header-file-name 'buffer-file-name)
 (setq make-header-hook
