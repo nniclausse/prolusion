@@ -64,5 +64,17 @@
 (require 'prolusion-builtins)
 
 (load "~/.emacs.d/nnkeys.el")
+
+(use-package forge
+  :config
+
+  (setq forge-alist
+        '(("gitlab.inria.fr" "gitlab.inria.fr/api/v4"
+           "gitlab.inria.fr" forge-gitlab-repository)))
+  :after magit)
+
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here

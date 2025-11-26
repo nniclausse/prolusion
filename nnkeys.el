@@ -164,9 +164,6 @@ With C-u or a argument switch to the previous buffer."
 (global-set-key '[(control kp_subtract)] 'shrink-window)
 (global-set-key '[(control kp_add)] 'enlarge-window)
 
-;(global-set-key (kbd "C-+") 'text-scale-increase)
-;(global-set-key (kbd "C--") 'text-scale-decrease)
-
 (global-set-key (kbd "C-x C-q") 'dired-toggle-read-only)
 (global-set-key (kbd "C-c q") 'zeal-at-point)
 
@@ -214,10 +211,27 @@ With C-u or a argument switch to the previous buffer."
     (while (search-forward "-+-" nil t) (replace-match "-|-"))
     ))
 
-(add-hook 'c-mode-common-hook
-  (lambda()
-    (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
+;(add-hook 'c-mode-common-hook
+;  (lambda()
+;    (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
 
+(map! ;;
+
+ "C-+"   'text-scale-increase
+ "C--"   'text-scale-decrease
+
+ :leader
+
+ "e" nil
+ (:prefix ("e" . "editor")
+
+  :desc "Switch header/source" "o" #'ff-find-other-file
+  )
+)
+                                        ;(:after c-mode
+ ; (:map c-mode-map
+ ;  "C-c o" #'ff-find-other-file))
+ ;)
 
 ; 070917: no longer works ???
 ; (add-hook 'markdown-mode-hook 'orgtbl-mode)
